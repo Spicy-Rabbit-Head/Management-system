@@ -20,10 +20,10 @@
     <packaging>pom</packaging>
     <!-- 模块 -->
     <modules>
-        <module>Module-Entrance</module>
         <module>Module-ResultCode</module>
         <module>Module-Service</module>
         <module>Module-API</module>
+        <module>Management-System-Entry</module>
     </modules>
     <dependencies>
         <dependency>

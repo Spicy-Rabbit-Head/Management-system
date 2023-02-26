@@ -1,4 +1,4 @@
-package com.zzk.moduleentrance;
+package com.zzk.entrance;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
