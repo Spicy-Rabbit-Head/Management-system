@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/Text")
 public class TextController {
+    private final TextService service;
+
     public TextController(TextService service) {
         this.service = service;
     }
-
-    private final TextService service;
 
     @GetMapping("/gettext")
     public String text() {
