@@ -20,9 +20,13 @@
     <packaging>pom</packaging>
     <!-- 模块 -->
     <modules>
+        <!-- 结果码 -->
         <module>Module-ResultCode</module>
+        <!-- Service 业务层 -->
         <module>Module-Service</module>
+        <!-- Controller 控制器层 -->
         <module>Module-API</module>
+        <!-- 入口 -->
         <module>Management-System-Entry</module>
     </modules>
     <dependencies>
