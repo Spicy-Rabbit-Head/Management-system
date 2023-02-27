@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trees>
+    <tree path="/Management-System-Entry" title="入口"/>
+    <tree path="/Module-API" title="Controller 控制器"/>
+    <tree path="/Module-ResultCode" title="结果码"/>
+    <tree path="/Module-Service" title="Service 业务层"/>
+</trees>
