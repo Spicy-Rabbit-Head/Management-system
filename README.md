@@ -8,7 +8,7 @@
 >    <p style="color:#f38181;">
 >        管理系统前端代码库
 >    </p>
->    <a>https://github.com/Spicy-Rabbit-Head/Management-system-front-end</a>
+>    https://github.com/Spicy-Rabbit-Head/Management-system-front-end
 > </div>
 
 ------
