@@ -14,7 +14,12 @@
     <properties>
         <java.version>19</java.version>
     </properties>
+    <!-- 导入需要的父类控制版本包 -->
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
