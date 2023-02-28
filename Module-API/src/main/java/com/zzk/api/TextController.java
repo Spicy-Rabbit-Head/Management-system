@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TextController {
     private final TextService service;
 
+
     public TextController(TextService service) {
         this.service = service;
     }

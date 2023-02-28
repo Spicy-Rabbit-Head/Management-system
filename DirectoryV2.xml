@@ -4,4 +4,9 @@
     <tree path="/Module-API" title="Controller 控制器"/>
     <tree path="/Module-ResultCode" title="结果码"/>
     <tree path="/Module-Service" title="Service 业务层"/>
+    <tree path="/Module-Entity" title="实体类"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/dto" title="数据传输实体"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po" title="数据库映射实体"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/pojo" title="Java Bean 实体"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/vo" title="视图传输实体"/>
 </trees>

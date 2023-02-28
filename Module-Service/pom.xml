@@ -17,8 +17,9 @@
     <!-- 导入需要的父类控制版本包 -->
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.zzk</groupId>
+            <artifactId>Module-Entity</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

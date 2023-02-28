@@ -16,12 +16,18 @@
     <!-- 版本管理 -->
     <properties>
         <java.version>19</java.version>
-        <spring.web>3.0.3</spring.web>
+        <spring.version>3.0.3</spring.version>
+        <lombok.version>1.18.24</lombok.version>
+        <mp.version>3.5.3.1</mp.version>
+        <validation.version>2.7.8</validation.version>
+        <knife4j.version>4.0.0</knife4j.version>
     </properties>
     <!-- 打包方式 -->
     <packaging>pom</packaging>
     <!-- 模块 -->
     <modules>
+        <!-- 实体类 -->
+        <module>Module-Entity</module>
         <!-- 结果码 -->
         <module>Module-ResultCode</module>
         <!-- Service 业务层 -->
@@ -37,7 +43,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring.web}</version>
+                <version>${spring.version}</version>
                 <exclusions>
                     <!-- 存在漏洞 -->
                     <exclusion>
@@ -45,6 +51,31 @@
                         <artifactId>snakeyaml</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>${validation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
