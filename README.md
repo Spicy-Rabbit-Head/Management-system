@@ -5,9 +5,8 @@
 ## 🚀学习spring boot 构建管理系统后端
 
 > <div>
->    <p style="color:#f38181;">
->        管理系统前端代码库
->    </p>
+>    管理系统前端代码库
+>
 >    ⚓https://github.com/Spicy-Rabbit-Head/Management-system-front-end
 > </div>
 
@@ -15,7 +14,9 @@
 
 ## 📚简介
 
-本项目是为学习记录而生,记录了从零开始学习构建一个基于Spring Boot的后端项目.
+本项目是为学习记录而生,记录了从零开始学习构建一个基于 Spring Boot + Vue3 的前后端分离项目.
+
+该库为后端代码
 
 ------
 
