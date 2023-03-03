@@ -15,21 +15,35 @@
     <description>Management-system</description>
     <!-- 版本管理 -->
     <properties>
+        <!-- 模块版本 -->
+        <module.version>0.0.1-SNAPSHOT</module.version>
+        <!-- JDK版本 -->
         <java.version>19</java.version>
+        <!-- SpringBoot版本 -->
         <spring.version>3.0.3</spring.version>
+        <!-- Lombok版本 -->
         <lombok.version>1.18.24</lombok.version>
+        <!-- Mybatis-Plus版本 -->
         <mp.version>3.5.3.1</mp.version>
+        <!-- Validation版本 -->
         <validation.version>2.7.8</validation.version>
+        <!-- Knife4j版本 -->
         <knife4j.version>4.0.0</knife4j.version>
+        <!-- Shiro版本 -->
+        <shiro.version>1.11.0</shiro.version>
     </properties>
     <!-- 打包方式 -->
     <packaging>pom</packaging>
     <!-- 模块 -->
     <modules>
-        <!-- 实体类 -->
-        <module>Module-Entity</module>
+        <!-- 权限管理 -->
+        <module>Module-Shiro</module>
         <!-- 结果码 -->
         <module>Module-ResultCode</module>
+        <!-- 实体类 -->
+        <module>Module-Entity</module>
+        <!-- Dao 持久层 -->
+        <module>Module-Dao</module>
         <!-- Service 业务层 -->
         <module>Module-Service</module>
         <!-- Controller 控制器层 -->
@@ -55,6 +69,13 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
+                <exclusions>
+                    <!-- 存在漏洞 -->
+                    <exclusion>
+                        <groupId>org.yaml</groupId>
+                        <artifactId>snakeyaml</artifactId>
+                    </exclusion>
+                </exclusions>
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
@@ -76,6 +97,49 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring-boot-starter</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+
+            <!-- 模块依赖 -->
+            <!-- 结果码 -->
+            <dependency>
+                <groupId>com.zzk</groupId>
+                <artifactId>Module-ResultCode</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <!-- 实体类 -->
+            <dependency>
+                <groupId>com.zzk</groupId>
+                <artifactId>Module-Entity</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <!-- Dao 持久层 -->
+            <dependency>
+                <groupId>com.zzk</groupId>
+                <artifactId>Module-Dao</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <!-- Service 业务层 -->
+            <dependency>
+                <groupId>com.zzk</groupId>
+                <artifactId>Module-Service</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <!-- Controller 控制器层 -->
+            <dependency>
+                <groupId>com.zzk</groupId>
+                <artifactId>Module-API</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <!-- 权限管理 -->
+            <dependency>
+                <groupId>com.zzk</groupId>
+                <artifactId>Module-Shiro</artifactId>
+                <version>${module.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
