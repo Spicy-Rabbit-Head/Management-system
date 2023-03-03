@@ -28,5 +28,7 @@
 |----------------------------|------------------------|
 | Module-API 模块              | 包含该项目所有Controller控制层代码 |
 | Module-Service 模块          | 包含该项目所有Service服务层代码    |
+| Module-Dao 模块              | 包含该项目所有Dao持久层代码        |
+| Module-Entity 模块           | 包含该项目所有实体类             |
 | Module-ResultCode 模块       | 包含该项目所有的结果码            |
 
