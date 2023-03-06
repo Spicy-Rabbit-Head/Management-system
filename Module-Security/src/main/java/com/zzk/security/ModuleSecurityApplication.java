@@ -1,13 +1,13 @@
-package com.zzk.shiro;
+package com.zzk.security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ModuleShiroApplication {
+public class ModuleSecurityApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ModuleShiroApplication.class, args);
+        SpringApplication.run(ModuleSecurityApplication.class, args);
     }
 
 }

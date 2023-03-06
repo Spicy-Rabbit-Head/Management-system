@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.3</version>
+        <version>3.0.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.zzk</groupId>
@@ -20,7 +20,7 @@
         <!-- JDK版本 -->
         <java.version>19</java.version>
         <!-- SpringBoot版本 -->
-        <spring.version>3.0.3</spring.version>
+        <spring.version>3.0.4</spring.version>
         <!-- Lombok版本 -->
         <lombok.version>1.18.24</lombok.version>
         <!-- Mybatis-Plus版本 -->
@@ -29,15 +29,17 @@
         <validation.version>2.7.8</validation.version>
         <!-- Knife4j版本 -->
         <knife4j.version>4.0.0</knife4j.version>
-        <!-- Shiro版本 -->
-        <shiro.version>1.11.0</shiro.version>
+        <!-- druid版本 -->
+        <druid.version>1.2.15</druid.version>
+        <!-- mysql版本 -->
+        <mysql.version>8.0.32</mysql.version>
     </properties>
     <!-- 打包方式 -->
     <packaging>pom</packaging>
     <!-- 模块 -->
     <modules>
-        <!-- 权限管理 -->
-        <module>Module-Shiro</module>
+        <!-- 安全权限管理 -->
+        <module>Module-Security</module>
         <!-- 结果码 -->
         <module>Module-ResultCode</module>
         <!-- 实体类 -->
@@ -54,18 +56,20 @@
     <!-- 管理依赖 -->
     <dependencyManagement>
         <dependencies>
+            <!-- SpringBoot web包 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring.version}</version>
-                <exclusions>
-                    <!-- 存在漏洞 -->
-                    <exclusion>
-                        <groupId>org.yaml</groupId>
-                        <artifactId>snakeyaml</artifactId>
-                    </exclusion>
-                </exclusions>
+                <!-- <exclusions> -->
+                <!--     &lt;!&ndash; 存在漏洞 &ndash;&gt; -->
+                <!--     <exclusion> -->
+                <!--         <groupId>org.yaml</groupId> -->
+                <!--         <artifactId>snakeyaml</artifactId> -->
+                <!--     </exclusion> -->
+                <!-- </exclusions> -->
             </dependency>
+            <!-- SpringBoot 测试包 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
@@ -78,30 +82,48 @@
                 </exclusions>
                 <version>${spring.version}</version>
             </dependency>
+            <!-- lombok 依赖 -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+            <!-- Mybatis-Plus 依赖 -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mp.version}</version>
             </dependency>
+            <!-- Validation 依赖 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-validation</artifactId>
                 <version>${validation.version}</version>
             </dependency>
+            <!-- Knife4j 依赖 -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
+            <!--druid 数据库连接池-->
             <dependency>
-                <groupId>org.apache.shiro</groupId>
-                <artifactId>shiro-spring-boot-starter</artifactId>
-                <version>${shiro.version}</version>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!--mysql 驱动-->
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- 安全权限框架 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring.version}</version>
             </dependency>
 
             <!-- 模块依赖 -->
@@ -138,7 +160,7 @@
             <!-- 权限管理 -->
             <dependency>
                 <groupId>com.zzk</groupId>
-                <artifactId>Module-Shiro</artifactId>
+                <artifactId>Module-Security</artifactId>
                 <version>${module.version}</version>
             </dependency>
         </dependencies>

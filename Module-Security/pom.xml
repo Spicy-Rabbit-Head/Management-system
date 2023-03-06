@@ -7,27 +7,17 @@
         <artifactId>Management-system</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>Module-Shiro</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Module-Shiro</name>
-    <description>Module-Shiro</description>
+    <artifactId>Module-Security</artifactId>
+    <version>${module.version}</version>
+    <name>Module-Security</name>
+    <description>Module-Security</description>
     <properties>
         <java.version>19</java.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-spring-boot-starter</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-collections</groupId>
-                    <artifactId>commons-collections</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
     </dependencies>
 

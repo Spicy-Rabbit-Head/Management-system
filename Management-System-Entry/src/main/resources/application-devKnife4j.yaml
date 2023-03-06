@@ -1,0 +1,33 @@
+knife4j:
+  # 启动
+  enable: false
+  openapi:
+    # 标题
+    title: 接口文档
+    # 描述
+    description: "这是设备保养管理系统的接口文档"
+    # 邮件
+    email: 1192469846@qq.com
+    # 联系人
+    concat: 赵子奎
+    # 项目地址
+    url: https://github.com/Spicy-Rabbit-Head/vue3-study
+    # 版本
+    version: v1.0
+    # 开源许可证
+    license: MIT License
+    # 许可证地址
+    license-url: https://github.com/Spicy-Rabbit-Head/vue3-study/blob/main/LICENSE
+    # 服务地址
+    terms-of-service-url: http://localhost:xxx/
+    # 分组
+    group:
+      test1:
+        # 分组名
+        group-name: 用户组
+        # 读取形式
+        api-rule: package
+        # 包地址
+        api-rule-resources:
+          - com.zzk.swagger2
+          - com.zzk.validator
