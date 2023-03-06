@@ -22,4 +22,6 @@
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/RoleOperationLink.java" title="角色与操作权限外键表"
           extension="java"/>
     <tree path="/Module-Dao" title="Dao 持久层"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated" title="用户权限相关"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated" title="用户权限相关"/>
 </trees>

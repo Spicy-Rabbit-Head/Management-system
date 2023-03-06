@@ -1,4 +1,4 @@
-package com.zzk.entity.po;
+package com.zzk.entity.po.UserPermissionsRelated;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 
 /**
- * 用户与角色外键表(com.zzk.entity.po.UserRoleLink)表实体类
+ * 用户与角色外键表(com.zzk.entity.po.UserPermissionsRelated.UserRoleLink)表实体类
  *
  * @author zhaozikui
  * @since 2023-03-03 13:29

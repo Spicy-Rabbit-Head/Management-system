@@ -1,4 +1,4 @@
-package com.zzk.entity.po;
+package com.zzk.entity.po.UserPermissionsRelated;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -12,26 +12,26 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 
 /**
- * 菜单权限表(com.zzk.entity.po.MenuPermission)表实体类
+ * 操作权限表(com.zzk.entity.po.UserPermissionsRelated.OperationPermissions)表实体类
  *
  * @author zhaozikui
- * @since 2023-03-03 13:20
+ * @since 2023-03-03 13:21
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("menu_permission")
-@ApiModel(description = "菜单权限表", value = "MenuPermission")
-public class MenuPermission extends Model<MenuPermission> {
-    // 菜单权限表主键
+@TableName("operation_permissions")
+@ApiModel(description = "操作权限表", value = "OperationPermissions")
+public class OperationPermissions extends Model<OperationPermissions> {
+    // 操作权限表主键
     @TableId(value = "id", type = IdType.AUTO)
-    @ApiModelProperty(value = "菜单权限表主键", name = "id")
+    @ApiModelProperty(value = "操作权限表主键", name = "id")
     private Integer id;
-    // 菜单名
-    @ApiModelProperty(value = "菜单名", name = "menuName")
-    private String menuName;
-    // 父菜单名
-    @ApiModelProperty(value = "父菜单名", name = "parentMenuName")
-    private String parentMenuName;
+    // 操作名
+    @ApiModelProperty(value = "操作名", name = "operationName")
+    private String operationName;
+    // 方法
+    @ApiModelProperty(value = "方法类型", name = "methodType")
+    private String methodType;
     // 地址
     @ApiModelProperty(value = "地址", name = "url")
     private String url;
