@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>Module-ResultCode</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${module.version}</version>
     <name>Module-ResultCode</name>
     <description>Module-ResultCode</description>
     <properties>

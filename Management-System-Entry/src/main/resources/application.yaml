@@ -1,0 +1,8 @@
+#多环境分组
+spring:
+  profiles:
+    # 设置使用环境
+    active: dev # 读取指定使用环境
+    # 设置包含配置
+    group:
+      "dev": devDB,devMP,devJSON,devKnife4j

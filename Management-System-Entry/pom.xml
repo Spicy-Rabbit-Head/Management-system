@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>Management-System-Entry</artifactId>
-    <version>${module.version</version>
-    <name>Module-Entrance</name>
-    <description>Module-Entrance</description>
+    <version>${module.version}</version>
+    <name>Management-System-Entry</name>
+    <description>Management-System-Entry</description>
     <properties>
         <java.version>19</java.version>
     </properties>

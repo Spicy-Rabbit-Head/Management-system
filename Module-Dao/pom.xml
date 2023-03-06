@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>Module-Dao</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${module.version}</version>
     <name>Module-Dao</name>
     <description>Module-Dao</description>
     <properties>
@@ -31,6 +31,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
             </plugin>
         </plugins>
     </build>

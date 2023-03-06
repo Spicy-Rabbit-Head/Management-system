@@ -1,0 +1,14 @@
+spring:
+  jackson:
+    # 当前时区
+    locale: zh_CN
+    # 设置全局时区
+    time-zone: GMT+8
+    # 序列化方式
+    default-property-inclusion: non_null
+    # 可见度
+    visibility:
+      # 属性序列号可见度
+      getter: non_private
+
+

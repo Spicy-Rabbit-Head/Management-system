@@ -1,0 +1,43 @@
+# 数据库配置
+spring:
+  # 数据源设定
+  datasource:
+    # druid 数据库连接池
+    druid:
+      # 数据库驱动
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      # 数据库地址
+      url: jdbc:mysql://127.0.0.1:6666/management?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+      # 账户
+      username: root
+      # 密码
+      password: 666666
+      # 连接池初始大小
+      initial-size: 10
+      # 连接池最大上限
+      max-active: 20
+      # 连接超时时间
+      max-wait: 1500
+#  redis:
+#    # redis 服务
+#    host: 127.0.0.1
+#    # redis 端口
+#    port: 12501
+#    # 密码
+#    password: 666666
+#    # 默认选择库
+#    database: 0
+#    # 使用lettuce整合
+#    lettuce:
+#      # 连接池配置
+#      pool:
+#        # 最大连接
+#        max-active: 8
+#        # 最大闲置
+#        max-idle: 8
+#        # 最小闲置
+#        min-idle: 0
+#        # 连接超时时间
+#        max-wait: 1000ms
+
+
