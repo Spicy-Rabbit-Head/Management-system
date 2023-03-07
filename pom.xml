@@ -30,9 +30,13 @@
         <!-- Knife4j版本 -->
         <knife4j.version>4.0.0</knife4j.version>
         <!-- druid版本 -->
-        <druid.version>1.2.15</druid.version>
+        <druid.version>1.2.16</druid.version>
+        <!-- pool2 的版本 -->
+        <pool2.version>2.11.1</pool2.version>
         <!-- mysql版本 -->
         <mysql.version>8.0.32</mysql.version>
+        <!-- 糊涂包 -->
+        <hutool.version>5.8.14</hutool.version>
     </properties>
     <!-- 打包方式 -->
     <packaging>pom</packaging>
@@ -53,6 +57,10 @@
         <!-- 入口 -->
         <module>Management-System-Entry</module>
     </modules>
+    <dependencies>
+
+    </dependencies>
+
     <!-- 管理依赖 -->
     <dependencyManagement>
         <dependencies>
@@ -73,13 +81,13 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
-                <exclusions>
-                    <!-- 存在漏洞 -->
-                    <exclusion>
-                        <groupId>org.yaml</groupId>
-                        <artifactId>snakeyaml</artifactId>
-                    </exclusion>
-                </exclusions>
+                <!-- <exclusions> -->
+                <!--     &lt;!&ndash; 存在漏洞 &ndash;&gt; -->
+                <!--     <exclusion> -->
+                <!--         <groupId>org.yaml</groupId> -->
+                <!--         <artifactId>snakeyaml</artifactId> -->
+                <!--     </exclusion> -->
+                <!-- </exclusions> -->
                 <version>${spring.version}</version>
             </dependency>
             <!-- lombok 依赖 -->
@@ -119,11 +127,29 @@
                 <version>${mysql.version}</version>
                 <scope>runtime</scope>
             </dependency>
+            <!-- redis 依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!-- commons redis 连接池 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${pool2.version}</version>
+            </dependency>
             <!-- 安全权限框架 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-security</artifactId>
                 <version>${spring.version}</version>
+            </dependency>
+            <!-- jwt 工具 -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-jwt</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
 
             <!-- 模块依赖 -->
