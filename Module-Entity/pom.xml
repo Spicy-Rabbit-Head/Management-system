@@ -61,6 +61,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+        <!-- 结果码模块 -->
+        <dependency>
+            <groupId>com.zzk</groupId>
+            <artifactId>Module-ResultCode</artifactId>
+        </dependency>
         <!-- 安全权限框架 -->
         <dependency>
             <groupId>com.zzk</groupId>

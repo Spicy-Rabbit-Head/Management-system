@@ -9,21 +9,33 @@
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/po" title="数据库映射实体"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/pojo" title="Java Bean 实体"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/vo" title="视图传输实体"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/User.java" title="用户表" extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/Role.java" title="角色表" extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/MenuPermission.java" title="菜单权限表"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/User.java" title="用户表"
           extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/OperationPermissions.java" title="操作权限表"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/Role.java" title="角色表"
           extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserRoleLink.java" title="用户与角色外键表"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/MenuPermission.java"
+          title="菜单权限表"
           extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/RoleMenuLink.java" title="角色与菜单权限外键表"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/OperationPermissions.java"
+          title="操作权限表"
           extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/RoleOperationLink.java" title="角色与操作权限外键表"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/UserRoleLink.java"
+          title="用户与角色外键表"
+          extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/RoleMenuLink.java"
+          title="角色与菜单权限外键表"
+          extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/RoleOperationLink.java"
+          title="角色与操作权限外键表"
           extension="java"/>
     <tree path="/Module-Dao" title="Dao 持久层"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated" title="用户权限相关"/>
     <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated" title="用户权限相关"/>
     <tree path="/Module-Security" title="安全权限"/>
     <tree path="/Module-Utils" title="工具类"/>
+    <tree path="/Module-Utils/src/main/java/com/zzk/utils/RedisSerializationUtils.java" title="Redis 序列化转换存取"
+          extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/response" title="响应封装类"/>
+    <tree path="/Module-ResultCode/src/main/java/com/zzk/resultcode/SystemStatusCode.java" title="系统操作状态码"
+          extension="java"/>
 </trees>
