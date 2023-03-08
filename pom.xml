@@ -50,6 +50,8 @@
         <module>Module-Entity</module>
         <!-- Dao 持久层 -->
         <module>Module-Dao</module>
+        <!-- 工具类 -->
+        <module>Module-Utils</module>
         <!-- Service 业务层 -->
         <module>Module-Service</module>
         <!-- Controller 控制器层 -->
@@ -163,6 +165,12 @@
             <dependency>
                 <groupId>com.zzk</groupId>
                 <artifactId>Module-Entity</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <!-- 工具类 -->
+            <dependency>
+                <groupId>com.zzk</groupId>
+                <artifactId>Module-Utils</artifactId>
                 <version>${module.version}</version>
             </dependency>
             <!-- Dao 持久层 -->
