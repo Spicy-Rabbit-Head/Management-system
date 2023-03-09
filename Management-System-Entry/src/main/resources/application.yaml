@@ -5,4 +5,4 @@ spring:
     active: dev # 读取指定使用环境
     # 设置包含配置
     group:
-      "dev": devDB,devMP,devJSON,devKnife4j
+      "dev": devDB,devMP,devJSON,devKnife4j,devServer

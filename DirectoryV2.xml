@@ -48,4 +48,6 @@
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/serviceTexts" title="业务层测试类"/>
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/daoTexts/UserDaoText.java" title="用户表测试类"
           extension="java"/>
+    <tree path="/Module-Config" title="Spring boot 配置类"/>
+    <tree path="/Module-Config/src/main/java/com/zzk/config" title=""/>
 </trees>

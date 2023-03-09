@@ -7,24 +7,19 @@
         <artifactId>Management-system</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>Module-Dao</artifactId>
+    <artifactId>Module-Config</artifactId>
     <version>${module.version}</version>
-    <name>Module-Dao</name>
-    <description>Module-Dao</description>
+    <name>Module-Config</name>
+    <description>Module-Config</description>
     <properties>
         <java.version>19</java.version>
     </properties>
     <dependencies>
-        <!-- Config -->
+        <!-- Entity -->
         <dependency>
             <groupId>com.zzk</groupId>
-            <artifactId>Module-Config</artifactId>
+            <artifactId>Module-Entity</artifactId>
         </dependency>
-        <!-- <dependency> -->
-        <!--     <groupId>org.junit.jupiter</groupId> -->
-        <!--     <artifactId>junit-jupiter</artifactId> -->
-        <!--     <scope>test</scope> -->
-        <!-- </dependency> -->
     </dependencies>
 
     <build>
@@ -32,9 +27,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <!-- <configuration> -->
-                <!--     <skip>true</skip> -->
-                <!-- </configuration> -->
             </plugin>
         </plugins>
     </build>

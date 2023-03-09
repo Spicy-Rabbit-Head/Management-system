@@ -1,23 +1,2 @@
-# 服务器配置
-server:
-  # 服务器端口
-  port: 12500
-
-# 日志配置
-#logging:
-#  file:
-#    # 日志输出名
-#    name: log/server.log
-#  logback:
-#    rollingpolicy:
-#      # 输出日志文件大小上限
-#      max-file-size: 2MB
-#      # 日志输出名格式
-#      file-name-pattern: log/server.%d{yyyy-MM-dd}.%i.log
-#
-##保养排程可操作日期范围
-#date:
-#  before: 3
-#  after: 7
 
 
