@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 操作权限表(OperationPermissions)表数据库访问层
  *
- * @author makejava
+ * @author zhaozikui
  * @since 2023-03-06 19:02:01
  */
 public interface OperationPermissionsDao extends BaseMapper<OperationPermissions> {

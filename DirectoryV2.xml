@@ -41,4 +41,5 @@
     <tree path="/Module-ResultCode/src/main/java/com/zzk/resultcode/HttpStatusCode.java" title="HTTP操作状态码"
           extension="java"/>
     <tree path="/Module-Utils/src/main/java/com/zzk/utils/JwtUtils.java" title="JWT工具类" extension="java"/>
+    <tree path="/Module-Utils/src/main/java/com/zzk/utils/WebUtils.java" title="Web 工具类" extension="java"/>
 </trees>

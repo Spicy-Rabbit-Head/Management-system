@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 角色表(Role)表数据库访问层
  *
- * @author makejava
+ * @author zhaozikui
  * @since 2023-03-06 19:01
  */
 public interface RoleDao extends BaseMapper<Role> {

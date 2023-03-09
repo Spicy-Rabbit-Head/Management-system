@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 菜单权限表(MenuPermission)表数据库访问层
  *
- * @author makejava
+ * @author zhaozikui
  * @since 2023-03-06 19:01
  */
 public interface MenuPermissionDao extends BaseMapper<MenuPermission> {
