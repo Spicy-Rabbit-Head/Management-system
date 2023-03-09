@@ -44,8 +44,8 @@
     <tree path="/Module-Utils/src/main/java/com/zzk/utils/WebUtils.java" title="Web 工具类" extension="java"/>
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/daoText" title=""/>
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/daoTexts" title="持久层测试类"/>
-    <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/controllerText" title="控制器测试类"/>
-    <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/serviceText" title="业务层测试类"/>
+    <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/controllerTexts" title="控制器测试类"/>
+    <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/serviceTexts" title="业务层测试类"/>
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/daoTexts/UserDaoText.java" title="用户表测试类"
           extension="java"/>
 </trees>

@@ -11,5 +11,4 @@ public class ModuleEntranceApplicationTests {
     public void contextLoads() {
         System.out.println("hello world");
     }
-
 }

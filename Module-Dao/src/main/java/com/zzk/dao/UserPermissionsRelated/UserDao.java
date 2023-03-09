@@ -3,6 +3,7 @@ package com.zzk.dao.UserPermissionsRelated;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zzk.entity.po.UserPermissionsRelated.User;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @author zhaozikui
  * @since 2023-03-06 19:01
  */
+@Repository
 public interface UserDao extends BaseMapper<User> {
 
     /**

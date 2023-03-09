@@ -10,6 +10,7 @@ import java.util.Map;
 
 /**
  * 基于 StringRedisTemplate 的 Redis 序列化工具类
+ * <p>
  * 使用 Jackson 作为序列化和反序列化的库
  *
  * @author zhaozikui
