@@ -12,5 +12,5 @@ mybatis-plus:
     # MP标准输出日志
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
-  type-aliases-package: com.zzk.entity.*
+  type-aliases-package: com.zzk.entity
   type-aliases-super-type: java.lang.Object
