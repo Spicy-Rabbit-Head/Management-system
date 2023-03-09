@@ -1,14 +1,13 @@
-package com.zzk.dao;
+package com.zzk.entrance.daoTexts;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ModuleDaoApplicationTests {
+public class UserDaoText {
 
     @Test
-    void contextLoads() {
+    void text1() {
 
     }
-
 }
