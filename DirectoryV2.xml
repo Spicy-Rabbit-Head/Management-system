@@ -50,4 +50,12 @@
           extension="java"/>
     <tree path="/Module-Config" title="Spring boot 配置类"/>
     <tree path="/Module-Config/src/main/java/com/zzk/config" title=""/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/userRelatedService" title="用户相关服务"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/userRelatedService/QueryUsers.java" title="查询用户"
+          extension="java"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/userRelatedService/UserPermissionOperation.java"
+          title="用户权限操作" extension="java"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/permissionRelatedServices" title="权限相关服务"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/permissionRelatedServices/userAuthenticationAuthorization"
+          title="用户认证授权"/>
 </trees>
