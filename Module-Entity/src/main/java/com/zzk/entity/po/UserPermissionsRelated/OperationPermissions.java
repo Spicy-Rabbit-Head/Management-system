@@ -12,9 +12,14 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 
 /**
- * 操作权限表(com.zzk.entity.po.UserPermissionsRelated.OperationPermissions)表实体类
+ * 操作权限表(com.zzk.entity.po.UserPermissionsRelated.OperationPermissions)表实体类<br>
+ * <p>
+ * <p>
+ * 1.0版本：操作权限表实体类构建<br>
+ * <p>
  *
  * @author zhaozikui
+ * @version 1.0
  * @since 2023-03-03 13:21
  */
 @EqualsAndHashCode(callSuper = true)

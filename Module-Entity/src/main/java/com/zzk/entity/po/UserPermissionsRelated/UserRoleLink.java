@@ -12,9 +12,14 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 
 /**
- * 用户与角色外键表(com.zzk.entity.po.UserPermissionsRelated.UserRoleLink)表实体类
+ * 用户与角色外键表(com.zzk.entity.po.UserPermissionsRelated.UserRoleLink)表实体类<br>
+ * <p>
+ * <p>
+ * 1.0版本：用户与角色外键表实体类构建<br>
+ * <p>
  *
  * @author zhaozikui
+ * @version 1.0
  * @since 2023-03-03 13:29
  */
 @EqualsAndHashCode(callSuper = true)

@@ -6,9 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * 用户表(User)表数据库访问层测试
+ * 用户表(User)表数据库访问层测试<br>
+ * <p>
+ * <p>
+ * 1.0版本：测试CRUD基本操作<br>
+ * <p>
  *
  * @author zhaozikui
+ * @version 1.0
  * @since 2023-03-09 20:13
  */
 @SpringBootTest

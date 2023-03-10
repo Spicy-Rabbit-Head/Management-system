@@ -9,11 +9,14 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * 基于 StringRedisTemplate 的 Redis 序列化工具类
+ * 基于 StringRedisTemplate 的 Redis 序列化工具类 <br>使用 Jackson 作为序列化和反序列化的库
  * <p>
- * 使用 Jackson 作为序列化和反序列化的库
+ * <p>
+ * 1.0版本：使用 StringRedisTemplate 实现 Redis 的基本操作<br>
+ * <p>
  *
  * @author zhaozikui
+ * @version 1.0
  * @since 2021-03-08 15:57
  */
 @Component
@@ -34,6 +37,7 @@ public class RedisSerializationUtils {
      *
      * @param key   键
      * @param value 值（字符串）
+     * @since 1.0
      */
     public void setString(String key, String value) {
         // 调用 StringRedisTemplate 的 set 方法，存储到 Redis 中
@@ -45,6 +49,7 @@ public class RedisSerializationUtils {
      *
      * @param key   键
      * @param value 值（任意对象）
+     * @since 1.0
      */
     public void setString(String key, Object value) {
         try {
@@ -62,6 +67,7 @@ public class RedisSerializationUtils {
      *
      * @param key 键
      * @return 字符串值，如果不存在则返回 null
+     * @since 1.0
      */
     public String getString(String key) {
         // 调用 StringRedisTemplate 的 get 方法，从 Redis 中获取字符串
@@ -74,6 +80,7 @@ public class RedisSerializationUtils {
      * @param key   键
      * @param clazz 值的类型（Class 对象）
      * @return 反序列化后的对象，如果不存在则返回 null
+     * @since 1.0
      */
     public <T> T getString(String key, Class<T> clazz) {
         try {
@@ -94,6 +101,7 @@ public class RedisSerializationUtils {
      *
      * @param key 键
      * @param map 值（Map 集合）
+     * @since 1.0
      */
     public void setHash(String key, Map<String, String> map) {
         // 调用 StringRedisTemplate 的 opsForHash 方法，获取 HashOperations 对象
@@ -108,6 +116,7 @@ public class RedisSerializationUtils {
      * @param key     键
      * @param hashKey 哈希键
      * @param object  值（对象）
+     * @since 1.0
      */
     public void setHash(String key, String hashKey, Object object) {
         // 调用 StringRedisTemplate 的 opsForHash 方法，获取 HashOperations 对象
@@ -126,6 +135,7 @@ public class RedisSerializationUtils {
      *
      * @param key 键
      * @return Map 集合，如果不存在则返回 null
+     * @since 1.0
      */
     public Map<String, String> getHash(String key) {
         // 调用 StringRedisTemplate 的 opsForHash 方法，获取 HashOperations 对象
@@ -141,6 +151,7 @@ public class RedisSerializationUtils {
      * @param hashKey 哈希键
      * @param clazz   对象类型（Class 对象）
      * @return 对象，如果不存在则返回 null
+     * @since 1.0
      */
     public <T> T getHash(String key, String hashKey, Class<T> clazz) {
         // 调用 StringRedisTemplate 的 opsForHash 方法，获取 HashOperations 对象

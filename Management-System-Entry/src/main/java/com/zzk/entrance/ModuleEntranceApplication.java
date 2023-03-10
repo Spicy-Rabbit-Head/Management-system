@@ -1,5 +1,6 @@
 package com.zzk.entrance;
 
+import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,9 +16,11 @@ import org.springframework.context.annotation.ComponentScan;
  * 3. @MapperScan：扫描所有的Mapper接口
  *
  * @author zhaozikui
+ * @version 1.0
  * @since 2021-02-20 19:01
  */
 
+@Slf4j
 @SpringBootApplication
 // 组件扫描
 @ComponentScan(basePackages = "com.zzk")

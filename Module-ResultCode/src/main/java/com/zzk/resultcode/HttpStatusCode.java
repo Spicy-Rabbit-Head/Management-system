@@ -1,22 +1,29 @@
 package com.zzk.resultcode;
 
 /**
- * 系统状态码
+ * 系统状态码<br>
+ * 错误码：10000 - 10499 系统错误<br>
+ * 提示码：10500 - 10999 系统提示<br>
+ * <p>
+ * <p>
+ * 1.0版本：HTTP状态码构建<br>
+ * <p>
  *
  * @author zhaozikui
+ * @version 1.0
  * @since 2021-03-08 20:31
- * 11000 - 11999 Http状态码
  */
 public enum HttpStatusCode {
     /**
-     * 错误
-     * 10000 - 10499 系统错误
+     * 系统HTTP错误
+     *
+     * @since 1.0
      */
     SYSTEM_HTTP_ERROR_ADD_FAIL(11000, "添加用户失败"),
 
     /**
-     * 提示
-     * 10500 - 10999 系统提示
+     * 系统HTTP提示
+     * @since 1.0
      */
     SYSTEM_HTTP_INFO_ADD_SUCCESS(11001, "添加用户成功");
 

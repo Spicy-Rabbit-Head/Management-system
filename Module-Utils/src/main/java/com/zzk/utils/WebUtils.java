@@ -6,8 +6,12 @@ import java.io.IOException;
 
 /**
  * Web工具类
+ * <p>
+ * <p>
+ * 1.0版本：实现将字符串渲染到页面的方法<br>
  *
  * @author zhaozikui
+ * @version 1.0
  * @since 2021-03-08 22:02
  */
 public class WebUtils {
@@ -17,6 +21,7 @@ public class WebUtils {
      * @param response 响应
      * @param string   字符串
      * @return null
+     * @since 1.0
      */
     public static String renderstring(HttpServletResponse response, String string) {
         try {

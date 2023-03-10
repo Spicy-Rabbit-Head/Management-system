@@ -12,10 +12,15 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 
 /**
- * 菜单权限表(com.zzk.entity.po.UserPermissionsRelated.MenuPermission)表实体类
+ * 菜单权限表(com.zzk.entity.po.UserPermissionsRelated.MenuPermission)表实体类<br>
+ * <p>
+ * <p>
+ * 1.0版本：菜单权限表实体类构建<br>
+ * <p>
  *
  * @author zhaozikui
  * @since 2023-03-03 13:20
+ * version 1.0
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

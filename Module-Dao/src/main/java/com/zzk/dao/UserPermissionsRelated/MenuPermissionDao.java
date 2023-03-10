@@ -7,9 +7,14 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * 菜单权限表(MenuPermission)表数据库访问层
+ * 菜单权限表(MenuPermission)表数据库访问层<br>
+ * <p>
+ * <p>
+ * 1.0版本：基于 MyBatis-Plus 实现基本的 CRUD 操作<br>
+ * <p>
  *
  * @author zhaozikui
+ * @version 1.0
  * @since 2023-03-06 19:01
  */
 public interface MenuPermissionDao extends BaseMapper<MenuPermission> {
@@ -19,6 +24,7 @@ public interface MenuPermissionDao extends BaseMapper<MenuPermission> {
      *
      * @param entities List<MenuPermission> 实例对象列表
      * @return 影响行数
+     * @since 1.0
      */
     int insertBatch(@Param("entities") List<MenuPermission> entities);
 
@@ -28,6 +34,7 @@ public interface MenuPermissionDao extends BaseMapper<MenuPermission> {
      * @param entities List<MenuPermission> 实例对象列表
      * @return 影响行数
      * @throws org.springframework.jdbc.BadSqlGrammarException 入参是空List的时候会抛SQL语句错误的异常，请自行校验入参
+     * @since 1.0
      */
     int insertOrUpdateBatch(@Param("entities") List<MenuPermission> entities);
 }
