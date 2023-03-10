@@ -2,15 +2,16 @@
 spring:
   # 数据源设定
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    # 数据库驱动
-    driver-class-name: com.mysql.cj.jdbc.Driver
     # 数据库地址
     url: jdbc:mysql://127.0.0.1:6666/management?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     # 账户
     username: root
     # 密码
     password: 666666
+    # 数据库驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 指定数据源类型
+    type: com.alibaba.druid.pool.DruidDataSource
     # 数据库连接池
     druid:
       # 连接池初始大小
