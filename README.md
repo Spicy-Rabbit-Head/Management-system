@@ -4,11 +4,10 @@
 
 ## 🚀学习spring boot 构建管理系统后端
 
-> <div>
->    管理系统前端代码库
 >
->    ⚓https://github.com/Spicy-Rabbit-Head/Management-system-front-end
-> </div>
+>    链接为管理系统前端代码库
+>
+> ⚓https://github.com/Spicy-Rabbit-Head/Management-system-front-end
 
 ------
 
@@ -18,14 +17,31 @@
 
 该库为后端代码
 
-### **技术栈**
+## 🤓前端技术栈
 
-<img width='50' height='50' title='javaScript' style='margin-left:15px;' src='skill/mysql.png' />
+<div style='display:flex'>
+<img width='60' height='60' title='html5' style='margin-left:15px;' src='skill/html5.png' />
+<img width='60' height='60' title='css3' style='margin-left:15px;' src='skill/css3.png' />   <img width='60' height='60' title='javaScript' style='margin-left:15px;' src='skill/js.png' /> 
+<img width='60' height='60' title='typeScript' style='margin-left:15px;' src='skill/ts.png' />
+<img width='60' height='60' title='vite' style='margin-left:15px;' src='skill/vite.png' />   <img width='60' height='60' title='vue3' style='margin-left:15px;' src='skill/vue.png' />   <img width='50' height='60' title='pinia' style='margin-left:15px;' src='skill/pinia.png' /> <img width='60' height='60' title='postCss' style='margin-left:15px;' src='skill/postCss.png' /> 
+<img width='60' height='60' title='tailwind' style='margin-left:15px;' src='skill/tailwind.png' />     
+</div>    
 
 
 ------
 
-## 🛠️包含模块
+## 🤔后端技术栈
+
+<div style='display:flex'>
+<img width='50' height='50' title='mysql' style='margin-left:15px;' src='skill/mysql.png' />
+<img width='70' height='50' title='java' style='margin-left:15px;' src='skill/java.png' />
+<img width='100' height='50' title='springBoot' style='margin-left:15px;' src='skill/springboot.png' />    
+</div>
+
+
+------
+
+## 🛠️后端模块
 
 项目中保护的模块有:
 
