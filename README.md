@@ -18,6 +18,11 @@
 
 该库为后端代码
 
+### **技术栈**
+
+<img width='50' height='50' title='javaScript' style='margin-left:15px;' src='skill/mysql.png' />
+
+
 ------
 
 ## 🛠️包含模块
