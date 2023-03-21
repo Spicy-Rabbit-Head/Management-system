@@ -59,4 +59,5 @@
     <tree path="/Module-Service/src/main/java/com/zzk/service/permissionRelatedServices/userAuthenticationAuthorization"
           title="用户认证授权"/>
     <tree path="/skill" title="README 图片"/>
+    <tree path="/skill/img.png" title="" extension="png"/>
 </trees>
