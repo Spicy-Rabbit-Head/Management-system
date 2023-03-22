@@ -2,6 +2,7 @@ package com.zzk.utils;
 
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -25,7 +26,8 @@ public final class JwtUtils {
     }
 
     // JWT 密钥
-    private static final String JWT_KEY = "zhaozikui";
+    @Value("${jwt.key})")
+    private static final String JWT_KEY = null;
     // JWT 过期时间(7天)
     // private final long JWT_TTL = 1000 * 60 * 60 * 24 * 7;
 

@@ -4,8 +4,7 @@
 
 ## 🚀学习spring boot 构建管理系统后端
 
->
->    链接为管理系统前端代码库
+> 链接为管理系统前端代码库
 >
 > ⚓https://github.com/Spicy-Rabbit-Head/Management-system-front-end
 

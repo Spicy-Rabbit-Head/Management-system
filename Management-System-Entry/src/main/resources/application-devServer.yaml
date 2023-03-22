@@ -2,9 +2,6 @@
 server:
   # 服务器端口
   port: 12500
-
-jwt:
-  key: "zhaozikui"
 # 日志配置
 #logging:
 #  file:

@@ -1,2 +1,5 @@
-
+# jwt配置
+jwt:
+  # jwt签名密钥
+  key: "zhaozikui"
 
