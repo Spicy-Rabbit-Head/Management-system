@@ -42,8 +42,6 @@
     <packaging>pom</packaging>
     <!-- 模块 -->
     <modules>
-        <!-- 安全权限管理 -->
-        <module>Module-Security</module>
         <!-- 结果码 -->
         <module>Module-ResultCode</module>
         <!-- 实体类 -->
@@ -54,6 +52,8 @@
         <module>Module-Dao</module>
         <!-- 工具类 -->
         <module>Module-Utils</module>
+        <!-- 安全权限管理 -->
+        <module>Module-Security</module>
         <!-- Service 业务层 -->
         <module>Module-Service</module>
         <!-- Controller 控制器层 -->

@@ -15,10 +15,10 @@
         <java.version>19</java.version>
     </properties>
     <dependencies>
-        <!-- Utils 类 依赖 Dao 层 -->
+        <!-- 安全权限框架 -->
         <dependency>
             <groupId>com.zzk</groupId>
-            <artifactId>Module-Utils</artifactId>
+            <artifactId>Module-Security</artifactId>
         </dependency>
     </dependencies>
 

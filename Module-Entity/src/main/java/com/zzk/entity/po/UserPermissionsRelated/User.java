@@ -9,8 +9,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 /**
  * 用户表(com.zzk.entity.po.UserPermissionsRelated.User)表实体类<br>
@@ -49,6 +51,15 @@ public class User extends Model<User> {
     @Override
     public Serializable pkVal() {
         return this.id;
+    }
+
+    /**
+     * 获取用户权限
+     *
+     * @return 用户权限
+     */
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 }
 

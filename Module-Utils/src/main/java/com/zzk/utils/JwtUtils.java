@@ -27,7 +27,7 @@ public final class JwtUtils {
 
     // JWT 密钥
     @Value("${jwt.key})")
-    private static final String JWT_KEY = null;
+    private static final String JWT_KEY = "";
     // JWT 过期时间(7天)
     // private final long JWT_TTL = 1000 * 60 * 60 * 24 * 7;
 

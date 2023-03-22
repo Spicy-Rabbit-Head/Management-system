@@ -66,10 +66,21 @@
             <groupId>com.zzk</groupId>
             <artifactId>Module-ResultCode</artifactId>
         </dependency>
-        <!-- 安全权限框架 -->
+        <!-- 糊涂包 jwt -->
         <dependency>
-            <groupId>com.zzk</groupId>
-            <artifactId>Module-Security</artifactId>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-jwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <exclusions>
+                <!-- 存在漏洞 -->
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

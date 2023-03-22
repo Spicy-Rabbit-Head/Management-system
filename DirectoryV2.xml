@@ -57,7 +57,9 @@
           title="用户权限操作" extension="java"/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/permissionRelatedServices" title="权限相关服务"/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/permissionRelatedServices/userAuthenticationAuthorization"
-          title="用户认证授权"/>
+          title=""/>
     <tree path="/skill" title="README 图片"/>
     <tree path="/skill/img.png" title="" extension="png"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/permissions" title="Security 用户信息"/>
+    <tree path="/Module-Security/src/main/java/com/zzk/security" title="权限"/>
 </trees>
