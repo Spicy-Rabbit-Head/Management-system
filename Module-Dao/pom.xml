@@ -15,10 +15,10 @@
         <java.version>19</java.version>
     </properties>
     <dependencies>
-        <!-- Config -->
+        <!-- Entity -->
         <dependency>
             <groupId>com.zzk</groupId>
-            <artifactId>Module-Config</artifactId>
+            <artifactId>Module-Entity</artifactId>
         </dependency>
         <!-- <dependency> -->
         <!--     <groupId>org.junit.jupiter</groupId> -->

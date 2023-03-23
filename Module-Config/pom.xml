@@ -15,10 +15,10 @@
         <java.version>19</java.version>
     </properties>
     <dependencies>
-        <!-- Entity -->
+        <!-- 安全权限框架 -->
         <dependency>
             <groupId>com.zzk</groupId>
-            <artifactId>Module-Entity</artifactId>
+            <artifactId>Module-Security</artifactId>
         </dependency>
     </dependencies>
 

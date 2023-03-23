@@ -15,6 +15,8 @@ import java.util.Objects;
  * 用户信息服务实现类<br>
  * <p>
  * <p>
+ * 1.0版本：用户信息服务实现类构建<br>
+ * <p>
  *
  * @author zhaozikui
  * @version 1.0
@@ -42,6 +44,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 查询用户信息
         User user = userDao.selectOne(new QueryWrapper<User>().eq("username", username));
+        System.out.println(user);
         // 如果用户不存在，抛出用户名不存在异常
         if (Objects.isNull(user)) {
             throw new RuntimeException("用户名不存在");

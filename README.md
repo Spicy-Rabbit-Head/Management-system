@@ -25,8 +25,6 @@
 <img width='60' height='60' title='vite' style='margin-left:15px;' src='skill/vite.png' />   <img width='60' height='60' title='vue3' style='margin-left:15px;' src='skill/vue.png' />   <img width='50' height='60' title='pinia' style='margin-left:15px;' src='skill/pinia.png' /> <img width='60' height='60' title='postCss' style='margin-left:15px;' src='skill/postCss.png' /> 
 <img width='60' height='60' title='tailwind' style='margin-left:15px;' src='skill/tailwind.png' />     
 </div>    
-
-
 ------
 
 ## 🤔后端技术栈
@@ -39,8 +37,8 @@
 <img width='60' height='50' title='Knife4j' style='margin-left:15px;' src='skill/Knife4j.png' /> 
 <img width='90' height='50' title='druid & pool2' style='margin-left:15px;' src='skill/apache.png'/> 
 <img width='70' height='50' title='redis' style='margin-left:15px;' src='skill/redis.png'/>   
+<img width='100' height='50' title='jwt' style='margin-left:15px;' src='skill/jwt.png'/>     
 </div>
-
 
 ------
 

@@ -46,14 +46,14 @@
         <module>Module-ResultCode</module>
         <!-- 实体类 -->
         <module>Module-Entity</module>
-        <!-- 配置类 -->
-        <module>Module-Config</module>
         <!-- Dao 持久层 -->
         <module>Module-Dao</module>
         <!-- 工具类 -->
         <module>Module-Utils</module>
         <!-- 安全权限管理 -->
         <module>Module-Security</module>
+        <!-- 配置类 -->
+        <module>Module-Config</module>
         <!-- Service 业务层 -->
         <module>Module-Service</module>
         <!-- Controller 控制器层 -->
