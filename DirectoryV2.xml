@@ -62,4 +62,10 @@
     <tree path="/skill/img.png" title="" extension="png"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/permissions" title="Security 用户信息"/>
     <tree path="/Module-Security/src/main/java/com/zzk/security" title="权限"/>
+    <tree path="/Module-Config/src/main/java/com/zzk/config/SecurityConfig.java" title="Security 安全配置"
+          extension="java"/>
+    <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/controllertexts" title=""/>
+    <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/securityTexts" title="安全框架测试类"/>
+    <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/securityTexts/PasswordEncoderText.java"
+          title="密码编码器测试类" extension="java"/>
 </trees>

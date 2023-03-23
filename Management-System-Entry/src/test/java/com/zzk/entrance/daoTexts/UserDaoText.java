@@ -25,16 +25,16 @@ import java.util.List;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserDaoText {
-
+    // 用户表(User)表数据库访问层
     @Autowired
     public UserDao userDao;
-
+    // 用户id
     private static Integer id;
 
     /**
      * 测试插入
      *
-     * @return void
+     * @apiNote 测试插入数据
      * @since 1.0
      */
     @Test
@@ -49,7 +49,7 @@ public class UserDaoText {
     /**
      * 测试查询所有
      *
-     * @return void
+     * @apiNote 测试查询所有数据
      * @since 1.0
      */
     @Test
@@ -65,7 +65,7 @@ public class UserDaoText {
     /**
      * 测试更新
      *
-     * @return void
+     * @apiNote 测试按id更新数据
      * @since 1.0
      */
     @Test
@@ -81,7 +81,7 @@ public class UserDaoText {
     /**
      * 测试查询单个
      *
-     * @return void
+     * @apiNote 测试按id查询单个数据
      * @since 1.0
      */
     @Test
@@ -96,7 +96,7 @@ public class UserDaoText {
     /**
      * 测试删除
      *
-     * @return void
+     * @apiNote 测试按id删除数据
      * @since 1.0
      */
     @Test

@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * 模块入口
@@ -22,7 +23,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 @SpringBootApplication
 // 组件扫描
-// @ComponentScan(basePackages = "com.zzk")
+@ComponentScan(basePackages = "com.zzk")
 @MapperScan(basePackages = "com.zzk.dao")
 public class ModuleEntranceApplication {
 
