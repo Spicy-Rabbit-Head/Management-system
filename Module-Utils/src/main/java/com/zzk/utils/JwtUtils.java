@@ -26,8 +26,13 @@ public final class JwtUtils {
     }
 
     // JWT 密钥
-    @Value("${jwt.key})")
-    private static final String JWT_KEY = "";
+    private static String JWT_KEY = "";
+
+    // 注入 JWT 密钥
+    @Value("${jwt.key}")
+    public void setJwtKey(String jwtKey) {
+        JWT_KEY = jwtKey;
+    }
     // JWT 过期时间(7天)
     // private final long JWT_TTL = 1000 * 60 * 60 * 24 * 7;
 
@@ -86,6 +91,14 @@ public final class JwtUtils {
         public TokenInfo(String name, String role) {
             this.name = name;
             this.role = role;
+        }
+
+        @Override
+        public String toString() {
+            return "TokenInfo{" +
+                    "name='" + name + '\'' +
+                    ", role='" + role + '\'' +
+                    '}';
         }
     }
 }

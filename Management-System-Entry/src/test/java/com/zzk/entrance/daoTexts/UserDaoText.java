@@ -28,7 +28,7 @@ public class UserDaoText {
     // 用户表(User)表数据库访问层
     @Autowired
     public UserDao userDao;
-    // 用户id
+    // 测试用户id
     private static Integer id;
 
     /**
@@ -39,7 +39,7 @@ public class UserDaoText {
      */
     @Test
     @Order(1)
-    void textInsert() {
+    void insert() {
         System.out.println("----- 测试插入开始 ------");
         int insert = userDao.insert(new User(null, "test", "test"));
         System.out.println("影响:" + insert);
@@ -54,7 +54,7 @@ public class UserDaoText {
      */
     @Test
     @Order(2)
-    void textList() {
+    void getList() {
         System.out.println("----- 测试查询所有开始 ------");
         List<User> users = userDao.selectList(null);
         users.forEach(System.out::println);
@@ -70,7 +70,7 @@ public class UserDaoText {
      */
     @Test
     @Order(3)
-    void textUpdateById() {
+    void updateById() {
         System.out.println("----- 测试更新开始 ------");
         User user = new User(id, "testUpdate", "testUpdate");
         int i = userDao.updateById(user);
@@ -86,7 +86,7 @@ public class UserDaoText {
      */
     @Test
     @Order(4)
-    void textGetById() {
+    void getById() {
         System.out.println("----- 测试查询单个开始 ------");
         User user = userDao.selectById(id);
         System.out.println(user);
@@ -101,7 +101,7 @@ public class UserDaoText {
      */
     @Test
     @Order(5)
-    void textDeleteById() {
+    void deleteById() {
         System.out.println("----- 测试删除开始 ------");
         int i = userDao.deleteById(id);
         System.out.println("影响:" + i);

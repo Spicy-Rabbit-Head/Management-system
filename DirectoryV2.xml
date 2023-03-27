@@ -68,4 +68,21 @@
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/securityTexts" title="安全框架测试类"/>
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/securityTexts/PasswordEncoderText.java"
           title="密码编码器测试类" extension="java"/>
+    <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/hutool" title="Hutool 工具类测试类"/>
+    <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/hutool/JwtUtilsText.java" title="JWT测试类"
+          extension="java"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/UserDao.java" title="用户表持久层"
+          extension="java"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/RoleDao.java" title="角色表持久层"
+          extension="java"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/MenuPermissionDao.java"
+          title="菜单权限表持久层" extension="java"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/OperationPermissionsDao.java"
+          title="操作权限表持久层" extension="java"/>
+    <tree path="/Module-API/src/main/java/com/zzk/api/user" title=""/>
+    <tree path="/Module-API/src/main/java/com/zzk/api/loginRelated" title="登录相关"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/loginRelated" title="登录相关"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/response/R.java" title="响应对象" extension="java"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/loginRelated/LoginService.java" title="登录服务"
+          extension="java"/>
 </trees>

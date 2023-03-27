@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * 安全框架密码编码器测试<br>
  * <p>
  * <p>
- * 1.0版本：测试密码编码器<br>
+ * 1.0版本：测试密码编码器编码和比较<br>
  * <p>
  *
  * @author zhaozikui

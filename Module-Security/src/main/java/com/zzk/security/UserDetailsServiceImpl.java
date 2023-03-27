@@ -39,12 +39,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * @param username 用户名
      * @return UserDetails 用户信息
      * @throws UsernameNotFoundException 用户名不存在异常
+     * @since 1.0
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 查询用户信息
         User user = userDao.selectOne(new QueryWrapper<User>().eq("username", username));
-        System.out.println(user);
         // 如果用户不存在，抛出用户名不存在异常
         if (Objects.isNull(user)) {
             throw new RuntimeException("用户名不存在");
