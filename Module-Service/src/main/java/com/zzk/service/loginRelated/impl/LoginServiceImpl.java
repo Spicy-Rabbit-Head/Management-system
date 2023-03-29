@@ -21,6 +21,6 @@ public class LoginServiceImpl implements LoginService {
     public R<String> login(User user) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
         authenticationManager.authenticate(authenticationToken);
-        return null;
+        return new R<>(1, "登录成功");
     }
 }

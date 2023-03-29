@@ -22,6 +22,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 @Slf4j
 @SpringBootApplication
+// 开启方法级别的安全认证
+// @EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
 // 组件扫描
 @ComponentScan(basePackages = "com.zzk")
 @MapperScan(basePackages = "com.zzk.dao")
