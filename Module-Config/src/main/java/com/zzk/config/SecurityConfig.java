@@ -34,6 +34,13 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * 认证管理器
+     *
+     * @param authenticationConfiguration 认证配置
+     * @return AuthenticationManager 认证管理器
+     * @throws Exception 异常
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();

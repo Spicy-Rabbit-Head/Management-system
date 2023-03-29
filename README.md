@@ -53,4 +53,7 @@
 | Module-Dao 模块              | 包含该项目所有Dao持久层代码        |
 | Module-Entity 模块           | 包含该项目所有实体类             |
 | Module-ResultCode 模块       | 包含该项目所有的结果码            |
+| Module-Utils 模块            | 包含该项目所有的工具类            |
+| Module-Config 模块           | 包含该项目所有的配置类            |
+| Module-Security 模块         | 包含该项目所有的安全权限控制服务类      |
 

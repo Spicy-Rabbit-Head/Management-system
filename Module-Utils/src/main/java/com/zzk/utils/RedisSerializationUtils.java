@@ -17,10 +17,12 @@ import java.util.Map;
  *
  * @author zhaozikui
  * @version 1.0
- * @since 2021-03-08 15:57
+ * @since 2023-03-08 15:57
  */
 @Component
 public class RedisSerializationUtils {
+    // 创建 ObjectMapper 实例，用于转换对象和 JSON 字符串
+    private static final ObjectMapper objectMapper = new ObjectMapper();
     // StringRedisTemplate 实例
     private final StringRedisTemplate stringRedisTemplate;
 
@@ -28,9 +30,6 @@ public class RedisSerializationUtils {
     public RedisSerializationUtils(StringRedisTemplate stringRedisTemplate) {
         this.stringRedisTemplate = stringRedisTemplate;
     }
-
-    // 创建 ObjectMapper 实例，用于转换对象和 JSON 字符串
-    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * 将字符串存储到 Redis 中
