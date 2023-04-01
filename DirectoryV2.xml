@@ -40,7 +40,7 @@
           extension="java"/>
     <tree path="/Module-ResultCode/src/main/java/com/zzk/resultcode/HttpStatusCode.java" title="HTTP操作状态码"
           extension="java"/>
-    <tree path="/Module-Utils/src/main/java/com/zzk/utils/JwtUtils.java" title="JWT工具类" extension="java"/>
+    <tree path="/Module-Utils/src/main/java/com/zzk/utils/JwtUtils.java" title="JWT 工具类" extension="java"/>
     <tree path="/Module-Utils/src/main/java/com/zzk/utils/WebUtils.java" title="Web 工具类" extension="java"/>
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/daoText" title=""/>
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/daoTexts" title="持久层测试类"/>
@@ -85,4 +85,5 @@
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/response/R.java" title="响应对象" extension="java"/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/loginRelated/LoginService.java" title="登录服务"
           extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/record" title="数据记录对象"/>
 </trees>

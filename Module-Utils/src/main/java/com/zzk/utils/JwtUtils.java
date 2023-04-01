@@ -21,20 +21,12 @@ import java.util.Map;
  */
 @Component
 public final class JwtUtils {
-    // 私有化构造器，防止实例化
-    private JwtUtils() {
-    }
-
     // JWT 密钥
     private static String JWT_KEY = "";
 
-    // 注入 JWT 密钥
-    @Value("${jwt.key}")
-    public void setJwtKey(String jwtKey) {
-        JWT_KEY = jwtKey;
+    // 私有化构造器，防止实例化
+    private JwtUtils() {
     }
-    // JWT 过期时间(7天)
-    // private final long JWT_TTL = 1000 * 60 * 60 * 24 * 7;
 
     /**
      * 生成一个JWT
@@ -54,12 +46,6 @@ public final class JwtUtils {
         return JWTUtil.createToken(payload, JWT_KEY.getBytes());
     }
 
-    // 验证token
-    public boolean verify(String token) {
-        // 调用Hutool-jwt的方法验证token是否有效
-        return JWTUtil.verify(token, JWT_KEY.getBytes());
-    }
-
     /**
      * 验证一个JWT，并返回有效载荷（payload）中的信息，如果验证失败则返回null
      *
@@ -77,6 +63,18 @@ public final class JwtUtils {
             // 如果解析失败，说明token无效或者已过期，返回null
             return null;
         }
+    }
+
+    // 注入 JWT 密钥
+    @Value("${jwt.key}")
+    public void setJwtKey(String jwtKey) {
+        JWT_KEY = jwtKey;
+    }
+
+    // 验证token
+    public boolean verify(String token) {
+        // 调用Hutool-jwt的方法验证token是否有效
+        return JWTUtil.verify(token, JWT_KEY.getBytes());
     }
 
     /**

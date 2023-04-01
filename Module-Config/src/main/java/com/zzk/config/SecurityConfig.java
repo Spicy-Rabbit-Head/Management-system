@@ -49,7 +49,7 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-    @Bean
+    // @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 // 关闭跨域保护
