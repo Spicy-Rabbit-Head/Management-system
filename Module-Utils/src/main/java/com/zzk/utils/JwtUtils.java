@@ -24,9 +24,16 @@ public final class JwtUtils {
     // JWT 密钥
     private static String JWT_KEY = "";
 
+    // 注入 JWT 密钥
+    @Value("${jwt.key}")
+    public void setJwtKey(String jwtKey) {
+        JWT_KEY = jwtKey;
+    }
+
     // 私有化构造器，防止实例化
     private JwtUtils() {
     }
+
 
     /**
      * 生成一个JWT
@@ -63,12 +70,6 @@ public final class JwtUtils {
             // 如果解析失败，说明token无效或者已过期，返回null
             return null;
         }
-    }
-
-    // 注入 JWT 密钥
-    @Value("${jwt.key}")
-    public void setJwtKey(String jwtKey) {
-        JWT_KEY = jwtKey;
     }
 
     // 验证token
