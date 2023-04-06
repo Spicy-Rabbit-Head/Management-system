@@ -5,5 +5,5 @@ import com.zzk.entity.response.R;
 
 public interface LoginService {
 
-    R<String> login(User user);
+    R login(User user);
 }

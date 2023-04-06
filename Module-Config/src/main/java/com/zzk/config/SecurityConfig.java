@@ -43,13 +43,22 @@ public class SecurityConfig {
      * @param authenticationConfiguration 认证配置
      * @return AuthenticationManager 认证管理器
      * @throws Exception 异常
+     * @since 1.0
      */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-    // @Bean
+    /**
+     * 安全过滤器链
+     *
+     * @param http HttpSecurity
+     * @return SecurityFilterChain 安全过滤器链
+     * @throws Exception 异常
+     * @since 1.0
+     */
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 // 关闭跨域保护
@@ -57,8 +66,12 @@ public class SecurityConfig {
                 // 关闭session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                // 授权HTTP请求
                 .authorizeHttpRequests()
+                // 允许所有用户访问"/loginRelated/login"接口
+                .requestMatchers(request -> request.getRequestURI().equals("/loginRelated/login")).anonymous()
+                // 其他接口需要认证
+                .anyRequest().authenticated()
                 .and().build();
     }
-
 }

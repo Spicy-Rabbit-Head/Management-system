@@ -5,6 +5,7 @@ import com.zzk.entity.response.R;
 import com.zzk.service.loginRelated.LoginService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -36,9 +37,17 @@ public class LoginServiceImpl implements LoginService {
      * @since 1.0
      */
     @Override
-    public R<String> login(User user) {
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
-        authenticationManager.authenticate(authenticationToken);
-        return new R<>(1, "登录成功");
+    public R login(User user) {
+        try {
+            // 封装用户信息
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+            // 调用认证管理器的认证方法
+            authenticationManager.authenticate(authenticationToken);
+        } catch (AuthenticationException e) {
+            // 认证失败
+            return new R(0, "登录失败");
+        }
+        // 认证成功
+        return new R(1, "登录成功");
     }
 }

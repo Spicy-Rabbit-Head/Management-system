@@ -4,6 +4,7 @@ import com.zzk.entity.po.UserPermissionsRelated.User;
 import com.zzk.entity.response.R;
 import com.zzk.service.loginRelated.LoginService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +37,7 @@ public class LoginController {
      * @since 1.0
      */
     @PostMapping("/login")
-    public R<String> login(User user) {
+    public R login(@RequestBody User user) {
         return loginService.login(user);
     }
 }
