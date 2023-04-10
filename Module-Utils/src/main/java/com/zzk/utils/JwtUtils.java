@@ -2,6 +2,7 @@ package com.zzk.utils;
 
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;
+import com.zzk.entity.permissions.TokenInfo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -76,28 +77,5 @@ public final class JwtUtils {
     public boolean verify(String token) {
         // 调用Hutool-jwt的方法验证token是否有效
         return JWTUtil.verify(token, JWT_KEY.getBytes());
-    }
-
-    /**
-     * 一个简单的类，用于表示有效载荷（payload）中的信息
-     *
-     * @since 1.0
-     */
-    public static class TokenInfo {
-        private String name; // 用户名
-        private String role; // 角色
-
-        public TokenInfo(String name, String role) {
-            this.name = name;
-            this.role = role;
-        }
-
-        @Override
-        public String toString() {
-            return "TokenInfo{" +
-                    "name='" + name + '\'' +
-                    ", role='" + role + '\'' +
-                    '}';
-        }
     }
 }

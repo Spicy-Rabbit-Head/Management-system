@@ -1,5 +1,7 @@
 package com.zzk.config;
 
+import com.zzk.filter.JwtAuthenticationTokenFilter;
+import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,6 +12,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * Spring Security 配置类<br>
@@ -50,6 +53,10 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    // 注入 JwtAuthenticationTokenFilter 过滤器
+    @Resource
+    private JwtAuthenticationTokenFilter JwtAuthenticationTokenFilter;
+
     /**
      * 安全过滤器链
      *
@@ -69,9 +76,16 @@ public class SecurityConfig {
                 // 授权HTTP请求
                 .authorizeHttpRequests()
                 // 允许所有用户访问"/loginRelated/login"接口
-                .requestMatchers(request -> request.getRequestURI().equals("/loginRelated/login")).anonymous()
+                .requestMatchers("/loginRelated/login")
+                .anonymous()
+                // 允许所有用户访问"/error/**"接口
+                .requestMatchers("/error/**")
+                .anonymous()
                 // 其他接口需要认证
                 .anyRequest().authenticated()
-                .and().build();
+                .and()
+                .addFilterBefore(JwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
+                // .addFilterBefore(JwtAuthenticationTokenFilter, CorsFilter.class)
+                .build();
     }
 }

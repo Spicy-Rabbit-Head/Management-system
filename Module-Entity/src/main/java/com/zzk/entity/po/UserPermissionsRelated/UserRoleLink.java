@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 
 /**
- * 用户与角色外键表(com.zzk.entity.po.UserPermissionsRelated.UserRoleLink)表实体类<br>
+ * 用户与角色外键表(com.zzk.entity.po.UserPermissionsRelated.UserRoleLink)实体类<br>
  * <p>
  * <p>
  * 1.0版本：用户与角色外键表实体类构建<br>

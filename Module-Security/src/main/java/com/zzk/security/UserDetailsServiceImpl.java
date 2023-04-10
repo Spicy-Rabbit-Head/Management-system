@@ -42,16 +42,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * @since 1.0
      */
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) {
         // 查询用户信息
         User user = userDao.selectOne(new QueryWrapper<User>().eq("username", username));
         // 如果用户不存在，抛出用户名不存在异常
         if (Objects.isNull(user)) {
-            throw new RuntimeException("用户名不存在");
+            throw new UsernameNotFoundException("用户名不存在");
         }
 
         // TODO 查询对应的权限信息
-
 
         // 封装用户信息
         return new LoginUser(user);

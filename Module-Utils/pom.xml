@@ -15,7 +15,7 @@
         <java.version>${jdk.version}</java.version>
     </properties>
     <dependencies>
-        <!-- Dao 层 依赖 Entity 层 -->
+        <!-- Dao 层 -->
         <dependency>
             <groupId>com.zzk</groupId>
             <artifactId>Module-Dao</artifactId>

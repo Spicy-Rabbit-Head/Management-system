@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 
 /**
- * 角色表(com.zzk.entity.po.UserPermissionsRelated.Role)表实体类<br>
+ * 角色表(com.zzk.entity.po.UserPermissionsRelated.Role)实体类<br>
  * <p>
  * <p>
  * 1.0版本: 角色表实体类构建<br>

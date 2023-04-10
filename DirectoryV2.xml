@@ -86,4 +86,28 @@
     <tree path="/Module-Service/src/main/java/com/zzk/service/loginRelated/LoginService.java" title="登录服务"
           extension="java"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/record" title="数据记录对象"/>
+    <tree path="/Module-Filter" title="过滤器"/>
+    <tree path="/Module-Filter/src/main/java/com/zzk/filter/JwtAuthenticationTokenFilter.java"
+          title="身份验证令牌过滤器" extension="java"/>
+    <tree path="/Module-Exception" title="异常"/>
+    <tree path="/Module-ExceptionHandler" title="异常处理程序"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceReserve" title="保养准备相关"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceReserve/Files.java" title="文件表"
+          extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceReserve/Spare.java" title="备品表"
+          extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceReserve/Rules.java" title="规则表"
+          extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceReserve/MachineCorrespondenceRules.java"
+          title="机台对应规则表" extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceReserve/SparePartsInAndOutChecklist.java"
+          title="备品进出清单" extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceReserve/ListOfSparePartsAndMachine.java"
+          title="机台备品清单表" extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/permissions/TokenInfo.java" title="Token 信息记录类"
+          extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/permissions/LoginUser.java" title="权限用户信息实体类"
+          extension="java"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceReserve/SquareIGPartsList.java"
+          title="方形IG備品列表" extension="java"/>
 </trees>

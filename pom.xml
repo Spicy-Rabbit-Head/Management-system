@@ -51,8 +51,14 @@
         <module>Module-Dao</module>
         <!-- 工具类 -->
         <module>Module-Utils</module>
+        <!-- 异常 -->
+        <module>Module-Exception</module>
+        <!-- 过滤器 -->
+        <module>Module-Filter</module>
         <!-- 安全权限管理 -->
         <module>Module-Security</module>
+        <!-- 异常处理 -->
+        <module>Module-ExceptionHandler</module>
         <!-- 配置类 -->
         <module>Module-Config</module>
         <!-- Service 业务层 -->
@@ -180,6 +186,24 @@
             <dependency>
                 <groupId>com.zzk</groupId>
                 <artifactId>Module-Utils</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <!-- 过滤器 -->
+            <dependency>
+                <groupId>com.zzk</groupId>
+                <artifactId>Module-Filter</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <!-- 异常 -->
+            <dependency>
+                <groupId>com.zzk</groupId>
+                <artifactId>Module-Exception</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <!-- 异常处理 -->
+            <dependency>
+                <groupId>com.zzk</groupId>
+                <artifactId>Module-ExceptionHandler</artifactId>
                 <version>${module.version}</version>
             </dependency>
             <!-- Dao 持久层 -->

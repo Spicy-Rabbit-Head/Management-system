@@ -18,7 +18,7 @@
         <!-- 安全权限框架 -->
         <dependency>
             <groupId>com.zzk</groupId>
-            <artifactId>Module-Security</artifactId>
+            <artifactId>Module-ExceptionHandler</artifactId>
         </dependency>
     </dependencies>
 
