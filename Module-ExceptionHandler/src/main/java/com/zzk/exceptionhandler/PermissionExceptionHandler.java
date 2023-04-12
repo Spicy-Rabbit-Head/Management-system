@@ -1,10 +1,15 @@
 package com.zzk.exceptionhandler;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zzk.entity.response.R;
-import com.zzk.exception.TokenAuthenticationException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.io.IOException;
 
 /**
  * 权限异常处理器<br>
@@ -29,18 +34,22 @@ public class PermissionExceptionHandler {
         return new R(403, e.getMessage());
     }
 
-
     /**
-     * 处理 Token 异常
+     * 身份认证异常处理<br>
+     * 过滤器链中的异常处理器<br>
+     * <p>
      *
+     * @param httpServletRequest  请求
+     * @param httpServletResponse 响应
+     * @param e                   异常
+     * @throws IOException 异常
      * @since 1.0
      */
-    @ExceptionHandler(TokenAuthenticationException.class)
-    public R handleTokenAuthenticationException() {
-        return new R(404, "Token 异常");
+    public static void handleFilterAuthenticationException(HttpServletRequest httpServletRequest, @NotNull HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException {
+        httpServletResponse.setCharacterEncoding("UTF-8");
+        ObjectMapper objectMapper = new ObjectMapper();
+        httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(401, "未登录或登录已过期")));
     }
-    // IllegalStateException
-    // AccessDeniedException
 
     /**
      * 处理其他异常

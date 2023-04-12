@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.zzk</groupId>
-            <artifactId>Module-Filter</artifactId>
+            <artifactId>Module-Exception</artifactId>
         </dependency>
     </dependencies>
 

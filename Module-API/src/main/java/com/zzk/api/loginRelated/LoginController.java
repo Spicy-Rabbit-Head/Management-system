@@ -40,4 +40,15 @@ public class LoginController {
     public R login(@RequestBody User user) {
         return loginService.login(user);
     }
+
+    /**
+     * 登出接口
+     *
+     * @return 登出结果
+     * @since 1.0
+     */
+    @PostMapping("/logout")
+    public R logout() {
+        return null;
+    }
 }

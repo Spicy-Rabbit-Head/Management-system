@@ -1,5 +1,6 @@
 package com.zzk.config;
 
+import com.zzk.exceptionhandler.PermissionExceptionHandler;
 import com.zzk.filter.JwtAuthenticationTokenFilter;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
@@ -75,15 +76,19 @@ public class SecurityConfig {
                 .and()
                 // 授权HTTP请求
                 .authorizeHttpRequests()
-                // 允许所有用户访问"/loginRelated/login"接口
-                .requestMatchers("/loginRelated/login")
-                .anonymous()
-                // 允许所有用户访问"/error/**"接口
-                .requestMatchers("/error/**")
-                .anonymous()
+                // 登录相关接口不需要认证
+                .requestMatchers("/loginRelated/login").anonymous()
+                // 登出相关接口不需要认证
+                .requestMatchers("/loginRelated/logout").anonymous()
                 // 其他接口需要认证
                 .anyRequest().authenticated()
                 .and()
+                // 异常处理
+                .exceptionHandling()
+                // 身份认证异常处理
+                .authenticationEntryPoint(PermissionExceptionHandler::handleFilterAuthenticationException)
+                .and()
+                // 添加过滤器
                 .addFilterBefore(JwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 // .addFilterBefore(JwtAuthenticationTokenFilter, CorsFilter.class)
                 .build();

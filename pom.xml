@@ -53,12 +53,12 @@
         <module>Module-Utils</module>
         <!-- 异常 -->
         <module>Module-Exception</module>
-        <!-- 过滤器 -->
-        <module>Module-Filter</module>
         <!-- 安全权限管理 -->
         <module>Module-Security</module>
         <!-- 异常处理 -->
         <module>Module-ExceptionHandler</module>
+        <!-- 过滤器 -->
+        <module>Module-Filter</module>
         <!-- 配置类 -->
         <module>Module-Config</module>
         <!-- Service 业务层 -->

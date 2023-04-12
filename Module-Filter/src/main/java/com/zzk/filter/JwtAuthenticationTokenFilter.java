@@ -1,8 +1,7 @@
 package com.zzk.filter;
 
 import com.zzk.entity.permissions.TokenInfo;
-import com.zzk.entity.response.R;
-import com.zzk.exception.TokenAuthenticationException;
+import com.zzk.exceptionhandler.PermissionExceptionHandler;
 import com.zzk.utils.JwtUtils;
 import com.zzk.utils.RedisSerializationUtils;
 import jakarta.servlet.FilterChain;
@@ -17,7 +16,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.rmi.RemoteException;
 
 /**
  * JWT 认证过滤器<br>
@@ -40,22 +38,13 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) throws IOException, ServletException, TokenAuthenticationException {
+    protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) throws IOException, ServletException {
         // 获取请求头中的 token
         String token = request.getHeader("token");
         // 如果请求头中没有 token
         if (!StringUtils.hasText(token)) {
-            try {
-                // 放行
-                filterChain.doFilter(request, response);
-                if (response.getStatus() == 403) {
-                    throw new TokenAuthenticationException("token 无效");
-                }
-            } catch (TokenAuthenticationException e) {
-                response.setStatus(200);
-                response.getWriter().write(new R(404, "Token 异常").toString());
-                return;
-            }
+            // 放行
+            filterChain.doFilter(request, response);
             return;
         }
         // 解析 token
@@ -66,11 +55,12 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             assert tokenInfo != null;
             String stringToken = redisSerializationUtils.getString(tokenInfo.name());
             if (!token.equals(stringToken)) {
-                throw new RemoteException("token 无效");
+                PermissionExceptionHandler.handleFilterAuthenticationException(request, response, null);
+                return;
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new RemoteException("token 无效");
+            PermissionExceptionHandler.handleFilterAuthenticationException(request, response, null);
+            return;
         }
         // 如果 token 有效
         // 将 token 中的用户信息设置到 Spring Security 的上下文中
