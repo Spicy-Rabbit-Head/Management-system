@@ -19,6 +19,7 @@ import java.io.Serializable;
  * <p>
  *
  * @author zhaozikui
+ * @version 1.0
  * @since 2023-04-10 14:57
  */
 @EqualsAndHashCode(callSuper = true)
