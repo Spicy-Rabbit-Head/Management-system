@@ -47,12 +47,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userDao.selectOne(new QueryWrapper<User>().eq("username", username));
         // 如果用户不存在，抛出用户名不存在异常
         if (Objects.isNull(user)) {
-            throw new UsernameNotFoundException("用户名不存在");
+            throw new UsernameNotFoundException(null);
         }
 
         // TODO 查询对应的权限信息
 
         // 封装用户信息
+        // UserSecurity
+        //         .withUsername(user.getUsername())
+        //         .password(user.getPassword())
+        //         .roles("USER")
+        //         .build();
         return new LoginUser(user);
     }
 }

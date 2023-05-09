@@ -31,7 +31,7 @@ public class PermissionExceptionHandler {
      */
     @ExceptionHandler(AuthenticationException.class)
     public R handleAuthenticationException(Exception e) {
-        return new R(403, e.getMessage());
+        return new R(403, e.getMessage(), false);
     }
 
     /**
@@ -45,10 +45,10 @@ public class PermissionExceptionHandler {
      * @throws IOException 异常
      * @since 1.0
      */
-    public static void handleFilterAuthenticationException(HttpServletRequest httpServletRequest, @NotNull HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException {
-        httpServletResponse.setCharacterEncoding("UTF-8");
+    public static void handleFilterAuthenticationException(HttpServletRequest httpServletRequest, @NotNull HttpServletResponse httpServletResponse, Exception e) throws IOException {
+        httpServletResponse.setContentType("application/json");
         ObjectMapper objectMapper = new ObjectMapper();
-        httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(401, "未登录或登录已过期")));
+        httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(401, "未登录或登录已过期", false, e.getMessage())));
     }
 
     /**
@@ -57,7 +57,7 @@ public class PermissionExceptionHandler {
      * @since 1.0
      */
     @ExceptionHandler(Exception.class)
-    public R handleException() {
-        return new R(500, "服务器异常");
+    public R handleException(Exception e) {
+        return new R(500, "服务器异常", false);
     }
 }

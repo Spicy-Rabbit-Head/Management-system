@@ -21,11 +21,14 @@ public class R {
     private Integer code;
     // 响应消息
     private String message;
+    // 响应状态
+    private Boolean status;
     // 响应数据
     private Object data;
 
-    public R(Integer code, String message) {
+    public R(Integer code, String message, Boolean status) {
         this.code = code;
         this.message = message;
+        this.status = status;
     }
 }

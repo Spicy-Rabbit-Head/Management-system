@@ -1,12 +1,10 @@
 package com.zzk.api.loginRelated;
 
+import com.zzk.entity.dto.UserDTO;
 import com.zzk.entity.po.UserPermissionsRelated.User;
 import com.zzk.entity.response.R;
 import com.zzk.service.loginRelated.LoginService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 登录相关接口<br>
@@ -47,8 +45,23 @@ public class LoginController {
      * @return 登出结果
      * @since 1.0
      */
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public R logout() {
-        return null;
+        return loginService.logout();
+    }
+
+    /**
+     * 注册接口
+     *
+     * @return 注册结果
+     * @since 1.0
+     */
+    @PostMapping("/register")
+    public R register(@RequestBody UserDTO user) {
+        if (loginService.register(user)) {
+            return new R(2, "注册失败", false);
+        } else {
+            return new R(1, "注册成功", true);
+        }
     }
 }

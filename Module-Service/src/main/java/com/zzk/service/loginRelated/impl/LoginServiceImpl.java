@@ -1,5 +1,8 @@
 package com.zzk.service.loginRelated.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.zzk.dao.UserPermissionsRelated.UserDao;
+import com.zzk.entity.dto.UserDTO;
 import com.zzk.entity.permissions.LoginUser;
 import com.zzk.entity.po.UserPermissionsRelated.User;
 import com.zzk.entity.response.R;
@@ -9,6 +12,7 @@ import com.zzk.utils.RedisSerializationUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -28,11 +32,14 @@ public class LoginServiceImpl implements LoginService {
     private final AuthenticationManager authenticationManager;
     // redis 序列化工具
     private final RedisSerializationUtils redisSerializationUtils;
+    // 用户数据访问对象
+    private final UserDao userDao;
 
     // 构造器注入认证管理器
-    public LoginServiceImpl(AuthenticationManager authenticationManager, RedisSerializationUtils redisSerializationUtils) {
+    public LoginServiceImpl(AuthenticationManager authenticationManager, RedisSerializationUtils redisSerializationUtils, UserDao userDao) {
         this.authenticationManager = authenticationManager;
         this.redisSerializationUtils = redisSerializationUtils;
+        this.userDao = userDao;
     }
 
     /**
@@ -53,10 +60,31 @@ public class LoginServiceImpl implements LoginService {
         // 获取认证成功后的用户信息
         LoginUser principal = (LoginUser) authenticate.getPrincipal();
         // 生成 token
-        String jwt = JwtUtils.generateToken(user.getUsername(), principal.getUser().getId().toString());
+        String jwt = JwtUtils.generateToken(principal.getUsername(), principal.getUser().getId().toString());
         // 将 token 存入 redis
         redisSerializationUtils.setString(user.getUsername(), jwt);
         // 认证成功
-        return new R(1, "登录成功", jwt);
+        return new R(1, "登录成功", true, jwt);
+    }
+
+    /**
+     * 登出
+     *
+     * @return R 登出结果
+     */
+    @Override
+    public R logout() {
+        // 获取当前用户信息
+        UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        LoginUser principal = (LoginUser) authenticationToken.getPrincipal();
+        // 删除 redis 中的 token
+        redisSerializationUtils.deleteString(principal.getUsername());
+        return new R(1, "登出成功", true);
+    }
+
+    @Override
+    public Boolean register(UserDTO user) {
+        // 查询用户是否存在
+        return userDao.selectCount(new QueryWrapper<User>().eq("username", user.getUsername())) > 0;
     }
 }

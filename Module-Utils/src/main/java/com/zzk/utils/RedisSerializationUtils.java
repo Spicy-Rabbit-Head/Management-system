@@ -96,6 +96,13 @@ public class RedisSerializationUtils {
     }
 
     /**
+     * 将 redis 中的字符串删除
+     */
+    public void deleteString(String key) {
+        stringRedisTemplate.delete(key);
+    }
+
+    /**
      * 将 Map 集合存储到 Redis 中的 Hash 类型
      *
      * @param key 键

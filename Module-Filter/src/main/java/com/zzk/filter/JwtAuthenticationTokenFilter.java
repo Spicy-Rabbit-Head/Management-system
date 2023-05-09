@@ -1,6 +1,7 @@
 package com.zzk.filter;
 
-import com.zzk.entity.permissions.TokenInfo;
+import com.zzk.entity.permissions.LoginUser;
+import com.zzk.entity.po.UserPermissionsRelated.User;
 import com.zzk.exceptionhandler.PermissionExceptionHandler;
 import com.zzk.utils.JwtUtils;
 import com.zzk.utils.RedisSerializationUtils;
@@ -16,6 +17,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.rmi.server.ExportException;
 
 /**
  * JWT 认证过滤器<br>
@@ -48,24 +50,25 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             return;
         }
         // 解析 token
-        TokenInfo tokenInfo;
+        LoginUser loginUser;
         try {
-            tokenInfo = JwtUtils.verifyToken(token);
+            // 解析 token
+            User user = JwtUtils.verifyToken(token);
             // 判断 token 是否失效
-            assert tokenInfo != null;
-            String stringToken = redisSerializationUtils.getString(tokenInfo.name());
+            assert user != null;
+            String stringToken = redisSerializationUtils.getString(user.getUsername());
             if (!token.equals(stringToken)) {
-                PermissionExceptionHandler.handleFilterAuthenticationException(request, response, null);
-                return;
+                throw new ExportException("token 已失效");
             }
+            loginUser = new LoginUser(user);
         } catch (Exception e) {
-            PermissionExceptionHandler.handleFilterAuthenticationException(request, response, null);
+            PermissionExceptionHandler.handleFilterAuthenticationException(request, response, e);
             return;
         }
         // 如果 token 有效
         // 将 token 中的用户信息设置到 Spring Security 的上下文中
         // TODO: 获取权限消息封装到 Authentication 中
-        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(tokenInfo.name(), null, null));
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(loginUser, null, null));
         // 放行
         filterChain.doFilter(request, response);
     }

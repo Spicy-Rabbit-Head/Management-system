@@ -80,7 +80,8 @@
     <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/OperationPermissionsDao.java"
           title="操作权限表持久层" extension="java"/>
     <tree path="/Module-API/src/main/java/com/zzk/api/user" title=""/>
-    <tree path="/Module-API/src/main/java/com/zzk/api/loginRelated" title="登录相关"/>
+    <tree path="/Module-API/src/main/java/com/zzk/api/loginRelated" title="登录注册相关" extension="" presentableText=""
+          tooltipTitle="" icon="" textColor="" backgroundColor=""/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/loginRelated" title="登录相关"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/response/R.java" title="响应对象" extension="java"/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/loginRelated/LoginService.java" title="登录服务"

@@ -3,6 +3,7 @@ package com.zzk.config;
 import com.zzk.exceptionhandler.PermissionExceptionHandler;
 import com.zzk.filter.JwtAuthenticationTokenFilter;
 import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +15,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 /**
  * Spring Security 配置类<br>
@@ -69,17 +73,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                // 关闭跨域保护
-                .csrf().disable()
-                // 关闭session
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
                 // 授权HTTP请求
                 .authorizeHttpRequests()
-                // 登录相关接口不需要认证
-                .requestMatchers("/loginRelated/login").anonymous()
-                // 登出相关接口不需要认证
-                .requestMatchers("/loginRelated/logout").anonymous()
+                // 登录登出相关接口不需要认证
+                .requestMatchers("/loginRelated/**").permitAll()
                 // 其他接口需要认证
                 .anyRequest().authenticated()
                 .and()
@@ -88,9 +85,41 @@ public class SecurityConfig {
                 // 身份认证异常处理
                 .authenticationEntryPoint(PermissionExceptionHandler::handleFilterAuthenticationException)
                 .and()
+                // 关闭session
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                // 关闭跨域保护
+                .cors().configurationSource(this.corsConfigurationSource()).and()
+                .csrf().disable()
                 // 添加过滤器
                 .addFilterBefore(JwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 // .addFilterBefore(JwtAuthenticationTokenFilter, CorsFilter.class)
                 .build();
+    }
+
+    // 注入跨域配置源
+    @Value("${thisCors.url}")
+    private String url;
+
+    /**
+     * 跨域配置源
+     */
+    private CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration cors = new CorsConfiguration();
+        // 允许跨域的域名
+        cors.addAllowedOriginPattern(this.url);
+        // 允许跨域的请求是否携带cookie
+        cors.setAllowCredentials(true);
+        // 允许跨域的请求头
+        cors.addAllowedHeader("*");
+        // 允许跨域的请求方法
+        cors.addAllowedMethod("*");
+        // 允许跨域的暴露头
+        cors.addExposedHeader("*");
+        // 跨域配置源
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        // 配置所有请求
+        source.registerCorsConfiguration("/**", cors);
+        return source;
     }
 }
