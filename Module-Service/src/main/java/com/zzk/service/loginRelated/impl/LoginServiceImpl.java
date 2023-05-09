@@ -1,18 +1,18 @@
 package com.zzk.service.loginRelated.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.zzk.dao.UserPermissionsRelated.UserDao;
 import com.zzk.entity.dto.UserDTO;
 import com.zzk.entity.permissions.LoginUser;
 import com.zzk.entity.po.UserPermissionsRelated.User;
 import com.zzk.entity.response.R;
 import com.zzk.service.loginRelated.LoginService;
+import com.zzk.service.userRelated.UserService;
 import com.zzk.utils.JwtUtils;
 import com.zzk.utils.RedisSerializationUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,8 +22,9 @@ import org.springframework.stereotype.Service;
  * 1.0版本：登录服务实现类构建<br>
  * <p>
  *
- * @author zhaozikui
+ * @author zhao'zi'kui
  * @version 1.0
+ * @apiNote 该类用于登录注册登出服务的实现
  * @since 2023-03-28 11:06
  */
 @Service
@@ -32,14 +33,16 @@ public class LoginServiceImpl implements LoginService {
     private final AuthenticationManager authenticationManager;
     // redis 序列化工具
     private final RedisSerializationUtils redisSerializationUtils;
-    // 用户数据访问对象
-    private final UserDao userDao;
+    // 用户服务
+    private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     // 构造器注入认证管理器
-    public LoginServiceImpl(AuthenticationManager authenticationManager, RedisSerializationUtils redisSerializationUtils, UserDao userDao) {
+    public LoginServiceImpl(AuthenticationManager authenticationManager, RedisSerializationUtils redisSerializationUtils, UserService userService, PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.redisSerializationUtils = redisSerializationUtils;
-        this.userDao = userDao;
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     /**
@@ -71,6 +74,7 @@ public class LoginServiceImpl implements LoginService {
      * 登出
      *
      * @return R 登出结果
+     * @since 1.0
      */
     @Override
     public R logout() {
@@ -82,9 +86,23 @@ public class LoginServiceImpl implements LoginService {
         return new R(1, "登出成功", true);
     }
 
+    /**
+     * 注册
+     *
+     * @param user 用户信息
+     * @return Boolean 注册结果
+     * @since 1.0
+     */
     @Override
-    public Boolean register(UserDTO user) {
+    public R register(UserDTO user) {
         // 查询用户是否存在
-        return userDao.selectCount(new QueryWrapper<User>().eq("username", user.getUsername())) > 0;
+        if (userService.whetherTheUserExists(user.getUsername())) {
+            return new R(2, "注册失败,用户已存在", false);
+        } else {
+            // 用户不存在，注册用户
+            if (!userService.userAddition(new User(null, user.getUsername(), passwordEncoder.encode(user.getPassword()))))
+                return new R(2, "注册失败,注册异常", false);
+            return new R(1, "注册成功", true);
+        }
     }
 }

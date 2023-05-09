@@ -111,4 +111,6 @@
           extension="java"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceReserve/SquareIGPartsList.java"
           title="方形IG備品列表" extension="java"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated" title="用户相关"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated/UserQueryService.java" title="用户查询服务"/>
 </trees>

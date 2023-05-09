@@ -58,10 +58,6 @@ public class LoginController {
      */
     @PostMapping("/register")
     public R register(@RequestBody UserDTO user) {
-        if (loginService.register(user)) {
-            return new R(2, "注册失败", false);
-        } else {
-            return new R(1, "注册成功", true);
-        }
+        return loginService.register(user);
     }
 }
