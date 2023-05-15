@@ -1,10 +1,7 @@
 package com.zzk.entity.permissions;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.zzk.entity.po.UserPermissionsRelated.UserData;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.Assert;
 
@@ -22,31 +19,30 @@ import java.util.*;
  *
  * @author zhaozikui
  * @version 1.0
- * @since 2023-03-10 17:00
+ * @since 2023-05-10 17:00
  */
-@Setter
-@NoArgsConstructor
+@JsonDeserialize(using = UserDataDetailsDeserializer.class)
 public class UserDataDetails implements UserDetails {
     // 用户信息
-    private UserData user;
+    private final UserData user;
     // 权限信息
-    private Set<GrantedAuthority> authorities;
+    private final Set<UserSimpleGrantedAuthority> authorities;
     // 账户未过期
-    private boolean accountNonExpired;
+    private final boolean accountNonExpired;
     // 账户未锁定
-    private boolean accountNonLocked;
+    private final boolean accountNonLocked;
     // 凭证未过期
-    private boolean credentialsNonExpired;
+    private final boolean credentialsNonExpired;
     // 账户可用
-    private boolean enabled;
+    private final boolean enabled;
 
     // 构造
-    public UserDataDetails(UserData user, Collection<? extends GrantedAuthority> authorities) {
+    public UserDataDetails(UserData user, Collection<? extends UserSimpleGrantedAuthority> authorities) {
         this(user, true, true, true, true, authorities);
     }
 
     // 构造
-    public UserDataDetails(UserData user, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+    public UserDataDetails(UserData user, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends UserSimpleGrantedAuthority> authorities) {
         Assert.isTrue(user.getUsername() != null && !"".equals(user.getUsername()) && user.getPassword() != null, "不能将 null 或 空值 传递给构造函数");
         this.user = user;
         this.enabled = enabled;
@@ -57,11 +53,11 @@ public class UserDataDetails implements UserDetails {
     }
 
     // 排序权限信息
-    private static SortedSet<GrantedAuthority> sortAuthorities(Collection<? extends GrantedAuthority> authorities) {
+    private static SortedSet<UserSimpleGrantedAuthority> sortAuthorities(Collection<? extends UserSimpleGrantedAuthority> authorities) {
         Assert.notNull(authorities, "不能传递空的授权集合");
-        SortedSet<GrantedAuthority> sortedAuthorities = new TreeSet<>(new UserDataDetails.AuthorityComparator());
+        SortedSet<UserSimpleGrantedAuthority> sortedAuthorities = new TreeSet<>(new UserDataDetails.AuthorityComparator());
         // 遍历授权集合
-        for (GrantedAuthority grantedAuthority : authorities) {
+        for (UserSimpleGrantedAuthority grantedAuthority : authorities) {
             Assert.notNull(grantedAuthority, "授权集合不能包含任何空元素");
             sortedAuthorities.add(grantedAuthority);
         }
@@ -72,8 +68,15 @@ public class UserDataDetails implements UserDetails {
 
     // 权限信息
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.authorities;
+    public Collection<? extends UserSimpleGrantedAuthority> getAuthorities() {
+        List<UserSimpleGrantedAuthority> authorities = new ArrayList<>();
+        if (this.authorities != null && this.authorities.size() > 0) {
+            for (UserSimpleGrantedAuthority role : this.authorities) {
+                authorities.add(new UserSimpleGrantedAuthority(role.getAuthority()));
+            }
+        }
+
+        return authorities;
     }
 
     // 获取密码
@@ -117,7 +120,7 @@ public class UserDataDetails implements UserDetails {
     }
 
     // 权限比较器
-    private static class AuthorityComparator implements Comparator<GrantedAuthority>, Serializable {
+    private static class AuthorityComparator implements Comparator<UserSimpleGrantedAuthority>, Serializable {
         @Serial
         private static final long serialVersionUID = 600L;
 
@@ -125,7 +128,7 @@ public class UserDataDetails implements UserDetails {
         }
 
         // 权限比较
-        public int compare(GrantedAuthority g1, GrantedAuthority g2) {
+        public int compare(UserSimpleGrantedAuthority g1, UserSimpleGrantedAuthority g2) {
             if (g2.getAuthority() == null) {
                 return -1;
             } else {
@@ -165,7 +168,7 @@ public class UserDataDetails implements UserDetails {
 
         private UserData user;
 
-        private List<GrantedAuthority> authorities;
+        private List<UserSimpleGrantedAuthority> authorities;
 
         private boolean accountExpired;
 
@@ -189,15 +192,15 @@ public class UserDataDetails implements UserDetails {
 
         // 角色信息建造
         public UserDataBuilder roles(String... roles) {
-            List<GrantedAuthority> authorities = new ArrayList<>(roles.length);
+            List<UserSimpleGrantedAuthority> authorities = new ArrayList<>(roles.length);
             for (String role : roles) {
-                authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
+                authorities.add(new UserSimpleGrantedAuthority("ROLE_" + role));
             }
             return authorities(authorities);
         }
 
         // 集合权限信息建造
-        public UserDataBuilder authorities(Collection<? extends GrantedAuthority> authorities) {
+        public UserDataBuilder authorities(Collection<? extends UserSimpleGrantedAuthority> authorities) {
             this.authorities = new ArrayList<>(authorities);
             return this;
         }
@@ -233,8 +236,8 @@ public class UserDataDetails implements UserDetails {
 
         // 全局建造
         public UserDetails buildAll() {
-            return new UserDataDetails(this.user, !this.disabled, !this.accountExpired,
-                    !this.credentialsExpired, !this.accountLocked, this.authorities);
+            return new UserDataDetails(this.user, this.disabled, this.accountExpired,
+                    this.credentialsExpired, this.accountLocked, this.authorities);
         }
     }
 }

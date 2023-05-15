@@ -56,7 +56,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             // 判断 token 是否失效
             assert secretKey != null;
             userDetail = redisSerializationUtils.getString(secretKey, UserDataDetails.class);
-            System.out.println(userDetail);
             if (userDetail == null) {
                 throw new ExportException("token 已失效");
             }

@@ -56,7 +56,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         return UserDataDetails.builder()
                 .user(user)
-                .roles("USER")
+                .roles("USER", "ADMIN")
                 .build();
     }
 }

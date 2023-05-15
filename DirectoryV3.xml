@@ -113,4 +113,10 @@
           title="方形IG備品列表" extension="java"/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated" title="用户相关"/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated/UserQueryService.java" title="用户查询服务"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/permissions/UserDataDetails.java" title="用户数据详情"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/permissions/UserSimpleGrantedAuthority.java"
+          title="用户授权简单实现"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/permissions/UserDataDetailsDeserializer.java"
+          title="用户数据详情反序列化器"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated/UserService.java" title="用户表服务"/>
 </trees>
