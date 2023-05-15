@@ -1,7 +1,6 @@
 package com.zzk.api.loginRelated;
 
 import com.zzk.entity.dto.UserDTO;
-import com.zzk.entity.po.UserPermissionsRelated.User;
 import com.zzk.entity.response.R;
 import com.zzk.service.loginRelated.LoginService;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +34,7 @@ public class LoginController {
      * @since 1.0
      */
     @PostMapping("/login")
-    public R login(@RequestBody User user) {
+    public R login(@RequestBody UserDTO user) {
         return loginService.login(user);
     }
 

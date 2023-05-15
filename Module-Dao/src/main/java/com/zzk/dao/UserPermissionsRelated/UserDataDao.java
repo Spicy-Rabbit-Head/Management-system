@@ -1,7 +1,7 @@
 package com.zzk.dao.UserPermissionsRelated;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zzk.entity.po.UserPermissionsRelated.User;
+import com.zzk.entity.po.UserPermissionsRelated.UserData;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +19,7 @@ import java.util.List;
  * @since 2023-03-06 19:01
  */
 @Repository
-public interface UserDao extends BaseMapper<User> {
+public interface UserDataDao extends BaseMapper<UserData> {
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）
@@ -28,7 +28,7 @@ public interface UserDao extends BaseMapper<User> {
      * @return 影响行数
      * @since 1.0
      */
-    int insertBatch(@Param("entities") List<User> entities);
+    int insertBatch(@Param("entities") List<UserData> entities);
 
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
@@ -38,5 +38,5 @@ public interface UserDao extends BaseMapper<User> {
      * @throws org.springframework.jdbc.BadSqlGrammarException 入参是空List的时候会抛SQL语句错误的异常，请自行校验入参
      * @since 1.0
      */
-    int insertOrUpdateBatch(@Param("entities") List<User> entities);
+    int insertOrUpdateBatch(@Param("entities") List<UserData> entities);
 }

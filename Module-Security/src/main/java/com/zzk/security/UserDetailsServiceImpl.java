@@ -1,9 +1,9 @@
 package com.zzk.security;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.zzk.dao.UserPermissionsRelated.UserDao;
-import com.zzk.entity.permissions.LoginUser;
-import com.zzk.entity.po.UserPermissionsRelated.User;
+import com.zzk.dao.UserPermissionsRelated.UserDataDao;
+import com.zzk.entity.permissions.UserDataDetails;
+import com.zzk.entity.po.UserPermissionsRelated.UserData;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,11 +26,11 @@ import java.util.Objects;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     // 用户数据访问对象
-    private final UserDao userDao;
+    private final UserDataDao userDataDao;
 
     // 构造器注入用户数据访问对象
-    public UserDetailsServiceImpl(UserDao userDao) {
-        this.userDao = userDao;
+    public UserDetailsServiceImpl(UserDataDao userDataDao) {
+        this.userDataDao = userDataDao;
     }
 
     /**
@@ -44,20 +44,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         // 查询用户信息
-        User user = userDao.selectOne(new QueryWrapper<User>().eq("username", username));
+        UserData user = userDataDao.selectOne(new QueryWrapper<UserData>().eq("username", username));
         // 如果用户不存在，抛出用户名不存在异常
         if (Objects.isNull(user)) {
-            throw new UsernameNotFoundException(null);
+            throw new UsernameNotFoundException("用户不存在");
         }
 
         // TODO 查询对应的权限信息
 
         // 封装用户信息
-        // UserSecurity
-        //         .withUsername(user.getUsername())
-        //         .password(user.getPassword())
-        //         .roles("USER")
-        //         .build();
-        return new LoginUser(user);
+
+        return UserDataDetails.builder()
+                .user(user)
+                .roles("USER")
+                .build();
     }
 }

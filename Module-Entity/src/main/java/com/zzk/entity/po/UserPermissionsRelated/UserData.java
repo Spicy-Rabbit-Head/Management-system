@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -26,10 +27,15 @@ import java.io.Serializable;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-@TableName("user")
+@TableName("user_data")
 @ApiModel(description = "用户表", value = "User")
-public class User extends Model<User> {
+public class UserData extends Model<UserData> {
+    public UserData(String username) {
+        this.username = username;
+    }
+
     // 用户表主键
     @TableId(value = "id", type = IdType.AUTO)
     @ApiModelProperty(value = "用户表主键", name = "id")

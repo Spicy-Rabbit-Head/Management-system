@@ -1,7 +1,7 @@
 package com.zzk.entrance.daoTexts;
 
-import com.zzk.dao.UserPermissionsRelated.UserDao;
-import com.zzk.entity.po.UserPermissionsRelated.User;
+import com.zzk.dao.UserPermissionsRelated.UserDataDao;
+import com.zzk.entity.po.UserPermissionsRelated.UserData;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -11,8 +11,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+
 /**
- * 用户表(User)表数据库访问层测试<br>
+ * 用户表(com.zzk.entity.po.UserPermissionsRelated.UserData)表数据库访问层测试<br>
  * <p>
  * <p>
  * 1.0版本：测试CRUD基本操作<br>
@@ -24,10 +25,10 @@ import java.util.List;
  */
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UserDaoText {
-    // 用户表(User)表数据库访问层
+public class UserDataDaoText {
+    // 用户表(UserData)表数据库访问层
     @Autowired
-    public UserDao userDao;
+    public UserDataDao userDao;
     // 测试用户id
     private static Integer id;
 
@@ -41,7 +42,7 @@ public class UserDaoText {
     @Order(1)
     void insert() {
         System.out.println("----- 测试插入开始 ------");
-        int insert = userDao.insert(new User(null, "test", "test"));
+        int insert = userDao.insert(new UserData(null, "test", "test"));
         System.out.println("影响:" + insert);
         System.out.println("----- 测试插入结束 ------");
     }
@@ -56,7 +57,7 @@ public class UserDaoText {
     @Order(2)
     void getList() {
         System.out.println("----- 测试查询所有开始 ------");
-        List<User> users = userDao.selectList(null);
+        List<UserData> users = userDao.selectList(null);
         users.forEach(System.out::println);
         id = users.get(users.size() - 1).getId();
         System.out.println("----- 测试查询所有结束 ------");
@@ -72,7 +73,7 @@ public class UserDaoText {
     @Order(3)
     void updateById() {
         System.out.println("----- 测试更新开始 ------");
-        User user = new User(id, "testUpdate", "testUpdate");
+        UserData user = new UserData(id, "testUpdate", "testUpdate");
         int i = userDao.updateById(user);
         System.out.println("影响:" + i);
         System.out.println("----- 测试更新结束 ------");
@@ -88,7 +89,7 @@ public class UserDaoText {
     @Order(4)
     void getById() {
         System.out.println("----- 测试查询单个开始 ------");
-        User user = userDao.selectById(id);
+        UserData user = userDao.selectById(id);
         System.out.println(user);
         System.out.println("----- 测试查询单个结束 ------");
     }

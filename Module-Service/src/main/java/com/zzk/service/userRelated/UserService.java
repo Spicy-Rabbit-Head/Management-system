@@ -1,6 +1,6 @@
 package com.zzk.service.userRelated;
 
-import com.zzk.entity.po.UserPermissionsRelated.User;
+import com.zzk.entity.po.UserPermissionsRelated.UserData;
 
 /**
  * 用户服务接口<br>
@@ -31,5 +31,5 @@ public interface UserService {
      * @return Boolean 用户是否添加成功
      * @since 1.0
      */
-    Boolean userAddition(User user);
+    Boolean userAddition(UserData user);
 }

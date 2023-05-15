@@ -1,8 +1,8 @@
 package com.zzk.service.userRelated.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.zzk.dao.UserPermissionsRelated.UserDao;
-import com.zzk.entity.po.UserPermissionsRelated.User;
+import com.zzk.dao.UserPermissionsRelated.UserDataDao;
+import com.zzk.entity.po.UserPermissionsRelated.UserData;
 import com.zzk.service.userRelated.UserService;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +21,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
     // 用户数据访问对象
-    private final UserDao userDao;
+    private final UserDataDao userDao;
 
     // 构造器注入
-    public UserServiceImpl(UserDao userDao) {
+    public UserServiceImpl(UserDataDao userDao) {
         this.userDao = userDao;
     }
 
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Boolean whetherTheUserExists(String username) {
-        return userDao.selectCount(new QueryWrapper<User>().eq("username", username)) > 0;
+        return userDao.selectCount(new QueryWrapper<UserData>().eq("username", username)) > 0;
     }
 
     /**
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
      * @since 1.0
      */
     @Override
-    public Boolean userAddition(User user) {
+    public Boolean userAddition(UserData user) {
         return userDao.insert(user) > 0;
     }
 }

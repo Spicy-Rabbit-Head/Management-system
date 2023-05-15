@@ -34,7 +34,7 @@ public class JwtUtilsText {
     @Test
     @Order(1)
     void getJwt() {
-        jwtValue = JwtUtils.generateToken("admin", "admin");
+        jwtValue = JwtUtils.generateToken("admin");
         System.out.println(jwtValue);
     }
 

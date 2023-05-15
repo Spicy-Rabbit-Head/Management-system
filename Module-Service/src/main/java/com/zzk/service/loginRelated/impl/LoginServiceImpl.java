@@ -1,8 +1,8 @@
 package com.zzk.service.loginRelated.impl;
 
 import com.zzk.entity.dto.UserDTO;
-import com.zzk.entity.permissions.LoginUser;
-import com.zzk.entity.po.UserPermissionsRelated.User;
+import com.zzk.entity.permissions.UserDataDetails;
+import com.zzk.entity.po.UserPermissionsRelated.UserData;
 import com.zzk.entity.response.R;
 import com.zzk.service.loginRelated.LoginService;
 import com.zzk.service.userRelated.UserService;
@@ -14,6 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 /**
  * 登录服务实现类<br>
@@ -35,9 +37,10 @@ public class LoginServiceImpl implements LoginService {
     private final RedisSerializationUtils redisSerializationUtils;
     // 用户服务
     private final UserService userService;
+    // 密码编码器
     private final PasswordEncoder passwordEncoder;
 
-    // 构造器注入认证管理器
+    // 构造器注入认证管理器、redis 序列化工具、用户服务、密码编码器
     public LoginServiceImpl(AuthenticationManager authenticationManager, RedisSerializationUtils redisSerializationUtils, UserService userService, PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.redisSerializationUtils = redisSerializationUtils;
@@ -53,7 +56,7 @@ public class LoginServiceImpl implements LoginService {
      * @since 1.0
      */
     @Override
-    public R login(User user) {
+    public R login(UserDTO user) {
         Authentication authenticate;
         // 封装用户信息
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
@@ -61,11 +64,12 @@ public class LoginServiceImpl implements LoginService {
         // 认证失败抛出 AuthenticationException 身份认证异常
         authenticate = authenticationManager.authenticate(authenticationToken);
         // 获取认证成功后的用户信息
-        LoginUser principal = (LoginUser) authenticate.getPrincipal();
+        UserDataDetails principal = (UserDataDetails) authenticate.getPrincipal();
+        String uid = UUID.randomUUID().toString();
         // 生成 token
-        String jwt = JwtUtils.generateToken(principal.getUsername(), principal.getUser().getId().toString());
+        String jwt = JwtUtils.generateToken(uid);
         // 将 token 存入 redis
-        redisSerializationUtils.setString(user.getUsername(), jwt);
+        redisSerializationUtils.setString(uid, principal);
         // 认证成功
         return new R(1, "登录成功", true, jwt);
     }
@@ -80,7 +84,7 @@ public class LoginServiceImpl implements LoginService {
     public R logout() {
         // 获取当前用户信息
         UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-        LoginUser principal = (LoginUser) authenticationToken.getPrincipal();
+        UserDataDetails principal = (UserDataDetails) authenticationToken.getPrincipal();
         // 删除 redis 中的 token
         redisSerializationUtils.deleteString(principal.getUsername());
         return new R(1, "登出成功", true);
@@ -100,9 +104,21 @@ public class LoginServiceImpl implements LoginService {
             return new R(2, "注册失败,用户已存在", false);
         } else {
             // 用户不存在，注册用户
-            if (!userService.userAddition(new User(null, user.getUsername(), passwordEncoder.encode(user.getPassword()))))
+            if (!userService.userAddition(new UserData(null, user.getUsername(), passwordEncoder.encode(user.getPassword()))))
                 return new R(2, "注册失败,注册异常", false);
             return new R(1, "注册成功", true);
         }
+    }
+
+    /**
+     * 重置密码
+     *
+     * @param username 用户名
+     * @return R 重置密码结果
+     * @since 1.0
+     */
+    @Override
+    public R resetPassword(String username) {
+        return null;
     }
 }

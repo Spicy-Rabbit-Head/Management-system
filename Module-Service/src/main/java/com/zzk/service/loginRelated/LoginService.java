@@ -1,7 +1,6 @@
 package com.zzk.service.loginRelated;
 
 import com.zzk.entity.dto.UserDTO;
-import com.zzk.entity.po.UserPermissionsRelated.User;
 import com.zzk.entity.response.R;
 
 /**
@@ -24,7 +23,7 @@ public interface LoginService {
      * @return R<String> 登录结果
      * @since 1.0
      */
-    R login(User user);
+    R login(UserDTO user);
 
     /**
      * 登出
@@ -32,7 +31,6 @@ public interface LoginService {
      * @return R 登出结果
      * @since 1.0
      */
-    // 登出接口
     R logout();
 
     /**
@@ -43,4 +41,14 @@ public interface LoginService {
      * @since 1.0
      */
     R register(UserDTO user);
+
+    /**
+     * 重置密码
+     *
+     * @param username 用户名
+     * @return R 重置密码结果
+     * @since 1.0
+     */
+    R resetPassword(String username);
+
 }

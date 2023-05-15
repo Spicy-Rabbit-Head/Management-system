@@ -1,7 +1,6 @@
 package com.zzk.filter;
 
-import com.zzk.entity.permissions.LoginUser;
-import com.zzk.entity.po.UserPermissionsRelated.User;
+import com.zzk.entity.permissions.UserDataDetails;
 import com.zzk.exceptionhandler.PermissionExceptionHandler;
 import com.zzk.utils.JwtUtils;
 import com.zzk.utils.RedisSerializationUtils;
@@ -50,17 +49,18 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             return;
         }
         // 解析 token
-        LoginUser loginUser;
+        UserDataDetails userDetail;
         try {
             // 解析 token
-            User user = JwtUtils.verifyToken(token);
+            String secretKey = JwtUtils.verifyTokenString(token);
             // 判断 token 是否失效
-            assert user != null;
-            String stringToken = redisSerializationUtils.getString(user.getUsername());
-            if (!token.equals(stringToken)) {
+            assert secretKey != null;
+            userDetail = redisSerializationUtils.getString(secretKey, UserDataDetails.class);
+            System.out.println(userDetail);
+            if (userDetail == null) {
                 throw new ExportException("token 已失效");
             }
-            loginUser = new LoginUser(user);
+            // TODO: 获取权限消息封装到 Authentication 中
         } catch (Exception e) {
             PermissionExceptionHandler.handleFilterAuthenticationException(request, response, e);
             return;
@@ -68,7 +68,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         // 如果 token 有效
         // 将 token 中的用户信息设置到 Spring Security 的上下文中
         // TODO: 获取权限消息封装到 Authentication 中
-        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(loginUser, null, null));
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userDetail, null, null));
         // 放行
         filterChain.doFilter(request, response);
     }
