@@ -1,10 +1,9 @@
 package com.zzk.entity.permissions;
 
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.zzk.entity.po.UserPermissionsRelated.UserData;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -25,26 +24,26 @@ import java.util.List;
  */
 public class UserDataDetailsDeserializer extends JsonDeserializer<UserDetails> {
     @Override
-    public UserDetails deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+    public UserDetails deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         // 解析Json
-        TreeNode treeNode = jsonParser.getCodec().readTree(jsonParser);
+        JsonNode jsonNode = jsonParser.getCodec().readTree(jsonParser);
         // 构建用户信息
-        UserData user = new UserData(null, treeNode.get("username").toString(), treeNode.get("password").toString());
+        UserData user = new UserData(jsonNode.get("id").asInt(), jsonNode.get("username").asText(), jsonNode.get("password").asText(), jsonNode.get("uuid").asText());
         // 获取权限信息
-        TreeNode authorities = treeNode.get("authorities");
+        JsonNode authorities = jsonNode.get("authorities");
         // 构建权限集合
         List<UserSimpleGrantedAuthority> authoritiesSet = new ArrayList<>(authorities.size());
         for (int i = 0; i < authorities.size(); i++) {
-            authoritiesSet.add(new UserSimpleGrantedAuthority(authorities.get(i).get("authority").toString()));
+            authoritiesSet.add(new UserSimpleGrantedAuthority(authorities.get(i).get("authority").asText()));
         }
         // 建造用户数据详情
         return UserDataDetails.builder()
                 .user(user)
                 .authorities(authoritiesSet)
-                .accountExpired(Boolean.parseBoolean(treeNode.get("accountNonExpired").toString()))
-                .accountLocked(Boolean.parseBoolean(treeNode.get("accountNonLocked").toString()))
-                .credentialsExpired(Boolean.parseBoolean(treeNode.get("credentialsNonExpired").toString()))
-                .disabled(Boolean.parseBoolean(treeNode.get("enabled").toString()))
+                .accountExpired(jsonNode.get("accountNonExpired").asBoolean())
+                .accountLocked(jsonNode.get("accountNonLocked").asBoolean())
+                .credentialsExpired(jsonNode.get("credentialsNonExpired").asBoolean())
+                .disabled(jsonNode.get("enabled").asBoolean())
                 .buildAll();
     }
 }

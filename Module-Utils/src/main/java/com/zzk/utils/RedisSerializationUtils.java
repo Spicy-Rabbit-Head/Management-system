@@ -96,6 +96,19 @@ public class RedisSerializationUtils {
     }
 
     /**
+     * 查询 Redis 中是否存在指定的键
+     *
+     * @param key 键
+     * @return 如果存在则返回 true，否则返回 false
+     * @since 1.0
+     */
+    public Boolean hasKey(String key) {
+        // 调用 StringRedisTemplate 的 hasKey 方法，查询 Redis 中是否存在指定的键
+        return stringRedisTemplate.hasKey(key);
+    }
+
+
+    /**
      * 将 redis 中的字符串删除
      */
     public void deleteString(String key) {

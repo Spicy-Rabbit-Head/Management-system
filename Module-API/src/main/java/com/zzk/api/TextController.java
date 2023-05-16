@@ -1,6 +1,6 @@
 package com.zzk.api;
 
-import com.zzk.service.TextService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,16 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/Text")
 public class TextController {
-    private final TextService service;
-
-
-    public TextController(TextService service) {
-        this.service = service;
+    @GetMapping("/getUser")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public String text1() {
+        return "on";
     }
 
-    @GetMapping("/gettext")
-    public String text() {
-        service.Print();
-        return "ok";
+    @GetMapping("/getSys")
+    @PreAuthorize("hasAuthority('ROLE_SYS')")
+    public String text2() {
+        return "off";
     }
 }

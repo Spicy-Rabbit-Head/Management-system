@@ -48,7 +48,7 @@ public class PermissionExceptionHandler {
     public static void handleFilterAuthenticationException(HttpServletRequest httpServletRequest, @NotNull HttpServletResponse httpServletResponse, Exception e) throws IOException {
         httpServletResponse.setContentType("application/json");
         ObjectMapper objectMapper = new ObjectMapper();
-        httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(401, "未登录或登录已过期", false, e.getMessage())));
+        httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(401, "身份验证流程异常", false, e.getMessage())));
     }
 
     /**

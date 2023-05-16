@@ -17,6 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.rmi.server.ExportException;
+import java.util.Objects;
 
 /**
  * JWT 认证过滤器<br>
@@ -54,20 +55,27 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             // 解析 token
             String secretKey = JwtUtils.verifyTokenString(token);
             // 判断 token 是否失效
-            assert secretKey != null;
+            try {
+                assert secretKey != null;
+            } catch (Exception e) {
+                throw new ExportException("token 异常");
+            }
+            if (Objects.equals(request.getServletPath(), "/loginRelated/login")) {
+                if (redisSerializationUtils.hasKey(secretKey)) {
+                    throw new ExportException("重复登录");
+                }
+            }
             userDetail = redisSerializationUtils.getString(secretKey, UserDataDetails.class);
             if (userDetail == null) {
                 throw new ExportException("token 已失效");
             }
-            // TODO: 获取权限消息封装到 Authentication 中
         } catch (Exception e) {
             PermissionExceptionHandler.handleFilterAuthenticationException(request, response, e);
             return;
         }
         // 如果 token 有效
-        // 将 token 中的用户信息设置到 Spring Security 的上下文中
-        // TODO: 获取权限消息封装到 Authentication 中
-        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userDetail, null, null));
+        // 将 token 中的用户信息详情设置到 Spring Security 的上下文中
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userDetail, null, userDetail.getAuthorities()));
         // 放行
         filterChain.doFilter(request, response);
     }

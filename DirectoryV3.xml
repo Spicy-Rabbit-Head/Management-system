@@ -9,7 +9,7 @@
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/po" title="数据库映射实体"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/pojo" title="Java Bean 实体"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/vo" title="视图传输实体"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/User.java" title="用户表"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/UserData.java" title="用户表"
           extension="java"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/Role.java" title="角色表"
           extension="java"/>
@@ -119,4 +119,5 @@
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/permissions/UserDataDetailsDeserializer.java"
           title="用户数据详情反序列化器"/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated/UserService.java" title="用户表服务"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/dto/UserDTO.java" title="用户信息传输对象"/>
 </trees>

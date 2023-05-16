@@ -4,12 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zzk.dao.UserPermissionsRelated.UserDataDao;
 import com.zzk.entity.permissions.UserDataDetails;
 import com.zzk.entity.po.UserPermissionsRelated.UserData;
+import com.zzk.utils.RedisSerializationUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * 用户信息服务实现类<br>
@@ -27,10 +29,13 @@ import java.util.Objects;
 public class UserDetailsServiceImpl implements UserDetailsService {
     // 用户数据访问对象
     private final UserDataDao userDataDao;
+    // redis 序列化工具
+    private final RedisSerializationUtils redisSerializationUtils;
 
-    // 构造器注入用户数据访问对象
-    public UserDetailsServiceImpl(UserDataDao userDataDao) {
+    // 构造器注入
+    public UserDetailsServiceImpl(UserDataDao userDataDao, RedisSerializationUtils redisSerializationUtils) {
         this.userDataDao = userDataDao;
+        this.redisSerializationUtils = redisSerializationUtils;
     }
 
     /**
@@ -49,11 +54,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (Objects.isNull(user)) {
             throw new UsernameNotFoundException("用户不存在");
         }
-
+        if (redisSerializationUtils.hasKey(user.getUuid())) {
+            redisSerializationUtils.deleteString(user.getUuid());
+        }
         // TODO 查询对应的权限信息
 
         // 封装用户信息
-
+        String uid = UUID.randomUUID().toString();
+        user.setUuid(uid);
+        userDataDao.updateById(user);
         return UserDataDetails.builder()
                 .user(user)
                 .roles("USER", "ADMIN")

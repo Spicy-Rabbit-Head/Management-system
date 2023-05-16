@@ -15,8 +15,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 /**
  * 登录服务实现类<br>
  * <p>
@@ -65,7 +63,8 @@ public class LoginServiceImpl implements LoginService {
         authenticate = authenticationManager.authenticate(authenticationToken);
         // 获取认证成功后的用户信息
         UserDataDetails principal = (UserDataDetails) authenticate.getPrincipal();
-        String uid = UUID.randomUUID().toString();
+        // 获取用户 UUID
+        String uid = principal.getUUID();
         // 生成 token
         String jwt = JwtUtils.generateToken(uid);
         // 将 token 存入 redis
@@ -86,7 +85,7 @@ public class LoginServiceImpl implements LoginService {
         UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         UserDataDetails principal = (UserDataDetails) authenticationToken.getPrincipal();
         // 删除 redis 中的 token
-        redisSerializationUtils.deleteString(principal.getUsername());
+        redisSerializationUtils.deleteString(principal.getUUID());
         return new R(1, "登出成功", true);
     }
 
@@ -104,7 +103,7 @@ public class LoginServiceImpl implements LoginService {
             return new R(2, "注册失败,用户已存在", false);
         } else {
             // 用户不存在，注册用户
-            if (!userService.userAddition(new UserData(null, user.getUsername(), passwordEncoder.encode(user.getPassword()))))
+            if (!userService.userAddition(new UserData(null, user.getUsername(), passwordEncoder.encode(user.getPassword()), null)))
                 return new R(2, "注册失败,注册异常", false);
             return new R(1, "注册成功", true);
         }

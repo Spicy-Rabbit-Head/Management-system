@@ -75,20 +75,29 @@ public class UserDataDetails implements UserDetails {
                 authorities.add(new UserSimpleGrantedAuthority(role.getAuthority()));
             }
         }
-
         return authorities;
     }
 
     // 获取密码
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return this.user.getPassword();
     }
 
     // 获取用户名
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return this.user.getUsername();
+    }
+
+    // 获取ID
+    public Integer getId() {
+        return this.user.getId();
+    }
+
+    // 获取通用唯一标识符
+    public String getUUID() {
+        return this.user.getUuid();
     }
 
     // 账户是否未过期
@@ -167,15 +176,10 @@ public class UserDataDetails implements UserDetails {
     public static final class UserDataBuilder {
 
         private UserData user;
-
         private List<UserSimpleGrantedAuthority> authorities;
-
         private boolean accountExpired;
-
         private boolean accountLocked;
-
         private boolean credentialsExpired;
-
         private boolean disabled;
 
         // 私有构造
