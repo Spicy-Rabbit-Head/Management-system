@@ -39,4 +39,15 @@ public interface UserDataDao extends BaseMapper<UserData> {
      * @since 1.0
      */
     int insertOrUpdateBatch(@Param("entities") List<UserData> entities);
+
+    /**
+     * 更新指定用户的UUID
+     *
+     * @param id   用户ID
+     * @param uuid UUID
+     * @return 影响行数
+     * @since 1.0
+     */
+    int updateUUID(@Param("id") Integer id, @Param("uuid") String uuid);
+
 }

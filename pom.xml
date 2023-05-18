@@ -38,6 +38,8 @@
         <mysql.version>8.0.32</mysql.version>
         <!-- 糊涂包 -->
         <hutool.version>5.8.14</hutool.version>
+        <!-- easy Excel -->
+        <easyexcel.version>3.3.1</easyexcel.version>
     </properties>
     <!-- 打包方式 -->
     <packaging>pom</packaging>
@@ -161,6 +163,12 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-jwt</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+            <!-- easy Excel -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
             </dependency>
 
             <!-- 模块依赖 -->

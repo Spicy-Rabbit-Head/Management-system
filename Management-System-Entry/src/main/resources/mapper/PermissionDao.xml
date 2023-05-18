@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzk.dao.UserPermissionsRelated.PermissionDao">
+
+    <select id="selectMenuPermissionsByUserId"
+            resultType="com.zzk.entity.po.UserPermissionsRelated.MenuPermission">
+        select mp.*
+        from user_data ud
+                 left join user_role_link url on ud.id = url.user_id
+                 left join role r on url.role_id = r.id
+                 left join role_menu_link rml on r.id = rml.role_id
+                 left join menu_permission mp on rml.menu_id = mp.id
+        where ud.id = #{userId};
+    </select>
+    <select id="selectOperationPermissionsByUserId"
+            resultType="com.zzk.entity.po.UserPermissionsRelated.OperationPermissions">
+        select op.*
+        from user_data ud
+                 left join user_role_link url on ud.id = url.user_id
+                 left join role r on url.role_id = r.id
+                 left join role_operation_link rol on r.id = rol.role_id
+                 left join operation_permissions op on rol.operation_id = op.id
+        where ud.id = #{userId};
+    </select>
+    <select id="selectRoleNameByUserId" resultType="java.lang.String">
+        select r.role_prefix
+        from user_data ud
+                 left join user_role_link url on ud.id = url.user_id
+                 left join role r on url.role_id = r.id
+        where ud.id = #{userId};
+    </select>
+    <select id="selectRoleIdByUserId" resultType="java.lang.Integer">
+
+    </select>
+</mapper>

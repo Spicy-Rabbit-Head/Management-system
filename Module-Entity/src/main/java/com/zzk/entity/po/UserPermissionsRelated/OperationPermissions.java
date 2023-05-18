@@ -34,6 +34,9 @@ public class OperationPermissions extends Model<OperationPermissions> {
     // 操作名
     @ApiModelProperty(value = "操作名", name = "operationName")
     private String operationName;
+    // 权限名
+    @ApiModelProperty(value = "权限名", name = "permissionName")
+    private String permissionName;
     // 方法
     @ApiModelProperty(value = "方法类型", name = "methodType")
     private String methodType;

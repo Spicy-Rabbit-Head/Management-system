@@ -71,6 +71,10 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-jwt</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+        </dependency>
         <!-- 安全模块 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

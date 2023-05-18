@@ -32,6 +32,9 @@ public class Role extends Model<Role> {
     @ApiModelProperty(value = "角色表主键", name = "id")
     private Integer id;
     // 角色名
+    @ApiModelProperty(value = "角色前缀", name = "rolePrefix")
+    private String rolePrefix;
+    // 名称
     @ApiModelProperty(value = "角色名", name = "roleName")
     private String roleName;
 

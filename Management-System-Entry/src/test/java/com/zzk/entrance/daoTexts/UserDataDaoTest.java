@@ -25,7 +25,7 @@ import java.util.List;
  */
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UserDataDaoText {
+public class UserDataDaoTest {
     // 用户表(UserData)表数据库访问层
     @Autowired
     public UserDataDao userDao;
@@ -42,7 +42,7 @@ public class UserDataDaoText {
     @Order(1)
     void insert() {
         System.out.println("----- 测试插入开始 ------");
-        int insert = userDao.insert(new UserData(null, "test", "test"));
+        int insert = userDao.insert(new UserData(null, "testInsert", "testInsert", null));
         System.out.println("影响:" + insert);
         System.out.println("----- 测试插入结束 ------");
     }
@@ -73,7 +73,7 @@ public class UserDataDaoText {
     @Order(3)
     void updateById() {
         System.out.println("----- 测试更新开始 ------");
-        UserData user = new UserData(id, "testUpdate", "testUpdate");
+        UserData user = new UserData(id, "testUpdate", "testUpdate", null);
         int i = userDao.updateById(user);
         System.out.println("影响:" + i);
         System.out.println("----- 测试更新结束 ------");

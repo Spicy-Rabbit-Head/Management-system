@@ -71,7 +71,7 @@
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/hutool" title="Hutool 工具类测试类"/>
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/hutool/JwtUtilsText.java" title="JWT测试类"
           extension="java"/>
-    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/UserDao.java" title="用户表持久层"
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/UserDataDao.java" title="用户表持久层"
           extension="java"/>
     <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/RoleDao.java" title="角色表持久层"
           extension="java"/>
@@ -120,4 +120,7 @@
           title="用户数据详情反序列化器"/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated/UserService.java" title="用户表服务"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/dto/UserDTO.java" title="用户信息传输对象"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/PermissionDao.java" title="权限封装持久层"
+          extension="" presentableText="" tooltipTitle="" icon="" textColor="" backgroundColor=""/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/permissions/Permission.java" title="权限信息实体"/>
 </trees>

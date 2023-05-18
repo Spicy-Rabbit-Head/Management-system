@@ -6,6 +6,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -94,6 +95,21 @@ public class RedisSerializationUtils {
         }
         return null;
     }
+
+    public <T> List<T> getStringList(String key, Class<T> clazz) {
+        try {
+            // 调用 StringRedisTemplate 的 get 方法，从 Redis 中获取 JSON 字符串
+            String json = stringRedisTemplate.opsForValue().get(key);
+            if (json != null) {
+                // 将 JSON 字符串转换为对象并返回
+                return objectMapper.readValue(json, objectMapper.getTypeFactory().constructCollectionType(List.class, clazz));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     /**
      * 查询 Redis 中是否存在指定的键

@@ -15,9 +15,9 @@ spring:
     # 数据库连接池
     druid:
       # 连接池初始大小
-      initial-size: 10
+      initial-size: 20
       # 连接池最大上限
-      max-active: 20
+      max-active: 50
       # 连接超时时间
       max-wait: 1500
 

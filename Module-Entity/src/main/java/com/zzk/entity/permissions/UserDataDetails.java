@@ -1,6 +1,7 @@
 package com.zzk.entity.permissions;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.zzk.entity.po.UserPermissionsRelated.OperationPermissions;
 import com.zzk.entity.po.UserPermissionsRelated.UserData;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.Assert;
@@ -198,10 +199,18 @@ public class UserDataDetails implements UserDetails {
         public UserDataBuilder roles(String... roles) {
             List<UserSimpleGrantedAuthority> authorities = new ArrayList<>(roles.length);
             for (String role : roles) {
-                authorities.add(new UserSimpleGrantedAuthority("ROLE_" + role));
+                authorities.add(new UserSimpleGrantedAuthority(role));
             }
             return authorities(authorities);
         }
+
+        // 角色信息建造
+        public UserDataBuilder roles(List<OperationPermissions> roles) {
+            List<UserSimpleGrantedAuthority> authorities = new ArrayList<>(roles.size());
+            roles.forEach(role -> authorities.add(new UserSimpleGrantedAuthority(role.getOperationName())));
+            return authorities(authorities);
+        }
+
 
         // 集合权限信息建造
         public UserDataBuilder authorities(Collection<? extends UserSimpleGrantedAuthority> authorities) {

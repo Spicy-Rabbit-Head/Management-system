@@ -8,14 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/Text")
 public class TextController {
+    // 测试
     @GetMapping("/getUser")
-    @PreAuthorize("hasAuthority('ROLE_USER')")
+    @PreAuthorize("hasAuthority('USER:EXPENSE:FILLIN')")
     public String text1() {
         return "on";
     }
 
+    // 测试
     @GetMapping("/getSys")
-    @PreAuthorize("hasAuthority('ROLE_SYS')")
+    @PreAuthorize("hasAnyAuthority('user:expense:fillIn','ROLE_SYS')")
     public String text2() {
         return "off";
     }

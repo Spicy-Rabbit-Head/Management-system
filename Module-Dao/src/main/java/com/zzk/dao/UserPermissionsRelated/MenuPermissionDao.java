@@ -3,6 +3,7 @@ package com.zzk.dao.UserPermissionsRelated;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zzk.entity.po.UserPermissionsRelated.MenuPermission;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
  * @version 1.0
  * @since 2023-03-06 19:01
  */
+@Repository
 public interface MenuPermissionDao extends BaseMapper<MenuPermission> {
 
     /**
