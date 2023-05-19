@@ -7,17 +7,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/Text")
+@PreAuthorize("hasRole('ROLE_USER')")
 public class TextController {
+
     // 测试
     @GetMapping("/getUser")
-    @PreAuthorize("hasAuthority('USER:EXPENSE:FILLIN')")
+    @PreAuthorize("hasAnyAuthority('SCHEDULING:SELECT')")
     public String text1() {
         return "on";
     }
 
     // 测试
     @GetMapping("/getSys")
-    @PreAuthorize("hasAnyAuthority('user:expense:fillIn','ROLE_SYS')")
+    @PreAuthorize("hasAnyAuthority('EXPENSE:UPDATE')")
     public String text2() {
         return "off";
     }

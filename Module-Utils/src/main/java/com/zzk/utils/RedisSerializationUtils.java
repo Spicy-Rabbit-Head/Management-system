@@ -96,6 +96,14 @@ public class RedisSerializationUtils {
         return null;
     }
 
+    /**
+     * 从 Redis 中获取 JSON 字符串并反序列化为List集合
+     *
+     * @param key   键
+     * @param clazz 值的类型（Class 对象）
+     * @param <T>   泛型
+     * @return 反序列化后的对象，如果不存在则返回 null
+     */
     public <T> List<T> getStringList(String key, Class<T> clazz) {
         try {
             // 调用 StringRedisTemplate 的 get 方法，从 Redis 中获取 JSON 字符串
@@ -119,6 +127,9 @@ public class RedisSerializationUtils {
      * @since 1.0
      */
     public Boolean hasKey(String key) {
+        if (key == null) {
+            return false;
+        }
         // 调用 StringRedisTemplate 的 hasKey 方法，查询 Redis 中是否存在指定的键
         return stringRedisTemplate.hasKey(key);
     }

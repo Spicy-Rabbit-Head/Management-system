@@ -196,18 +196,20 @@ public class UserDataDetails implements UserDetails {
         }
 
         // 角色信息建造
-        public UserDataBuilder roles(String... roles) {
-            List<UserSimpleGrantedAuthority> authorities = new ArrayList<>(roles.length);
-            for (String role : roles) {
-                authorities.add(new UserSimpleGrantedAuthority(role));
+        public UserDataBuilder roles(String role, String... roles) {
+            List<UserSimpleGrantedAuthority> authorities = new ArrayList<>(roles.length + 1);
+            for (String authority : roles) {
+                authorities.add(new UserSimpleGrantedAuthority(authority));
             }
+            authorities.add(new UserSimpleGrantedAuthority("ROLE_" + role));
             return authorities(authorities);
         }
 
         // 角色信息建造
-        public UserDataBuilder roles(List<OperationPermissions> roles) {
-            List<UserSimpleGrantedAuthority> authorities = new ArrayList<>(roles.size());
-            roles.forEach(role -> authorities.add(new UserSimpleGrantedAuthority(role.getOperationName())));
+        public UserDataBuilder roles(String role, List<OperationPermissions> roles) {
+            List<UserSimpleGrantedAuthority> authorities = new ArrayList<>(roles.size() + 1);
+            roles.forEach(authority -> authorities.add(new UserSimpleGrantedAuthority(authority.getOperationName())));
+            authorities.add(new UserSimpleGrantedAuthority("ROLE_" + role));
             return authorities(authorities);
         }
 

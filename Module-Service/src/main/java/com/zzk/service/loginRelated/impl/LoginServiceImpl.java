@@ -82,8 +82,9 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public R logout() {
         // 获取当前用户信息
-        UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+        Authentication authenticationToken = SecurityContextHolder.getContext().getAuthentication();
         UserDataDetails principal = (UserDataDetails) authenticationToken.getPrincipal();
+
         // 删除 redis 中的 token
         redisSerializationUtils.deleteString(principal.getUUID());
         return new R(1, "登出成功", true);

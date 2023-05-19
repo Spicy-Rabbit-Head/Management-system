@@ -1,6 +1,9 @@
 package com.zzk.filter;
 
 import com.zzk.entity.permissions.UserDataDetails;
+import com.zzk.exception.TokenAuthenticationException;
+import com.zzk.exception.TokenInvalidationException;
+import com.zzk.exception.UserRepeatLoginException;
 import com.zzk.exceptionhandler.PermissionExceptionHandler;
 import com.zzk.utils.JwtUtils;
 import com.zzk.utils.RedisSerializationUtils;
@@ -16,7 +19,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.rmi.server.ExportException;
 import java.util.Objects;
 
 /**
@@ -58,16 +60,16 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             try {
                 assert secretKey != null;
             } catch (Exception e) {
-                throw new ExportException("token 异常");
+                throw new TokenAuthenticationException("token 验证异常");
             }
             if (Objects.equals(request.getServletPath(), "/loginRelated/login")) {
                 if (redisSerializationUtils.hasKey(secretKey)) {
-                    throw new ExportException("重复登录");
+                    throw new UserRepeatLoginException("重复登录");
                 }
             }
             userDetail = redisSerializationUtils.getString(secretKey, UserDataDetails.class);
             if (userDetail == null) {
-                throw new ExportException("token 已失效");
+                throw new TokenInvalidationException("token 已失效");
             }
         } catch (Exception e) {
             PermissionExceptionHandler.handleFilterAuthenticationException(request, response, e);

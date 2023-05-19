@@ -71,21 +71,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         var str = user.getUsername();
         // 如果 redis 中没有用户的权限信息，查询数据库并存入 redis
         if (!redisSerializationUtils.hasKey(str + USER_MENU)) {
-            redisSerializationUtils.setString(str + USER_OPERATION, permissionDao.selectMenuPermissionsByUserId(user.getId()));
+            redisSerializationUtils.setString(str + USER_MENU, permissionDao.selectMenuPermissionsByUserId(user.getId()));
         }
         if (!redisSerializationUtils.hasKey(str + USER_OPERATION)) {
             List<OperationPermissions> operationPermissions = permissionDao.selectOperationPermissionsByUserId(user.getId());
-            String role = permissionDao.selectRoleNameByUserId(user.getId());
-            operationPermissions.forEach(operation -> operation.setOperationName(role + operation.getOperationName()));
+            // operationPermissions.forEach(operation -> operation.setOperationName(role + operation.getOperationName()));
             redisSerializationUtils.setString(str + USER_OPERATION, operationPermissions);
         }
+        String role = permissionDao.selectRoleNameByUserId(user.getId());
         // 封装用户信息
         String uid = UUID.randomUUID().toString();
         user.setUuid(uid);
         userDataDao.updateUUID(user.getId(), uid);
         return UserDataDetails.builder()
                 .user(user)
-                .roles(redisSerializationUtils.getStringList(str + USER_OPERATION, OperationPermissions.class))
+                .roles(role, redisSerializationUtils.getStringList(str + USER_OPERATION, OperationPermissions.class))
                 .build();
     }
 }

@@ -123,4 +123,10 @@
     <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/PermissionDao.java" title="权限封装持久层"
           extension="" presentableText="" tooltipTitle="" icon="" textColor="" backgroundColor=""/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/permissions/Permission.java" title="权限信息实体"/>
+    <tree path="/Module-Exception/src/main/java/com/zzk/exception/TokenAuthenticationException.java"
+          title="Token 验证异常类"/>
+    <tree path="/Module-Exception/src/main/java/com/zzk/exception/TokenInvalidationException.java"
+          title="Token 失效异常类"/>
+    <tree path="/Module-Exception/src/main/java/com/zzk/exception/UserRepeatLoginException.java"
+          title="用户重复登录异常类"/>
 </trees>

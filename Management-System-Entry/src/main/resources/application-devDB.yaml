@@ -8,6 +8,7 @@ spring:
     username: root
     # 密码
     password: 119246
+    #    password: 666666
     # 数据库驱动
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 指定数据源类型
@@ -15,9 +16,9 @@ spring:
     # 数据库连接池
     druid:
       # 连接池初始大小
-      initial-size: 20
+      initial-size: 30
       # 连接池最大上限
-      max-active: 50
+      max-active: 60
       # 连接超时时间
       max-wait: 1500
 

@@ -1,8 +1,6 @@
 package com.zzk.config;
 
-import com.zzk.exceptionhandler.PermissionExceptionHandler;
 import com.zzk.filter.JwtAuthenticationTokenFilter;
-import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -36,6 +36,19 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
+    // 注入 JwtAuthenticationTokenFilter 过滤器
+    private final JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+    // 注入 AuthenticationEntryPoint 身份认证异常处理器
+    private final AuthenticationEntryPoint authenticationEntryPoint;
+    // 注入 AccessDeniedHandler 授权认证异常处理器
+    private final AccessDeniedHandler accessDeniedHandler;
+
+    public SecurityConfig(com.zzk.filter.JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter, AuthenticationEntryPoint authenticationEntryPoint, AccessDeniedHandler accessDeniedHandler) {
+        this.jwtAuthenticationTokenFilter = jwtAuthenticationTokenFilter;
+        this.authenticationEntryPoint = authenticationEntryPoint;
+        this.accessDeniedHandler = accessDeniedHandler;
+    }
+
     /**
      * 密码加密器
      *
@@ -60,9 +73,6 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-    // 注入 JwtAuthenticationTokenFilter 过滤器
-    @Resource
-    private JwtAuthenticationTokenFilter JwtAuthenticationTokenFilter;
 
     /**
      * 安全过滤器链
@@ -85,7 +95,9 @@ public class SecurityConfig {
                 // 异常处理
                 .exceptionHandling()
                 // 身份认证异常处理
-                .authenticationEntryPoint(PermissionExceptionHandler::handleFilterAuthenticationException)
+                .authenticationEntryPoint(authenticationEntryPoint)
+                // 授权认证异常处理
+                .accessDeniedHandler(accessDeniedHandler)
                 .and()
                 // 关闭session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -94,7 +106,7 @@ public class SecurityConfig {
                 .cors().configurationSource(this.corsConfigurationSource()).and()
                 .csrf().disable()
                 // 添加过滤器
-                .addFilterBefore(JwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 // .addFilterBefore(JwtAuthenticationTokenFilter, CorsFilter.class)
                 .build();
     }
