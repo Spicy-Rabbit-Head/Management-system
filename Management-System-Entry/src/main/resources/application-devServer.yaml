@@ -8,7 +8,6 @@ server:
       charset: UTF-8
       enabled: true
       force: true
-
 # 日志配置
 #logging:
 #  file:

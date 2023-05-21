@@ -1,5 +1,7 @@
 package com.zzk.exception;
 
+import lombok.Getter;
+
 /**
  * Token 验证异常类<br>
  * <p>
@@ -11,6 +13,7 @@ package com.zzk.exception;
  * @version 1.0
  * @since 2023-05-18 21:28
  */
+@Getter
 public class TokenAuthenticationException extends RuntimeException {
     public TokenAuthenticationException(String message) {
         super(message);

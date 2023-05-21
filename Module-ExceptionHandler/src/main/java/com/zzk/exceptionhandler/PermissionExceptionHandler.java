@@ -2,6 +2,8 @@ package com.zzk.exceptionhandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zzk.entity.response.R;
+import com.zzk.exception.TokenAuthenticationException;
+import com.zzk.exception.TokenInvalidationException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jetbrains.annotations.NotNull;
@@ -51,9 +53,15 @@ public class PermissionExceptionHandler {
     public static void handleFilterAuthenticationException(HttpServletRequest httpServletRequest, @NotNull HttpServletResponse httpServletResponse, Exception e) throws IOException {
         System.out.println("Token异常类:" + e.getClass());
         System.out.println("Token异常信息:" + e.getMessage());
-        httpServletResponse.setContentType("application/json");
         ObjectMapper objectMapper = new ObjectMapper();
-        httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(401, "Token验证流程异常", false, e.getMessage())));
+        httpServletResponse.setContentType("application/json");
+        if (e instanceof TokenAuthenticationException) {
+            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(100000, e.getMessage(), false, "Token验证流程异常")));
+        } else if (e instanceof TokenInvalidationException) {
+            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(100001, e.getMessage(), false, "Token验证流程异常")));
+        } else {
+            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(100002, e.getMessage(), false, "Token验证流程异常")));
+        }
     }
 
     /**

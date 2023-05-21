@@ -26,6 +26,14 @@ public interface LoginService {
     R login(UserDTO user);
 
     /**
+     * 验证登录
+     *
+     * @return R 验证登录结果
+     * @since 1.0
+     */
+    R isLogin();
+
+    /**
      * 登出
      *
      * @return R 登出结果
@@ -50,5 +58,4 @@ public interface LoginService {
      * @since 1.0
      */
     R resetPassword(String username);
-
 }

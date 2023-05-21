@@ -57,7 +57,7 @@ public class LoginServiceImpl implements LoginService {
     public R login(UserDTO user) {
         Authentication authenticate;
         // 封装用户信息
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken = UsernamePasswordAuthenticationToken.unauthenticated(user.getUsername(), user.getPassword());
         // 调用认证管理器的认证方法
         // 认证失败抛出 AuthenticationException 身份认证异常
         authenticate = authenticationManager.authenticate(authenticationToken);
@@ -74,6 +74,23 @@ public class LoginServiceImpl implements LoginService {
     }
 
     /**
+     * 判断是否登录
+     *
+     * @return R 是否登录
+     * @since 1.0
+     */
+    @Override
+    public R isLogin() {
+        Object principal;
+        // 获取当前用户信息
+        Authentication authenticationToken = SecurityContextHolder.getContext().getAuthentication();
+        principal = authenticationToken.getPrincipal();
+        if (principal.equals("anonymousUser"))
+            return new R(2, "未登录", false);
+        return new R(1, "已登录", true);
+    }
+
+    /**
      * 登出
      *
      * @return R 登出结果
@@ -84,7 +101,6 @@ public class LoginServiceImpl implements LoginService {
         // 获取当前用户信息
         Authentication authenticationToken = SecurityContextHolder.getContext().getAuthentication();
         UserDataDetails principal = (UserDataDetails) authenticationToken.getPrincipal();
-
         // 删除 redis 中的 token
         redisSerializationUtils.deleteString(principal.getUUID());
         return new R(1, "登出成功", true);

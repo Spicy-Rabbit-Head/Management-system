@@ -43,5 +43,5 @@ spring:
           # 最小闲置
           min-idle: 0
           # 连接超时时间
-          max-wait: 1000ms
+          max-wait: 1500ms
 

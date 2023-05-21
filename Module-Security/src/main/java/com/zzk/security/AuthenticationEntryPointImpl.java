@@ -36,6 +36,6 @@ public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
         System.out.println("认证异常类: " + authException.getClass());
         System.out.println("认证异常信息: " + authException.getMessage());
         response.setContentType("application/json");
-        response.getWriter().write(objectMapper.writeValueAsString(new R(402, "认证验证流程异常", false, authException.getMessage())));
+        response.getWriter().write(objectMapper.writeValueAsString(new R(402, authException.getMessage(), false, "认证验证流程异常")));
     }
 }
