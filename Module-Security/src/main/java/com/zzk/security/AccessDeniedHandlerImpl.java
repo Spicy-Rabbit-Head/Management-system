@@ -34,6 +34,6 @@ public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
         System.out.println("授权异常类: " + accessDeniedException.getClass());
         System.out.println("授权异常信息: " + accessDeniedException.getMessage());
         response.setContentType("application/json");
-        response.getWriter().write(objectMapper.writeValueAsString(new R(401, "授权验证流程异常", false, accessDeniedException.getMessage())));
+        response.getWriter().write(objectMapper.writeValueAsString(new R(401, accessDeniedException.getMessage(), false, "授权验证流程异常")));
     }
 }

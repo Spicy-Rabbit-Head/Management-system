@@ -53,7 +53,7 @@ public class PermissionExceptionHandler {
         System.out.println("Token异常信息:" + e.getMessage());
         httpServletResponse.setContentType("application/json");
         ObjectMapper objectMapper = new ObjectMapper();
-        httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(401, "Token验证流程异常", false, e.getMessage())));
+        httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(401, e.getMessage(), false, "Token验证流程异常")));
     }
 
     /**

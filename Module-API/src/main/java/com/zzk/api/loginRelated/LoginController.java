@@ -30,7 +30,7 @@ public class LoginController {
     /**
      * 登录接口
      *
-     * @return 登录结果
+     * @return R 登录结果
      * @since 1.0
      */
     @PostMapping("/login")
@@ -39,9 +39,20 @@ public class LoginController {
     }
 
     /**
+     * 验证登录
+     *
+     * @return R 验证登录结果
+     * @since 1.0
+     */
+    @GetMapping("/isLogin")
+    public R isLogin() {
+        return loginService.isLogin();
+    }
+
+    /**
      * 登出接口
      *
-     * @return 登出结果
+     * @return R 登出结果
      * @since 1.0
      */
     @GetMapping("/logout")
@@ -52,7 +63,7 @@ public class LoginController {
     /**
      * 注册接口
      *
-     * @return 注册结果
+     * @return R 注册结果
      * @since 1.0
      */
     @PostMapping("/register")
