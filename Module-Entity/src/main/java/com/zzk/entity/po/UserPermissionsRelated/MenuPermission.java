@@ -24,7 +24,7 @@ import java.io.Serializable;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("menu_permission")
+@TableName("menu_permissions")
 @ApiModel(description = "菜单权限表", value = "MenuPermission")
 public class MenuPermission extends Model<MenuPermission> {
     // 菜单权限表主键

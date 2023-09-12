@@ -18,7 +18,7 @@ spring:
       # 连接池初始大小
       initial-size: 30
       # 连接池最大上限
-      max-active: 60
+      max-active: 100
       # 连接超时时间
       max-wait: 1500
 

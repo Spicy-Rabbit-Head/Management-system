@@ -24,7 +24,6 @@ import java.io.Serializable;
  * @version 1.0
  * @since 2023-03-03 11:27
  */
-
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
