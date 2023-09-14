@@ -28,7 +28,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("user_data")
+@TableName("user_management.user_data")
 @ApiModel(description = "用户表", value = "User")
 public class UserData extends Model<UserData> {
     public UserData(String username) {
