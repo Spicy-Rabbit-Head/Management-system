@@ -96,6 +96,11 @@ public class UserDataDetails implements UserDetails {
         return this.user.getId();
     }
 
+    // 获取邮箱
+    public String getEmail() {
+        return this.user.getEmail();
+    }
+
     // 获取通用唯一标识符
     public String getUUID() {
         return this.user.getUuid();

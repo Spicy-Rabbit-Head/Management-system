@@ -30,7 +30,7 @@ spring:
       # redis 端口
       port: 12502
       # 密码
-      password: 666666
+      password: 1192469846
       # 默认选择库
       database: 0
       # 使用lettuce整合

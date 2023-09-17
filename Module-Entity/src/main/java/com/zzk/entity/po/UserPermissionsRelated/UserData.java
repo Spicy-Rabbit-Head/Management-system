@@ -45,6 +45,9 @@ public class UserData extends Model<UserData> {
     // 密码
     @ApiModelProperty(value = "密码", name = "password")
     private String password;
+    // 邮箱
+    @ApiModelProperty(value = "邮箱", name = "email")
+    private String email;
     // 通用唯一标识符
     @ApiModelProperty(value = "通用唯一标识符", name = "uuid")
     private String uuid;

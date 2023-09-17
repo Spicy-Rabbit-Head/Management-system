@@ -28,7 +28,7 @@ public class UserDataDetailsDeserializer extends JsonDeserializer<UserDetails> {
         // 解析Json
         JsonNode jsonNode = jsonParser.getCodec().readTree(jsonParser);
         // 构建用户信息
-        UserData user = new UserData(jsonNode.get("id").asInt(), jsonNode.get("username").asText(), jsonNode.get("password").asText(), jsonNode.get("uuid").asText());
+        UserData user = new UserData(jsonNode.get("id").asInt(), jsonNode.get("username").asText(), jsonNode.get("password").asText(), jsonNode.get("email").asText(), jsonNode.get("uuid").asText());
         // 获取权限信息
         JsonNode authorities = jsonNode.get("authorities");
         // 构建权限集合

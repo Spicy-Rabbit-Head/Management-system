@@ -42,7 +42,7 @@ public class UserDataDaoTest {
     @Order(1)
     void insert() {
         System.out.println("----- 测试插入开始 ------");
-        int insert = userDao.insert(new UserData(null, "testInsert", "testInsert", null));
+        int insert = userDao.insert(new UserData(null, "testInsert", "testInsert", null, null));
         System.out.println("影响:" + insert);
         System.out.println("----- 测试插入结束 ------");
     }
@@ -73,7 +73,7 @@ public class UserDataDaoTest {
     @Order(3)
     void updateById() {
         System.out.println("----- 测试更新开始 ------");
-        UserData user = new UserData(id, "testUpdate", "testUpdate", null);
+        UserData user = new UserData(id, "testUpdate", "testUpdate", null, null);
         int i = userDao.updateById(user);
         System.out.println("影响:" + i);
         System.out.println("----- 测试更新结束 ------");

@@ -120,7 +120,7 @@ public class LoginServiceImpl implements LoginService {
             return new R(2, "注册失败,用户已存在", false);
         } else {
             // 用户不存在，注册用户
-            if (!userService.userAddition(new UserData(null, user.getUsername(), passwordEncoder.encode(user.getPassword()), null)))
+            if (!userService.userAddition(new UserData(null, user.getUsername(), passwordEncoder.encode(user.getPassword()), null, null)))
                 return new R(2, "注册失败,注册异常", false);
             return new R(1, "注册成功", true);
         }

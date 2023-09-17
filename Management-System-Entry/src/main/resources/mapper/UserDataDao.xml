@@ -10,24 +10,24 @@
     </resultMap>
     <!-- 批量插入 -->
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into management.user_data(username, password, uuid)
+        insert into user_management.user_data(username, password,email, uuid)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.username}, #{entity.password}, #{entity.uuid})
+            (#{entity.username}, #{entity.password},#{entity.email}, #{entity.uuid})
         </foreach>
     </insert>
     <!-- 批量插入或按主键更新 -->
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into management.user_data(username, password, uuid)
+        insert into user_management.user_data(username, password,email, uuid)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.username}, #{entity.password}, #{entity.uuid})
+            (#{entity.username}, #{entity.password},#{entity.email}, #{entity.uuid})
         </foreach>
         on duplicate key update
         username = values(username) , password = values(password) , uuid = values(uuid)
     </insert>
     <update id="updateUUID">
-        update management.user_data
+        update user_management.user_data
         set uuid = #{uuid}
         where id = #{id}
     </update>
