@@ -137,4 +137,16 @@ public class LoginServiceImpl implements LoginService {
     public R resetPassword(String username) {
         return null;
     }
+
+    /**
+     * 获取用户权限
+     *
+     * @return R 用户权限
+     * @since 1.0
+     */
+    @Override
+    public R getAuthority() {
+        
+        return null;
+    }
 }

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
@@ -29,6 +30,11 @@ public class UserDataDaoTest {
     // 用户表(UserData)表数据库访问层
     @Autowired
     public UserDataDao userDao;
+
+    // 密码编码器
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     // 测试用户id
     private static Integer id;
 
@@ -42,7 +48,7 @@ public class UserDataDaoTest {
     @Order(1)
     void insert() {
         System.out.println("----- 测试插入开始 ------");
-        int insert = userDao.insert(new UserData(null, "testInsert", "testInsert", null, null));
+        int insert = userDao.insert(new UserData(null, "test1", passwordEncoder.encode("123123"), null, null));
         System.out.println("影响:" + insert);
         System.out.println("----- 测试插入结束 ------");
     }
@@ -73,7 +79,10 @@ public class UserDataDaoTest {
     @Order(3)
     void updateById() {
         System.out.println("----- 测试更新开始 ------");
-        UserData user = new UserData(id, "testUpdate", "testUpdate", null, null);
+        if (id == null) {
+            getList();
+        }
+        UserData user = new UserData(id, "test1", passwordEncoder.encode("123456"), null, null);
         int i = userDao.updateById(user);
         System.out.println("影响:" + i);
         System.out.println("----- 测试更新结束 ------");
@@ -89,6 +98,9 @@ public class UserDataDaoTest {
     @Order(4)
     void getById() {
         System.out.println("----- 测试查询单个开始 ------");
+        if (id == null) {
+            getList();
+        }
         UserData user = userDao.selectById(id);
         System.out.println(user);
         System.out.println("----- 测试查询单个结束 ------");
@@ -104,6 +116,9 @@ public class UserDataDaoTest {
     @Order(5)
     void deleteById() {
         System.out.println("----- 测试删除开始 ------");
+        if (id == null) {
+            getList();
+        }
         int i = userDao.deleteById(id);
         System.out.println("影响:" + i);
         System.out.println("----- 测试删除结束 ------");
