@@ -80,11 +80,12 @@
     <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/OperationPermissionsDao.java"
           title="操作权限表持久层" extension="java"/>
     <tree path="/Module-API/src/main/java/com/zzk/api/user" title=""/>
-    <tree path="/Module-API/src/main/java/com/zzk/api/loginRelated" title="登录注册相关" extension="" presentableText=""
+    <tree path="/Module-API/src/main/java/com/zzk/api/userManagement" title="用户管理" extension=""
+          presentableText=""
           tooltipTitle="" icon="" textColor="" backgroundColor=""/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/loginRelated" title="登录相关"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/response/R.java" title="响应对象" extension="java"/>
-    <tree path="/Module-Service/src/main/java/com/zzk/service/loginRelated/LoginService.java" title="登录服务"
+    <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated/LoginService.java" title="登录服务"
           extension="java"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/record" title="数据记录对象"/>
     <tree path="/Module-Filter" title="过滤器"/>
@@ -129,4 +130,5 @@
           title="Token 失效异常类"/>
     <tree path="/Module-Exception/src/main/java/com/zzk/exception/UserRepeatLoginException.java"
           title="用户重复登录异常类"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated/PermissionsService.java" title="权限服务"/>
 </trees>

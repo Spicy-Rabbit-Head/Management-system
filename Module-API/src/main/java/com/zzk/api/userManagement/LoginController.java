@@ -1,8 +1,8 @@
-package com.zzk.api.loginRelated;
+package com.zzk.api.userManagement;
 
 import com.zzk.entity.dto.UserDTO;
 import com.zzk.entity.response.R;
-import com.zzk.service.loginRelated.LoginService;
+import com.zzk.service.userRelated.LoginService;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * 1.0版本：登录相关接口构建<br>
  * <p>
  *
- * @author zhaozikui
+ * @author zhao'zi'kui
  * @version 1.0
  * @since 2023-03-27 15:18
  */

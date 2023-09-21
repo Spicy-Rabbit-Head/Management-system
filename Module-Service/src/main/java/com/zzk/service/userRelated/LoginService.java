@@ -1,4 +1,4 @@
-package com.zzk.service.loginRelated;
+package com.zzk.service.userRelated;
 
 import com.zzk.entity.dto.UserDTO;
 import com.zzk.entity.response.R;
@@ -58,12 +58,4 @@ public interface LoginService {
      * @since 1.0
      */
     R resetPassword(String username);
-
-    /**
-     * 获取用户权限
-     *
-     * @return R 用户权限
-     * @since 1.0
-     */
-    R getAuthority();
 }

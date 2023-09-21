@@ -1,10 +1,10 @@
-package com.zzk.service.loginRelated.impl;
+package com.zzk.service.userRelated.impl;
 
 import com.zzk.entity.dto.UserDTO;
 import com.zzk.entity.permissions.UserDataDetails;
 import com.zzk.entity.po.UserPermissionsRelated.UserData;
 import com.zzk.entity.response.R;
-import com.zzk.service.loginRelated.LoginService;
+import com.zzk.service.userRelated.LoginService;
 import com.zzk.service.userRelated.UserService;
 import com.zzk.utils.JwtUtils;
 import com.zzk.utils.RedisSerializationUtils;
@@ -135,18 +135,6 @@ public class LoginServiceImpl implements LoginService {
      */
     @Override
     public R resetPassword(String username) {
-        return null;
-    }
-
-    /**
-     * 获取用户权限
-     *
-     * @return R 用户权限
-     * @since 1.0
-     */
-    @Override
-    public R getAuthority() {
-        
         return null;
     }
 }

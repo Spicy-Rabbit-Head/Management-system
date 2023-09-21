@@ -35,14 +35,14 @@ public class MenuPermission extends Model<MenuPermission> {
     @ApiModelProperty(value = "菜单名", name = "menuName")
     private String menuName;
     // 父菜单名
-    @ApiModelProperty(value = "父菜单名", name = "parentMenuName")
-    private String parentMenuName;
+    @ApiModelProperty(value = "父菜单ID", name = "parent_id")
+    private Integer parentId;
     // 地址
     @ApiModelProperty(value = "地址", name = "url")
     private String url;
     // 标识
-    @ApiModelProperty(value = "标识", name = "pid")
-    private Integer pid;
+    @ApiModelProperty(value = "菜单标识", name = "menu_desc")
+    private String menuDesc;
 
     /**
      * 获取主键值
