@@ -28,6 +28,5 @@ public class PermissionsServiceImpl implements PermissionsService {
         UserDataDetails principal = (UserDataDetails) authenticationToken.getPrincipal();
         // 查询 Redis 中的用户菜单
         return new R(233, "ok", true, redisSerializationUtils.getStringList(principal.getUsername() + USER_MENU, MenuPermission.class));
-
     }
 }
