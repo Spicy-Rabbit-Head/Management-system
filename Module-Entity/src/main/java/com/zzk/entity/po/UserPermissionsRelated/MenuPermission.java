@@ -34,14 +34,17 @@ public class MenuPermission extends Model<MenuPermission> {
     // 菜单名
     @ApiModelProperty(value = "菜单名", name = "menuName")
     private String menuName;
-    // 父菜单名
-    @ApiModelProperty(value = "父菜单ID", name = "parent_id")
+    // 父菜单标识
+    @ApiModelProperty(value = "父菜单标识", name = "parent_id")
     private Integer parentId;
     // 地址
     @ApiModelProperty(value = "地址", name = "url")
     private String url;
-    // 标识
-    @ApiModelProperty(value = "菜单标识", name = "menu_desc")
+    // 图标
+    @ApiModelProperty(value = "图标", name = "icon")
+    private String icon;
+    // 菜单描述
+    @ApiModelProperty(value = "菜单描述", name = "menu_desc")
     private String menuDesc;
 
     /**
