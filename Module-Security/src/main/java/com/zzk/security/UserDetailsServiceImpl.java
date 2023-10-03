@@ -4,8 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zzk.dao.UserPermissionsRelated.PermissionDao;
 import com.zzk.dao.UserPermissionsRelated.UserDataDao;
 import com.zzk.entity.permissions.UserDataDetails;
-import com.zzk.entity.po.UserPermissionsRelated.OperationPermissions;
-import com.zzk.entity.po.UserPermissionsRelated.UserData;
+import com.zzk.entity.po.userPermissionsRelated.MenuPermission;
+import com.zzk.entity.po.userPermissionsRelated.OperationPermissions;
+import com.zzk.entity.po.userPermissionsRelated.UserData;
 import com.zzk.utils.RedisSerializationUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -71,7 +72,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         var str = user.getUsername();
         // 如果 redis 中没有用户的权限信息，查询数据库并存入 redis
         if (!redisSerializationUtils.hasKey(str + USER_MENU)) {
-            redisSerializationUtils.setString(str + USER_MENU, permissionDao.selectMenuPermissionsByUserId(user.getId()));
+            List<MenuPermission> menuPermissions = permissionDao.selectMenuPermissionsByUserId(user.getId());
+            redisSerializationUtils.setString(str + USER_MENU, menuPermissions);
         }
         if (!redisSerializationUtils.hasKey(str + USER_OPERATION)) {
             List<OperationPermissions> operationPermissions = permissionDao.selectOperationPermissionsByUserId(user.getId());

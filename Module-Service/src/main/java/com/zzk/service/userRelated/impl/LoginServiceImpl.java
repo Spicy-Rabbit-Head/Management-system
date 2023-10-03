@@ -2,7 +2,7 @@ package com.zzk.service.userRelated.impl;
 
 import com.zzk.entity.dto.UserDTO;
 import com.zzk.entity.permissions.UserDataDetails;
-import com.zzk.entity.po.UserPermissionsRelated.UserData;
+import com.zzk.entity.po.userPermissionsRelated.UserData;
 import com.zzk.entity.response.R;
 import com.zzk.service.userRelated.LoginService;
 import com.zzk.service.userRelated.UserService;

@@ -1,7 +1,7 @@
 package com.zzk.dao.UserPermissionsRelated;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zzk.entity.po.UserPermissionsRelated.OperationPermissions;
+import com.zzk.entity.po.userPermissionsRelated.OperationPermissions;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

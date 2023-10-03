@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.zzk.entity.po.UserPermissionsRelated.UserData;
+import com.zzk.entity.po.userPermissionsRelated.UserData;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.IOException;

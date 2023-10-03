@@ -1,8 +1,8 @@
 package com.zzk.entity.permissions;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.zzk.entity.po.UserPermissionsRelated.OperationPermissions;
-import com.zzk.entity.po.UserPermissionsRelated.UserData;
+import com.zzk.entity.po.userPermissionsRelated.OperationPermissions;
+import com.zzk.entity.po.userPermissionsRelated.UserData;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.Assert;
 

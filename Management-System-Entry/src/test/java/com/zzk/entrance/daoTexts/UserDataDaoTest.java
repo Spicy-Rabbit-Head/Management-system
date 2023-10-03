@@ -1,7 +1,7 @@
 package com.zzk.entrance.daoTexts;
 
 import com.zzk.dao.UserPermissionsRelated.UserDataDao;
-import com.zzk.entity.po.UserPermissionsRelated.UserData;
+import com.zzk.entity.po.userPermissionsRelated.UserData;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

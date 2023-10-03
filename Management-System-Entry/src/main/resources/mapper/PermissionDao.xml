@@ -3,7 +3,7 @@
 <mapper namespace="com.zzk.dao.UserPermissionsRelated.PermissionDao">
 
     <select id="selectMenuPermissionsByUserId"
-            resultType="com.zzk.entity.po.UserPermissionsRelated.MenuPermission">
+            resultType="com.zzk.entity.po.userPermissionsRelated.MenuPermission">
         select mp.*
         from user_management.user_data ud
                  inner join user_management.user_role_link url on ud.id = url.user_id
@@ -13,7 +13,7 @@
         where ud.id = #{userId};
     </select>
     <select id="selectOperationPermissionsByUserId"
-            resultType="com.zzk.entity.po.UserPermissionsRelated.OperationPermissions">
+            resultType="com.zzk.entity.po.userPermissionsRelated.OperationPermissions">
         select op.*
         from user_management.user_data ud
                  inner join user_management.user_role_link url on ud.id = url.user_id

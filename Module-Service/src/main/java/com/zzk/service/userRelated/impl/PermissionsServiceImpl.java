@@ -1,14 +1,17 @@
 package com.zzk.service.userRelated.impl;
 
-import com.zzk.dao.UserPermissionsRelated.MenuPermissionDao;
 import com.zzk.entity.permissions.UserDataDetails;
-import com.zzk.entity.po.UserPermissionsRelated.MenuPermission;
+import com.zzk.entity.po.userPermissionsRelated.MenuPermission;
 import com.zzk.entity.response.R;
+import com.zzk.entity.vo.MenuGroupVO;
 import com.zzk.service.userRelated.PermissionsService;
+import com.zzk.utils.PermissionStructureUtils;
 import com.zzk.utils.RedisSerializationUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PermissionsServiceImpl implements PermissionsService {
@@ -17,13 +20,9 @@ public class PermissionsServiceImpl implements PermissionsService {
     // Redis 序列化工具
     private final RedisSerializationUtils redisSerializationUtils;
 
-    // 菜单权限表
-    private final MenuPermissionDao menuPermissionDao;
-
     // 构造器注入 Redis 序列化工具
-    public PermissionsServiceImpl(RedisSerializationUtils redisSerializationUtils, MenuPermissionDao menuPermissionDao) {
+    public PermissionsServiceImpl(RedisSerializationUtils redisSerializationUtils) {
         this.redisSerializationUtils = redisSerializationUtils;
-        this.menuPermissionDao = menuPermissionDao;
     }
 
     @Override
@@ -31,9 +30,12 @@ public class PermissionsServiceImpl implements PermissionsService {
         // 获取当前用户信息
         Authentication authenticationToken = SecurityContextHolder.getContext().getAuthentication();
         UserDataDetails principal = (UserDataDetails) authenticationToken.getPrincipal();
-
-        System.out.println(principal.getUsername());
         // 查询 Redis 中的用户菜单
-        return new R(233, "ok", true, redisSerializationUtils.getStringList(principal.getUsername() + USER_MENU, MenuPermission.class));
+        List<MenuPermission> menuList = redisSerializationUtils.getStringList(principal.getUsername() + USER_MENU, MenuPermission.class);
+        List<MenuGroupVO> menuGroupVOS = PermissionStructureUtils.convertToMenuGroups(menuList);
+        // 如果 Redis 中没有用户菜单，则从数据库中查询
+
+
+        return new R(233, "ok", true, menuGroupVOS);
     }
 }

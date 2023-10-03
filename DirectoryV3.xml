@@ -131,4 +131,5 @@
     <tree path="/Module-Exception/src/main/java/com/zzk/exception/UserRepeatLoginException.java"
           title="用户重复登录异常类"/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated/PermissionsService.java" title="权限服务"/>
+    <tree path="/Module-Utils/src/main/java/com/zzk/utils/PermissionStructureUtils.java" title="权限结构工具类"/>
 </trees>

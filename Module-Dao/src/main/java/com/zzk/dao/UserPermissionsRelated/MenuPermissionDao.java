@@ -1,7 +1,7 @@
 package com.zzk.dao.UserPermissionsRelated;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zzk.entity.po.UserPermissionsRelated.MenuPermission;
+import com.zzk.entity.po.userPermissionsRelated.MenuPermission;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

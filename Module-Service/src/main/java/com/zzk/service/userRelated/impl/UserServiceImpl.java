@@ -2,7 +2,7 @@ package com.zzk.service.userRelated.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zzk.dao.UserPermissionsRelated.UserDataDao;
-import com.zzk.entity.po.UserPermissionsRelated.UserData;
+import com.zzk.entity.po.userPermissionsRelated.UserData;
 import com.zzk.service.userRelated.UserService;
 import org.springframework.stereotype.Service;
 

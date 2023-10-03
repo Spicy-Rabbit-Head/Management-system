@@ -2,7 +2,7 @@ package com.zzk.utils;
 
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;
-import com.zzk.entity.po.UserPermissionsRelated.UserData;
+import com.zzk.entity.po.userPermissionsRelated.UserData;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
