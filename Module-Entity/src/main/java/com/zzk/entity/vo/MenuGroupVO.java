@@ -3,6 +3,8 @@ package com.zzk.entity.vo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 用户菜单视图对象 <br>
  * <p>
@@ -17,8 +19,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class MenuGroupVO {
+
     // 分组
     private String groupName;
     // 菜单项
-    private MenuVO[] menus;
+    private List<MenuVO> menus;
 }

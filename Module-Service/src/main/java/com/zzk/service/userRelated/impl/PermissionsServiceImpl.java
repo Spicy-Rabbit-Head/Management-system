@@ -1,9 +1,9 @@
 package com.zzk.service.userRelated.impl;
 
+import com.zzk.dao.UserPermissionsRelated.PermissionDao;
 import com.zzk.entity.permissions.UserDataDetails;
 import com.zzk.entity.po.userPermissionsRelated.MenuPermission;
 import com.zzk.entity.response.R;
-import com.zzk.entity.vo.MenuGroupVO;
 import com.zzk.service.userRelated.PermissionsService;
 import com.zzk.utils.PermissionStructureUtils;
 import com.zzk.utils.RedisSerializationUtils;
@@ -19,10 +19,13 @@ public class PermissionsServiceImpl implements PermissionsService {
     private final static String USER_OPERATION = "_operation";
     // Redis 序列化工具
     private final RedisSerializationUtils redisSerializationUtils;
+    // 权限菜单
+    private final PermissionDao permissionDao;
 
     // 构造器注入 Redis 序列化工具
-    public PermissionsServiceImpl(RedisSerializationUtils redisSerializationUtils) {
+    public PermissionsServiceImpl(RedisSerializationUtils redisSerializationUtils, PermissionDao permissionDao) {
         this.redisSerializationUtils = redisSerializationUtils;
+        this.permissionDao = permissionDao;
     }
 
     @Override
@@ -32,10 +35,12 @@ public class PermissionsServiceImpl implements PermissionsService {
         UserDataDetails principal = (UserDataDetails) authenticationToken.getPrincipal();
         // 查询 Redis 中的用户菜单
         List<MenuPermission> menuList = redisSerializationUtils.getStringList(principal.getUsername() + USER_MENU, MenuPermission.class);
-        List<MenuGroupVO> menuGroupVOS = PermissionStructureUtils.convertToMenuGroups(menuList);
         // 如果 Redis 中没有用户菜单，则从数据库中查询
-
-
-        return new R(233, "ok", true, menuGroupVOS);
+        if (menuList == null) {
+            menuList = permissionDao.selectMenuPermissionsByUserId(principal.getId());
+            // 将用户菜单存入 Redis
+            redisSerializationUtils.setString(principal.getUsername() + USER_MENU, menuList);
+        }
+        return new R(233, "ok", true, PermissionStructureUtils.convertToMenuGroups(menuList));
     }
 }
