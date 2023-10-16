@@ -1,10 +1,13 @@
 package com.zzk.api.userManagement;
 
-import com.zzk.entity.response.R;
+import com.zzk.entity.response.Response;
+import com.zzk.entity.vo.permissionsRelated.MenuGroupVO;
 import com.zzk.service.userRelated.PermissionsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * 权限相关接口<br>
@@ -32,10 +35,11 @@ public class PermissionsController {
      * 获取菜单列表
      *
      * @return R 菜单列表
+     *
      * @since 1.0
      */
     @GetMapping("/getMenuList")
-    public R getMenuList() {
+    public Response<List<MenuGroupVO>> getMenuList() {
         return permissionsService.getMenuList();
     }
 

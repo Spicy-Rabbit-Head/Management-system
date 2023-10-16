@@ -1,7 +1,7 @@
-package com.zzk.dao.UserPermissionsRelated;
+package com.zzk.dao.permissionRelated;
 
-import com.zzk.entity.po.userPermissionsRelated.MenuPermission;
-import com.zzk.entity.po.userPermissionsRelated.OperationPermissions;
+import com.zzk.entity.po.userManagement.MenuPermission;
+import com.zzk.entity.po.userManagement.OperationPermissions;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +24,9 @@ public interface PermissionDao {
      * 查询用户的菜单权限集合
      *
      * @param userId 用户id
+     *
      * @return 菜单权限集合
+     *
      * @since 1.0
      */
     List<MenuPermission> selectMenuPermissionsByUserId(@Param("userId") Integer userId);
@@ -33,7 +35,9 @@ public interface PermissionDao {
      * 查询用户的操作权限集合
      *
      * @param userId 用户id
+     *
      * @return 操作权限集合
+     *
      * @since 1.0
      */
     List<OperationPermissions> selectOperationPermissionsByUserId(@Param("userId") Integer userId);
@@ -42,7 +46,9 @@ public interface PermissionDao {
      * 根据用户id查询用户角色名称
      *
      * @param userId 用户id
+     *
      * @return 角色名称
+     *
      * @since 1.0
      */
     String selectRoleNameByUserId(@Param("userId") Integer userId);
@@ -51,7 +57,9 @@ public interface PermissionDao {
      * 根据用户id查询用户角色id
      *
      * @param userId 用户id
+     *
      * @return 角色id
+     *
      * @since 1.0
      */
     Integer selectRoleIdByUserId(@Param("userId") Integer userId);

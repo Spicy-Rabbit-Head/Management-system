@@ -1,9 +1,8 @@
-package com.zzk.entity.vo;
+package com.zzk.entity.vo.permissionsRelated;
 
-import com.zzk.entity.po.userPermissionsRelated.MenuPermission;
+import com.zzk.entity.po.userManagement.MenuPermission;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -20,11 +19,11 @@ import java.util.List;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class MenuVO {
     public MenuVO(MenuPermission menuPermission) {
         this.menuName = menuPermission.getMenuName();
         this.path = menuPermission.getPath();
+        this.componentPath = menuPermission.getComponentPath();
         this.icon = menuPermission.getIcon();
         this.menuDesc = menuPermission.getMenuDesc();
     }
@@ -33,6 +32,8 @@ public class MenuVO {
     private String menuName;
     // 地址
     private String path;
+    // 组件路径
+    private String componentPath;
     // 图标
     private String icon;
     // 菜单描述

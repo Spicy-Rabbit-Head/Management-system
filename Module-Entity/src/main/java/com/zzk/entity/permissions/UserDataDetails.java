@@ -1,8 +1,8 @@
 package com.zzk.entity.permissions;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.zzk.entity.po.userPermissionsRelated.OperationPermissions;
-import com.zzk.entity.po.userPermissionsRelated.UserData;
+import com.zzk.entity.po.userManagement.OperationPermissions;
+import com.zzk.entity.po.userManagement.UserData;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.Assert;
 
@@ -164,6 +164,7 @@ public class UserDataDetails implements UserDetails {
                 '}';
     }
 
+    // 用户信息建造
     public static UserDataBuilder builder() {
         return new UserDataBuilder();
     }

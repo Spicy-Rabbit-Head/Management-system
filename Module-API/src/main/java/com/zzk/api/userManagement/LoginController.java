@@ -1,7 +1,7 @@
 package com.zzk.api.userManagement;
 
 import com.zzk.entity.dto.UserDTO;
-import com.zzk.entity.response.R;
+import com.zzk.entity.response.Response;
 import com.zzk.service.userRelated.LoginService;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +34,7 @@ public class LoginController {
      * @since 1.0
      */
     @PostMapping("/login")
-    public R login(@RequestBody UserDTO user) {
+    public Response login(@RequestBody UserDTO user) {
         return loginService.login(user);
     }
 
@@ -45,7 +45,7 @@ public class LoginController {
      * @since 1.0
      */
     @GetMapping("/isLogin")
-    public R isLogin() {
+    public Response isLogin() {
         return loginService.isLogin();
     }
 
@@ -56,7 +56,7 @@ public class LoginController {
      * @since 1.0
      */
     @GetMapping("/logout")
-    public R logout() {
+    public Response logout() {
         return loginService.logout();
     }
 
@@ -67,7 +67,7 @@ public class LoginController {
      * @since 1.0
      */
     @PostMapping("/register")
-    public R register(@RequestBody UserDTO user) {
+    public Response register(@RequestBody UserDTO user) {
         return loginService.register(user);
     }
 }

@@ -1,12 +1,12 @@
 package com.zzk.security;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.zzk.dao.UserPermissionsRelated.PermissionDao;
-import com.zzk.dao.UserPermissionsRelated.UserDataDao;
+import com.zzk.dao.permissionRelated.PermissionDao;
+import com.zzk.dao.userRelated.UserDataDao;
 import com.zzk.entity.permissions.UserDataDetails;
-import com.zzk.entity.po.userPermissionsRelated.MenuPermission;
-import com.zzk.entity.po.userPermissionsRelated.OperationPermissions;
-import com.zzk.entity.po.userPermissionsRelated.UserData;
+import com.zzk.entity.po.userManagement.MenuPermission;
+import com.zzk.entity.po.userManagement.OperationPermissions;
+import com.zzk.entity.po.userManagement.UserData;
 import com.zzk.utils.RedisSerializationUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -53,7 +53,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * 根据用户名查询用户信息
      *
      * @param username 用户名
+     *
      * @return UserDetails 用户信息
+     *
      * @throws UsernameNotFoundException 用户名不存在异常
      * @since 1.0
      */
@@ -77,7 +79,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         if (!redisSerializationUtils.hasKey(str + USER_OPERATION)) {
             List<OperationPermissions> operationPermissions = permissionDao.selectOperationPermissionsByUserId(user.getId());
-            // operationPermissions.forEach(operation -> operation.setOperationName(role + operation.getOperationName()));
             redisSerializationUtils.setString(str + USER_OPERATION, operationPermissions);
         }
         String role = permissionDao.selectRoleNameByUserId(user.getId());

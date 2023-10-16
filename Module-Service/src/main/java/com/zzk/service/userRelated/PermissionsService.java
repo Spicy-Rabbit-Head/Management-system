@@ -1,6 +1,9 @@
 package com.zzk.service.userRelated;
 
-import com.zzk.entity.response.R;
+import com.zzk.entity.response.Response;
+import com.zzk.entity.vo.permissionsRelated.MenuGroupVO;
+
+import java.util.List;
 
 /**
  * 权限相关服务接口<br>
@@ -20,7 +23,8 @@ public interface PermissionsService {
      * 获取菜单列表
      *
      * @return String 菜单列表
+     *
      * @since 1.0
      */
-    R getMenuList();
+    Response<List<MenuGroupVO>> getMenuList();
 }

@@ -1,33 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zzk.dao.UserPermissionsRelated.PermissionDao">
+<mapper namespace="com.zzk.dao.permissionRelated.PermissionDao">
 
     <select id="selectMenuPermissionsByUserId"
-            resultType="com.zzk.entity.po.userPermissionsRelated.MenuPermission">
-        select mp.*
-        from user_management.user_data ud
-                 inner join user_management.user_role_link url on ud.id = url.user_id
-                 inner join user_management.role r on url.role_id = r.id
-                 inner join user_management.role_menu_link rml on r.id = rml.role_id
-                 inner join user_management.menu_permissions mp on rml.menu_id = mp.id
-        where ud.id = #{userId};
+            resultType="com.zzk.entity.po.userManagement.MenuPermission">
+        SELECT
+            mp.*
+        FROM
+            user_management.user_data ud
+            INNER JOIN user_management.user_role_link url
+            ON ud.id = url.user_id
+            INNER JOIN user_management.role r
+            ON url.role_id = r.id
+            INNER JOIN user_management.role_menu_link rml
+            ON r.id = rml.role_id
+            INNER JOIN user_management.menu_permissions mp
+            ON rml.menu_id = mp.id
+        WHERE
+            ud.id = #{userId};
     </select>
     <select id="selectOperationPermissionsByUserId"
-            resultType="com.zzk.entity.po.userPermissionsRelated.OperationPermissions">
-        select op.*
-        from user_management.user_data ud
-                 inner join user_management.user_role_link url on ud.id = url.user_id
-                 inner join user_management.role r on url.role_id = r.id
-                 inner join user_management.role_operation_link rol on r.id = rol.role_id
-                 inner join user_management.operation_permissions op on rol.operation_id = op.id
-        where ud.id = #{userId};
+            resultType="com.zzk.entity.po.userManagement.OperationPermissions">
+        SELECT
+            op.*
+        FROM
+            user_management.user_data ud
+            INNER JOIN user_management.user_role_link url
+            ON ud.id = url.user_id
+            INNER JOIN user_management.role r
+            ON url.role_id = r.id
+            INNER JOIN user_management.role_operation_link rol
+            ON r.id = rol.role_id
+            INNER JOIN user_management.operation_permissions op
+            ON rol.operation_id = op.id
+        WHERE
+            ud.id = #{userId};
     </select>
     <select id="selectRoleNameByUserId" resultType="java.lang.String">
-        select r.role_prefix
-        from user_management.user_data ud
-                 inner join user_management.user_role_link url on ud.id = url.user_id
-                 inner join user_management.role r on url.role_id = r.id
-        where ud.id = #{userId};
+        SELECT
+            r.role_prefix
+        FROM
+            user_management.user_data ud
+            INNER JOIN user_management.user_role_link url
+            ON ud.id = url.user_id
+            INNER JOIN user_management.role r
+            ON url.role_id = r.id
+        WHERE
+            ud.id = #{userId};
     </select>
     <select id="selectRoleIdByUserId" resultType="java.lang.Integer">
 

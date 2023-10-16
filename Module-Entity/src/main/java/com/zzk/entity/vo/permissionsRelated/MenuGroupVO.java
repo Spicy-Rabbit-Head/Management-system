@@ -1,4 +1,4 @@
-package com.zzk.entity.vo;
+package com.zzk.entity.vo.permissionsRelated;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +19,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class MenuGroupVO {
-
     // 分组
     private String groupName;
     // 菜单项

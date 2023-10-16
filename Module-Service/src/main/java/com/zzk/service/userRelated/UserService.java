@@ -1,6 +1,6 @@
 package com.zzk.service.userRelated;
 
-import com.zzk.entity.po.userPermissionsRelated.UserData;
+import com.zzk.entity.po.userManagement.UserData;
 
 /**
  * 用户服务接口<br>

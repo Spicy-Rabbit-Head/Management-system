@@ -1,7 +1,7 @@
 package com.zzk.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zzk.entity.response.R;
+import com.zzk.entity.response.Response;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -36,6 +36,6 @@ public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
         System.out.println("认证异常类: " + authException.getClass());
         System.out.println("认证异常信息: " + authException.getMessage());
         response.setContentType("application/json");
-        response.getWriter().write(objectMapper.writeValueAsString(new R(402, authException.getMessage(), false, "认证验证流程异常")));
+        response.getWriter().write(objectMapper.writeValueAsString(Response.failed(402, authException.getMessage(), "认证验证流程异常")));
     }
 }

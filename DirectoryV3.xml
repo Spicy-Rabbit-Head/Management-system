@@ -9,28 +9,29 @@
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/po" title="数据库映射实体"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/pojo" title="Java Bean 实体"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/vo" title="视图传输实体"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/UserData.java" title="用户表"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/userManagement/UserData.java" title="用户表"
           extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/Role.java" title="角色表"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/userManagement/Role.java" title="角色表"
           extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/MenuPermission.java"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/userManagement/MenuPermission.java"
           title="菜单权限表"
           extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/OperationPermissions.java"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/userManagement/OperationPermissions.java"
           title="操作权限表"
           extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/UserRoleLink.java"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/userManagement/UserRoleLink.java"
           title="用户与角色外键表"
           extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/RoleMenuLink.java"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/userManagement/RoleMenuLink.java"
           title="角色与菜单权限外键表"
           extension="java"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated/RoleOperationLink.java"
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/userManagement/RoleOperationLink.java"
           title="角色与操作权限外键表"
           extension="java"/>
     <tree path="/Module-Dao" title="Dao 持久层"/>
-    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/UserPermissionsRelated" title="用户权限相关"/>
-    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated" title="用户权限相关"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/userManagement" title="用户管理"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/userRelated" title="用户相关" extension="" presentableText=""
+          tooltipTitle="" icon="" textColor="" backgroundColor=""/>
     <tree path="/Module-Security" title="安全权限"/>
     <tree path="/Module-Utils" title="工具类"/>
     <tree path="/Module-Utils/src/main/java/com/zzk/utils/RedisSerializationUtils.java" title="Redis 序列化转换存取"
@@ -71,13 +72,13 @@
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/hutool" title="Hutool 工具类测试类"/>
     <tree path="/Management-System-Entry/src/test/java/com/zzk/entrance/hutool/JwtUtilsText.java" title="JWT测试类"
           extension="java"/>
-    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/UserDataDao.java" title="用户表持久层"
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/userRelated/UserDataDao.java" title="用户表持久层"
           extension="java"/>
-    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/RoleDao.java" title="角色表持久层"
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/userRelated/RoleDao.java" title="角色表持久层"
           extension="java"/>
-    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/MenuPermissionDao.java"
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/permissionRelated/MenuPermissionDao.java"
           title="菜单权限表持久层" extension="java"/>
-    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/OperationPermissionsDao.java"
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/permissionRelated/OperationPermissionsDao.java"
           title="操作权限表持久层" extension="java"/>
     <tree path="/Module-API/src/main/java/com/zzk/api/user" title=""/>
     <tree path="/Module-API/src/main/java/com/zzk/api/userManagement" title="用户管理" extension=""
@@ -121,7 +122,7 @@
           title="用户数据详情反序列化器"/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated/UserService.java" title="用户表服务"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/dto/UserDTO.java" title="用户信息传输对象"/>
-    <tree path="/Module-Dao/src/main/java/com/zzk/dao/UserPermissionsRelated/PermissionDao.java" title="权限封装持久层"
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/permissionRelated/PermissionDao.java" title="权限封装持久层"
           extension="" presentableText="" tooltipTitle="" icon="" textColor="" backgroundColor=""/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/permissions/Permission.java" title="权限信息实体"/>
     <tree path="/Module-Exception/src/main/java/com/zzk/exception/TokenAuthenticationException.java"
@@ -132,4 +133,28 @@
           title="用户重复登录异常类"/>
     <tree path="/Module-Service/src/main/java/com/zzk/service/userRelated/PermissionsService.java" title="权限服务"/>
     <tree path="/Module-Utils/src/main/java/com/zzk/utils/PermissionStructureUtils.java" title="权限结构工具类"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceManagement" title="保养管理"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceManagement/SchedulingData.java"
+          title="排程数据表" extension="" presentableText="" tooltipTitle="" icon="" textColor="" backgroundColor=""/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/maintenanceScheduleRelated" title="保养排程相关"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/maintenanceScheduleRelated/SchedulingDataDao.java"
+          title="排程数据" extension="" presentableText="" tooltipTitle="" icon="" textColor="" backgroundColor=""/>
+    <tree path="/Module-API/src/main/java/com/zzk/api/maintenanceManagement" title="保养管理"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/maintenanceRelated" title="保养相关"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/vo/permissionsRelated/MenuVO.java" title="菜单视图"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/vo/permissionsRelated/MenuGroupVO.java"
+          title="菜单分组视图"/>
+    <tree path="/Module-Enum" title="枚举"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/permissionRelated" title="权限相关"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/userManagement/Member.java" title="成员表" extension=""
+          presentableText="" tooltipTitle="" icon="" textColor="" backgroundColor=""/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/userRelated/MemberDao.java" title="成员表持久层"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/vo/permissionsRelated" title="权限相关"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/response/Response.java" title="统一响应类"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/vo/maintenanceScheduleRelated/SchedulingDataVO.java"
+          title="排程数据视图"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/vo/maintenanceScheduleRelated/SchedulingInterfaceVO.java"
+          title="排程界面视图"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/vo/maintenanceScheduleRelated" title="排程相关"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/dto/maintenanceScheduleRelated" title="排程相关"/>
 </trees>

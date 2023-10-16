@@ -76,6 +76,11 @@
             <groupId>com.zzk</groupId>
             <artifactId>Module-ResultCode</artifactId>
         </dependency>
+        <!-- 枚举模块 -->
+        <dependency>
+            <groupId>com.zzk</groupId>
+            <artifactId>Module-Enum</artifactId>
+        </dependency>
         <!-- 糊涂包 jwt -->
         <dependency>
             <groupId>cn.hutool</groupId>

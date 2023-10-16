@@ -1,4 +1,4 @@
-package com.zzk.entity.po.userPermissionsRelated;
+package com.zzk.entity.po.userManagement;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -24,7 +24,7 @@ import java.io.Serializable;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("user_role_link")
+@TableName("user_management.user_role_link")
 @ApiModel(description = "用户与角色外键表", value = "UserRoleLink")
 public class UserRoleLink extends Model<UserRoleLink> {
     // 用户与角色外键表主键

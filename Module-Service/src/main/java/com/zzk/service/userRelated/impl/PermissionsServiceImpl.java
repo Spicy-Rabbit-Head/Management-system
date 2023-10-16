@@ -1,9 +1,10 @@
 package com.zzk.service.userRelated.impl;
 
-import com.zzk.dao.UserPermissionsRelated.PermissionDao;
+import com.zzk.dao.permissionRelated.PermissionDao;
 import com.zzk.entity.permissions.UserDataDetails;
-import com.zzk.entity.po.userPermissionsRelated.MenuPermission;
-import com.zzk.entity.response.R;
+import com.zzk.entity.po.userManagement.MenuPermission;
+import com.zzk.entity.response.Response;
+import com.zzk.entity.vo.permissionsRelated.MenuGroupVO;
 import com.zzk.service.userRelated.PermissionsService;
 import com.zzk.utils.PermissionStructureUtils;
 import com.zzk.utils.RedisSerializationUtils;
@@ -28,8 +29,13 @@ public class PermissionsServiceImpl implements PermissionsService {
         this.permissionDao = permissionDao;
     }
 
+    /**
+     * 获取用户菜单
+     *
+     * @return Response 用户菜单
+     */
     @Override
-    public R getMenuList() {
+    public Response<List<MenuGroupVO>> getMenuList() {
         // 获取当前用户信息
         Authentication authenticationToken = SecurityContextHolder.getContext().getAuthentication();
         UserDataDetails principal = (UserDataDetails) authenticationToken.getPrincipal();
@@ -41,6 +47,6 @@ public class PermissionsServiceImpl implements PermissionsService {
             // 将用户菜单存入 Redis
             redisSerializationUtils.setString(principal.getUsername() + USER_MENU, menuList);
         }
-        return new R(233, "ok", true, PermissionStructureUtils.convertToMenuGroups(menuList));
+        return Response.success(233, "ok", PermissionStructureUtils.convertToMenuGroups(menuList));
     }
 }

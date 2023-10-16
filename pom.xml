@@ -49,6 +49,8 @@
     <modules>
         <!-- 结果码 -->
         <module>Module-ResultCode</module>
+        <!-- 枚举类 -->
+        <module>Module-Enum</module>
         <!-- 实体类 -->
         <module>Module-Entity</module>
         <!-- Dao 持久层 -->
@@ -185,6 +187,11 @@
             <dependency>
                 <groupId>com.zzk</groupId>
                 <artifactId>Module-ResultCode</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zzk</groupId>
+                <artifactId>Module-Enum</artifactId>
                 <version>${module.version}</version>
             </dependency>
             <!-- 实体类 -->

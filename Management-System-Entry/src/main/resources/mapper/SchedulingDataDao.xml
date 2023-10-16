@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzk.dao.maintenanceScheduleRelated.SchedulingDataDao">
+    <!-- 根据车间、偏移、页大小 获取 排程数据 -->
+    <select id="getSchedule" resultType="com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingDataVO">
+        SELECT
+            id,
+            equipment_number,
+            equipment_model_number,
+            equipment_name,
+            maintenance_cycle,
+            plan_time,
+            scheduling_time,
+            person_in_charge,
+            member,
+            scheduling_status,
+            COUNT(*) OVER () AS total
+        FROM
+            maintenance_management.scheduling_data
+        WHERE
+            workshop = #{workshop}
+        OFFSET #{offsetNumber} FETCH FIRST #{pageSize} ROWS ONLY;
+    </select>
+    <insert id="insertBatch">
+
+    </insert>
+    <insert id="insertOrUpdateBatch">
+
+    </insert>
+
+</mapper>

@@ -1,4 +1,4 @@
-package com.zzk.entity.po.userPermissionsRelated;
+package com.zzk.entity.po.userManagement;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

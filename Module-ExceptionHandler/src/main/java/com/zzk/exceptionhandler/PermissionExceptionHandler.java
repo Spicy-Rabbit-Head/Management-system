@@ -1,7 +1,7 @@
 package com.zzk.exceptionhandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zzk.entity.response.R;
+import com.zzk.entity.response.Response;
 import com.zzk.exception.TokenAuthenticationException;
 import com.zzk.exception.TokenInvalidationException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,13 +30,13 @@ public class PermissionExceptionHandler {
      * @since 1.0
      */
     // @ExceptionHandler(AuthenticationException.class)
-    public R handleAuthenticationException(Exception e) {
-        return new R(403, e.getMessage(), false);
+    public Response<Void> handleAuthenticationException(Exception e) {
+        return Response.failed(403, e.getMessage());
     }
 
     // @ExceptionHandler(InsufficientAuthenticationException.class)
-    public R handleInsufficientAuthenticationException(Exception e) {
-        return new R(403, "无访问权限", false);
+    public Response<Void> handleInsufficientAuthenticationException(Exception e) {
+        return Response.failed(403, "无访问权限");
     }
 
     /**
@@ -47,6 +47,7 @@ public class PermissionExceptionHandler {
      * @param httpServletRequest  请求
      * @param httpServletResponse 响应
      * @param e                   异常
+     *
      * @throws IOException 异常
      * @since 1.0
      */
@@ -56,11 +57,11 @@ public class PermissionExceptionHandler {
         ObjectMapper objectMapper = new ObjectMapper();
         httpServletResponse.setContentType("application/json");
         if (e instanceof TokenAuthenticationException) {
-            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(100000, e.getMessage(), false, "Token验证流程异常")));
+            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(Response.failed(100000, e.getMessage(), "Token验证流程异常")));
         } else if (e instanceof TokenInvalidationException) {
-            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(100001, e.getMessage(), false, "Token验证流程异常")));
+            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(Response.failed(100001, e.getMessage(), "Token验证流程异常")));
         } else {
-            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(new R(100002, e.getMessage(), false, "Token验证流程异常")));
+            httpServletResponse.getWriter().write(objectMapper.writeValueAsString(Response.failed(100002, e.getMessage(), "Token验证流程异常")));
         }
     }
 
@@ -70,7 +71,7 @@ public class PermissionExceptionHandler {
      * @since 1.0
      */
     // @ExceptionHandler(Exception.class)
-    public R handleException(Exception e) {
-        return new R(500, "服务器异常", false);
+    public Response<Void> handleException(Exception e) {
+        return Response.failed(500, "服务器异常");
     }
 }

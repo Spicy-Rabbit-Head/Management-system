@@ -1,7 +1,7 @@
 package com.zzk.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zzk.entity.response.R;
+import com.zzk.entity.response.Response;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.AccessDeniedException;
@@ -34,6 +34,6 @@ public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
         System.out.println("授权异常类: " + accessDeniedException.getClass());
         System.out.println("授权异常信息: " + accessDeniedException.getMessage());
         response.setContentType("application/json");
-        response.getWriter().write(objectMapper.writeValueAsString(new R(401, accessDeniedException.getMessage(), false, "授权验证流程异常")));
+        response.getWriter().write(objectMapper.writeValueAsString(Response.failed(403, accessDeniedException.getMessage(), "授权验证流程异常")));
     }
 }

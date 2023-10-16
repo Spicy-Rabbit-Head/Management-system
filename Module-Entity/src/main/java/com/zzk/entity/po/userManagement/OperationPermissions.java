@@ -1,4 +1,4 @@
-package com.zzk.entity.po.userPermissionsRelated;
+package com.zzk.entity.po.userManagement;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -24,7 +24,7 @@ import java.io.Serializable;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("operation_permissions")
+@TableName("user_management.operation_permissions")
 @ApiModel(description = "操作权限表", value = "OperationPermissions")
 public class OperationPermissions extends Model<OperationPermissions> {
     // 操作权限表主键

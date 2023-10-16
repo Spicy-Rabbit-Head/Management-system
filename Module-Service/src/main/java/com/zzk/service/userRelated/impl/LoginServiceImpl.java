@@ -2,8 +2,8 @@ package com.zzk.service.userRelated.impl;
 
 import com.zzk.entity.dto.UserDTO;
 import com.zzk.entity.permissions.UserDataDetails;
-import com.zzk.entity.po.userPermissionsRelated.UserData;
-import com.zzk.entity.response.R;
+import com.zzk.entity.po.userManagement.UserData;
+import com.zzk.entity.response.Response;
 import com.zzk.service.userRelated.LoginService;
 import com.zzk.service.userRelated.UserService;
 import com.zzk.utils.JwtUtils;
@@ -50,11 +50,13 @@ public class LoginServiceImpl implements LoginService {
      * 登录
      *
      * @param user 用户信息
+     *
      * @return R<String> 登录结果
+     *
      * @since 1.0
      */
     @Override
-    public R login(UserDTO user) {
+    public Response<String> login(UserDTO user) {
         Authentication authenticate;
         // 封装用户信息
         UsernamePasswordAuthenticationToken authenticationToken = UsernamePasswordAuthenticationToken.unauthenticated(user.getUsername(), user.getPassword());
@@ -70,59 +72,63 @@ public class LoginServiceImpl implements LoginService {
         // 将 token 存入 redis
         redisSerializationUtils.setString(uid, principal);
         // 认证成功
-        return new R(1, "登录成功", true, jwt);
+        return Response.success(1, "登录成功", jwt);
     }
 
     /**
      * 判断是否登录
      *
      * @return R 是否登录
+     *
      * @since 1.0
      */
     @Override
-    public R isLogin() {
+    public Response<Void> isLogin() {
         Object principal;
         // 获取当前用户信息
         Authentication authenticationToken = SecurityContextHolder.getContext().getAuthentication();
         principal = authenticationToken.getPrincipal();
         if (principal.equals("anonymousUser"))
-            return new R(2, "未登录", false);
-        return new R(1, "已登录", true);
+            return Response.failed(2, "未登录");
+        return Response.success(1, "已登录");
     }
 
     /**
      * 登出
      *
      * @return R 登出结果
+     *
      * @since 1.0
      */
     @Override
-    public R logout() {
+    public Response<Void> logout() {
         // 获取当前用户信息
         Authentication authenticationToken = SecurityContextHolder.getContext().getAuthentication();
         UserDataDetails principal = (UserDataDetails) authenticationToken.getPrincipal();
         // 删除 redis 中的 token
         redisSerializationUtils.deleteString(principal.getUUID());
-        return new R(1, "登出成功", true);
+        return Response.success(1, "登出成功");
     }
 
     /**
      * 注册
      *
      * @param user 用户信息
+     *
      * @return Boolean 注册结果
+     *
      * @since 1.0
      */
     @Override
-    public R register(UserDTO user) {
+    public Response<Void> register(UserDTO user) {
         // 查询用户是否存在
         if (userService.whetherTheUserExists(user.getUsername())) {
-            return new R(2, "注册失败,用户已存在", false);
+            return Response.failed(2, "注册失败,用户已存在");
         } else {
             // 用户不存在，注册用户
             if (!userService.userAddition(new UserData(null, user.getUsername(), passwordEncoder.encode(user.getPassword()), null, null)))
-                return new R(2, "注册失败,注册异常", false);
-            return new R(1, "注册成功", true);
+                return Response.failed(2, "注册失败,注册异常");
+            return Response.failed(1, "注册成功");
         }
     }
 
@@ -130,11 +136,13 @@ public class LoginServiceImpl implements LoginService {
      * 重置密码
      *
      * @param username 用户名
+     *
      * @return R 重置密码结果
+     *
      * @since 1.0
      */
     @Override
-    public R resetPassword(String username) {
+    public Response<Void> resetPassword(String username) {
         return null;
     }
 }

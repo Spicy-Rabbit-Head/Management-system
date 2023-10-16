@@ -1,4 +1,4 @@
-package com.zzk.entity.po.userPermissionsRelated;
+package com.zzk.entity.po.userManagement;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -24,7 +24,7 @@ import java.io.Serializable;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("menu_permissions")
+@TableName("user_management.menu_permissions")
 @ApiModel(description = "菜单权限表", value = "MenuPermission")
 public class MenuPermission extends Model<MenuPermission> {
     // 菜单权限表主键
@@ -43,6 +43,9 @@ public class MenuPermission extends Model<MenuPermission> {
     // 地址
     @ApiModelProperty(value = "地址", name = "url")
     private String path;
+    // 组件路径
+    @ApiModelProperty(value = "组件路径", name = "component_path")
+    private String componentPath;
     // 图标
     @ApiModelProperty(value = "图标", name = "icon")
     private String icon;
