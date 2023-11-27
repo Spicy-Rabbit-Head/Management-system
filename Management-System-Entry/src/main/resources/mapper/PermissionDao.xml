@@ -17,7 +17,9 @@
             INNER JOIN user_management.menu_permissions mp
             ON rml.menu_id = mp.id
         WHERE
-            ud.id = #{userId};
+            ud.id = #{userId}
+        ORDER BY
+            mp.id;
     </select>
     <select id="selectOperationPermissionsByUserId"
             resultType="com.zzk.entity.po.userManagement.OperationPermissions">

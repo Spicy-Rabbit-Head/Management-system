@@ -1,5 +1,6 @@
 package com.zzk.dao.maintenanceScheduleRelated;
 
+import com.zzk.entity.po.maintenanceManagement.ScheduleUpdateData;
 import com.zzk.entity.po.maintenanceManagement.SchedulingData;
 import com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingDataVO;
 import org.apache.ibatis.annotations.Param;
@@ -33,6 +34,17 @@ public interface SchedulingDataDao {
      * @since 1.0
      */
     SchedulingDataVO[] getSchedule(String workshop, Integer offsetNumber, Integer pageSize);
+
+    /**
+     * 根据主键数组更新排程状态
+     *
+     * @param schedulingSelect 排程选择数据
+     *
+     * @return 影响行数
+     *
+     * @since 1.0
+     */
+    Integer updateSchedulingStatusById(ScheduleUpdateData scheduleUpdateData);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）

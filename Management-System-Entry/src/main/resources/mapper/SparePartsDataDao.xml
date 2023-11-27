@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzk.dao.sparePartsRelated.SparePartsDataDao">
+
+    <!-- 根据备品编号查询备品数据 -->
+    <select id="selectSparePartsDataBySparePartsNumber"
+            resultType="com.zzk.entity.po.sparePartsManagement.SparePartsData">
+        SELECT *
+        FROM
+            spare_parts_management.spare_parts_data
+        WHERE
+            spare_part_number = #{sparePartsNumber};
+    </select>
+</mapper>

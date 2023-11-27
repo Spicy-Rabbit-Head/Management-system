@@ -1,6 +1,8 @@
 package com.zzk.service.maintenanceRelated;
 
-import com.zzk.entity.dto.maintenanceScheduleRelated.SchedulingSelectDTO;
+import com.zzk.entity.bo.maintenanceScheduleRelated.MachineSchedulingBO;
+import com.zzk.entity.po.maintenanceManagement.ModuleScheduling;
+import com.zzk.entity.po.maintenanceManagement.NonRoutineMattersScheduling;
 import com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingDataVO;
 import com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingInterfaceVO;
 
@@ -53,5 +55,29 @@ public interface SchedulingService {
      *
      * @since 1.0
      */
-    Boolean updateSchedule(SchedulingSelectDTO schedulingSelect);
+    Boolean updateSchedule(MachineSchedulingBO schedulingSelect);
+
+    /**
+     * 获取模组排程数据
+     *
+     * @return ModuleScheduling[] 模组排程数据
+     */
+    ModuleScheduling[] getModuleScheduling();
+
+    /**
+     * 获取非例行事项排程数据
+     *
+     * @return NonRoutineMattersScheduling[] 非例行事项排程数据
+     */
+    NonRoutineMattersScheduling[] getNonRoutineMattersScheduling();
+
+    /**
+     * 插入非例行事项排程数据
+     */
+    Boolean insertNonRoutineMattersScheduling(NonRoutineMattersScheduling nonRoutineMattersScheduling);
+
+    /**
+     * 查询保养成员
+     */
+    String[] getMaintenanceMember();
 }

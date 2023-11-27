@@ -1,8 +1,12 @@
 package com.zzk.service.maintenanceRelated.impl;
 
+import com.zzk.dao.maintenanceScheduleRelated.ModuleSchedulingDao;
+import com.zzk.dao.maintenanceScheduleRelated.NonRoutineMattersSchedulingDao;
 import com.zzk.dao.maintenanceScheduleRelated.SchedulingDataDao;
-import com.zzk.dao.userRelated.MemberDao;
-import com.zzk.entity.dto.maintenanceScheduleRelated.SchedulingSelectDTO;
+import com.zzk.dao.userRelated.UserDataDao;
+import com.zzk.entity.bo.maintenanceScheduleRelated.MachineSchedulingBO;
+import com.zzk.entity.po.maintenanceManagement.ModuleScheduling;
+import com.zzk.entity.po.maintenanceManagement.NonRoutineMattersScheduling;
 import com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingDataVO;
 import com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingInterfaceVO;
 import com.zzk.service.maintenanceRelated.SchedulingService;
@@ -23,13 +27,19 @@ import org.springframework.stereotype.Service;
 public class SchedulingServiceImpl implements SchedulingService {
     // 排程数据
     private final SchedulingDataDao schedulingDataDao;
-    // 成员数据
-    private final MemberDao memberDao;
+    // 用户数据
+    private final UserDataDao userDataDao;
+    // 模组排程数据
+    private final ModuleSchedulingDao moduleSchedulingDao;
+    // 非例行事项排程数据
+    private final NonRoutineMattersSchedulingDao nonRoutineMattersSchedulingDao;
 
     // 构造器注入
-    public SchedulingServiceImpl(SchedulingDataDao schedulingDataDao, MemberDao memberDao) {
+    public SchedulingServiceImpl(SchedulingDataDao schedulingDataDao, UserDataDao userDataDao, ModuleSchedulingDao moduleSchedulingDao, NonRoutineMattersSchedulingDao nonRoutineMattersSchedulingDao) {
         this.schedulingDataDao = schedulingDataDao;
-        this.memberDao = memberDao;
+        this.userDataDao = userDataDao;
+        this.moduleSchedulingDao = moduleSchedulingDao;
+        this.nonRoutineMattersSchedulingDao = nonRoutineMattersSchedulingDao;
     }
 
 
@@ -49,7 +59,7 @@ public class SchedulingServiceImpl implements SchedulingService {
     public SchedulingInterfaceVO getScheduleInterface(String workshop, Integer offsetNumber, Integer pageSize) {
         SchedulingInterfaceVO schedulingInterfaceVO = new SchedulingInterfaceVO();
         // 获取成员列表
-        schedulingInterfaceVO.setMembers(memberDao.selectAll());
+        schedulingInterfaceVO.setMembers(userDataDao.selectAll());
         // 获取排程列表、分页信息
         schedulingInterfaceVO.setSchedulingData(schedulingDataDao.getSchedule(workshop, offsetNumber, pageSize));
         return schedulingInterfaceVO;
@@ -74,15 +84,52 @@ public class SchedulingServiceImpl implements SchedulingService {
     /**
      * 修改排程数据
      *
-     * @param schedulingSelect 排程选择数据
+     * @param machineSchedulingBO 排程选择数据
      *
      * @return Boolean 修改排程成功与否
      *
      * @since 1.0
      */
     @Override
-    public Boolean updateSchedule(SchedulingSelectDTO schedulingSelect) {
-        System.out.println(schedulingSelect);
-        return null;
+    public Boolean updateSchedule(MachineSchedulingBO machineSchedulingBO) {
+        return schedulingDataDao.updateSchedulingStatusById(machineSchedulingBO.getScheduleUpdateData()) > 0;
+    }
+
+    /**
+     * 获取模组排程数据
+     *
+     * @return ModuleScheduling[] 模组排程数据
+     */
+    @Override
+    public ModuleScheduling[] getModuleScheduling() {
+        return moduleSchedulingDao.getModuleScheduling();
+    }
+
+    /**
+     * 获取非例行事项排程数据
+     *
+     * @return NonRoutineMattersScheduling[] 非例行事项排程数据
+     */
+    @Override
+    public NonRoutineMattersScheduling[] getNonRoutineMattersScheduling() {
+        return nonRoutineMattersSchedulingDao.getNonRoutineMattersScheduling();
+    }
+
+    /**
+     * 插入非例行事项排程数据
+     *
+     * @param nonRoutineMattersScheduling 非例行事项排程数据
+     */
+    @Override
+    public Boolean insertNonRoutineMattersScheduling(NonRoutineMattersScheduling nonRoutineMattersScheduling) {
+        return nonRoutineMattersSchedulingDao.insertNonRoutineMattersScheduling(nonRoutineMattersScheduling) > 0;
+    }
+
+    /**
+     * 查询保养成员
+     */
+    @Override
+    public String[] getMaintenanceMember() {
+        return userDataDao.selectAll();
     }
 }

@@ -42,5 +42,4 @@ public class PermissionsController {
     public Response<List<MenuGroupVO>> getMenuList() {
         return permissionsService.getMenuList();
     }
-
 }

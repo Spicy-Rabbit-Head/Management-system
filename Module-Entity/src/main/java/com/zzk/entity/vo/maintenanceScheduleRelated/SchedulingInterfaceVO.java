@@ -1,6 +1,5 @@
 package com.zzk.entity.vo.maintenanceScheduleRelated;
 
-import com.zzk.entity.po.userManagement.Member;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SchedulingInterfaceVO {
     // 成员列表
-    private Member[] members;
+    private String[] members;
 
     // 排程数据
     private SchedulingDataVO[] schedulingData;

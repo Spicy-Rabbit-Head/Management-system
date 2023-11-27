@@ -19,8 +19,27 @@
             maintenance_management.scheduling_data
         WHERE
             workshop = #{workshop}
+        ORDER BY
+            id,
+            plan_time
         OFFSET #{offsetNumber} FETCH FIRST #{pageSize} ROWS ONLY;
     </select>
+    <!-- 根据主键数组更新排程状态 -->
+    <update id="updateSchedulingStatusById">
+        UPDATE
+        maintenance_management.scheduling_data
+        SET
+        person_in_charge = #{personInCharge},
+        member = #{member},
+        scheduling_time = #{schedulingTime},
+        scheduling_status = #{status}
+        WHERE
+        id IN (
+        <foreach collection="machineSelect" item="index" separator=",">
+            #{index}
+        </foreach>
+        )
+    </update>
     <insert id="insertBatch">
 
     </insert>

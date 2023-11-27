@@ -20,10 +20,14 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 public class SchedulingSelectDTO {
+    // 机台选择
+    private Integer[] machineSelect;
     // 负责人
-    private String responsiblePerson;
+    private String personInCharge;
     // 成员选择
     private String[] memberSelect;
     // 排定时间
     private String schedulingTime;
+    // 排程状态
+    private Boolean status;
 }

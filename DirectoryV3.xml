@@ -157,4 +157,30 @@
           title="排程界面视图"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/vo/maintenanceScheduleRelated" title="排程相关"/>
     <tree path="/Module-Entity/src/main/java/com/zzk/entity/dto/maintenanceScheduleRelated" title="排程相关"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/dto/maintenanceScheduleRelated/SchedulingSelectDTO.java"
+          title="排程选择传输对象"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/bo" title="业务对象"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/bo/maintenanceScheduleRelated/SchedulingBO.java"
+          title="" extension="" presentableText="" tooltipTitle="" icon="" textColor="" backgroundColor=""/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/bo/maintenanceScheduleRelated/MachineSchedulingBO.java"
+          title="机台排程业务对象"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/sparePartsManagement" title="备品管理"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/maintenanceManagement/ScheduleUpdateData.java"
+          title="排程更新数据"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/sparePartsManagement" title="" extension="" presentableText=""
+          tooltipTitle="" icon="" textColor="" backgroundColor=""/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/sparePartsRelated" title="备品相关"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/maintenanceRelated/SchedulingService.java"
+          title="保养排程"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/sparePartsRelated" title="备品相关"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/informationManagement" title="资料管理"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/informationRelated" title="资料相关"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/informationRelated" title="资料相关"/>
+    <tree path="/Module-API/src/main/java/com/zzk/api/informationManagement" title="资料管理"/>
+    <tree path="/Module-API/src/main/java/com/zzk/api/maintenanceManagement/ScheduleController.java"
+          title="保养排程控制器"/>
+    <tree path="/Module-API/src/main/java/com/zzk/api/informationManagement/InformationInquiryController.java"
+          title="信息查询控制器"/>
+    <tree path="/Module-API/src/main/java/com/zzk/api/userManagement/LoginController.java" title="登录控制器"/>
+    <tree path="/Module-API/src/main/java/com/zzk/api/userManagement/PermissionsController.java" title="权限控制器"/>
 </trees>

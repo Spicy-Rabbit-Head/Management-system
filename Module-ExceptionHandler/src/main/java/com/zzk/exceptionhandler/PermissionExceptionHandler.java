@@ -72,6 +72,7 @@ public class PermissionExceptionHandler {
      */
     // @ExceptionHandler(Exception.class)
     public Response<Void> handleException(Exception e) {
+        System.out.println("异常类:" + e.getClass());
         return Response.failed(500, "服务器异常");
     }
 }
