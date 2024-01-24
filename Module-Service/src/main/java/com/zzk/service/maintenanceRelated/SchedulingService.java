@@ -77,6 +77,13 @@ public interface SchedulingService {
     Boolean insertNonRoutineMattersScheduling(NonRoutineMattersScheduling nonRoutineMattersScheduling);
 
     /**
+     * 删除非例行事项排程数据
+     *
+     * @param id 非例行事项排程数据id
+     */
+    Boolean deleteNonRoutineMattersScheduling(Integer id);
+
+    /**
      * 查询保养成员
      */
     String[] getMaintenanceMember();

@@ -126,6 +126,16 @@ public class SchedulingServiceImpl implements SchedulingService {
     }
 
     /**
+     * 删除非例行事项排程数据
+     *
+     * @param id 非例行事项排程数据id
+     */
+    @Override
+    public Boolean deleteNonRoutineMattersScheduling(Integer id) {
+        return nonRoutineMattersSchedulingDao.deleteNonRoutineMattersScheduling(id) > 0;
+    }
+
+    /**
      * 查询保养成员
      */
     @Override

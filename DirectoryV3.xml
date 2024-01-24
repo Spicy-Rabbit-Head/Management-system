@@ -183,4 +183,10 @@
           title="信息查询控制器"/>
     <tree path="/Module-API/src/main/java/com/zzk/api/userManagement/LoginController.java" title="登录控制器"/>
     <tree path="/Module-API/src/main/java/com/zzk/api/userManagement/PermissionsController.java" title="权限控制器"/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/management/formManagement" title="" extension=""
+          presentableText="" tooltipTitle="" icon="" textColor="" backgroundColor=""/>
+    <tree path="/Module-Entity/src/main/java/com/zzk/entity/po/formManagement" title="表单管理"/>
+    <tree path="/Module-Service/src/main/java/com/zzk/service/formRelated" title="表单相关"/>
+    <tree path="/Module-Dao/src/main/java/com/zzk/dao/formRelated" title="表单相关"/>
+    <tree path="/Module-API/src/main/java/com/zzk/api/formManagement" title="表单管理"/>
 </trees>

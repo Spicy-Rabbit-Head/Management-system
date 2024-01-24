@@ -100,6 +100,17 @@ public class ScheduleController {
     }
 
     /**
+     * 删除非例行事项排程数据
+     */
+    @PostMapping("/deleteNonRoutineSchedule/{id}")
+    public Response<String> deleteNonRoutineSchedule(@PathVariable(value = "id") Integer id) {
+        if (schedulingService.deleteNonRoutineMattersScheduling(id)) {
+            return Response.success(200, "删除排程数据成功", "删除排程数据成功");
+        }
+        return Response.failed(500, "删除排程数据失败", "删除排程数据失败");
+    }
+
+    /**
      * 读取非例行事项排程数据
      */
     @GetMapping("/getNonRoutineSchedule")
