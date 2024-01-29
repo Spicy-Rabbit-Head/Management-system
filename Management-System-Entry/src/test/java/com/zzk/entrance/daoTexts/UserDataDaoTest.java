@@ -2,6 +2,7 @@ package com.zzk.entrance.daoTexts;
 
 import com.zzk.dao.userRelated.UserDataDao;
 import com.zzk.entity.po.userManagement.UserData;
+import com.zzk.moduleenum.Belong;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -48,7 +49,7 @@ public class UserDataDaoTest {
     @Order(1)
     void insert() {
         System.out.println("----- 测试插入开始 ------");
-        int insert = userDao.insert(new UserData(null, "test1", passwordEncoder.encode("123123"), null, null));
+        int insert = userDao.insert(new UserData(null, "test1", passwordEncoder.encode("123123"), "2333", Belong.MAINTENANCE, null, null));
         System.out.println("影响:" + insert);
         System.out.println("----- 测试插入结束 ------");
     }
@@ -63,7 +64,7 @@ public class UserDataDaoTest {
     @Order(2)
     void getList() {
         System.out.println("----- 测试查询所有开始 ------");
-        List<UserData> users = userDao.selectList(null);
+        List<UserData> users = userDao.selectList();
         users.forEach(System.out::println);
         id = users.get(users.size() - 1).getId();
         System.out.println("----- 测试查询所有结束 ------");
@@ -82,7 +83,7 @@ public class UserDataDaoTest {
         if (id == null) {
             getList();
         }
-        UserData user = new UserData(id, "test1", passwordEncoder.encode("123456"), null, null);
+        UserData user = new UserData(id, "test1", passwordEncoder.encode("123456"), "2333", Belong.LEADER, null, null);
         int i = userDao.updateById(user);
         System.out.println("影响:" + i);
         System.out.println("----- 测试更新结束 ------");

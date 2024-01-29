@@ -43,6 +43,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) throws IOException, ServletException {
         // 获取请求头中的 token
         String token = request.getHeader("token");
+        System.out.println(token);
         // 如果请求头中没有 token
         if (!StringUtils.hasText(token)) {
             // 放行

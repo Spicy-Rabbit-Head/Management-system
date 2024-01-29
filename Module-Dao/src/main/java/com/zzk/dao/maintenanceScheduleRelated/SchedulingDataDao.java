@@ -4,6 +4,7 @@ import com.zzk.entity.po.maintenanceManagement.ScheduleUpdateData;
 import com.zzk.entity.po.maintenanceManagement.SchedulingData;
 import com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingDataVO;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,20 +29,22 @@ public interface SchedulingDataDao {
      * @param workshop     车间
      * @param offsetNumber 偏移量
      * @param pageSize     页面大小
-     *
      * @return 排程数据
-     *
      * @since 1.0
      */
     SchedulingDataVO[] getSchedule(String workshop, Integer offsetNumber, Integer pageSize);
 
     /**
+     * 获取已排程数据
+     */
+    @Select("SELECT * FROM maintenance_management.scheduling_data WHERE scheduling_status = true ORDER BY workshop")
+    SchedulingData[] getScheduledData();
+
+    /**
      * 根据主键数组更新排程状态
      *
      * @param schedulingSelect 排程选择数据
-     *
      * @return 影响行数
-     *
      * @since 1.0
      */
     Integer updateSchedulingStatusById(ScheduleUpdateData scheduleUpdateData);
@@ -50,9 +53,7 @@ public interface SchedulingDataDao {
      * 批量新增数据（MyBatis原生foreach方法）
      *
      * @param entities List<SchedulingData> 实例对象列表
-     *
      * @return 影响行数
-     *
      * @since 1.0
      */
     int insertBatch(@Param("entities") List<SchedulingData> entities);
@@ -61,9 +62,7 @@ public interface SchedulingDataDao {
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
      * @param entities List<SchedulingData> 实例对象列表
-     *
      * @return 影响行数
-     *
      * @throws org.springframework.jdbc.BadSqlGrammarException 入参是空List的时候会抛SQL语句错误的异常，请自行校验入参
      * @since 1.0
      */

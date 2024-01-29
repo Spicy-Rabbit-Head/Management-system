@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzk.dao.sparePartsRelated.CostTransferDao">
+
+    <insert id="addInitialCost">
+        INSERT
+        INTO spare_parts_management.cost_transfer
+        (device_number, maintenance_cycle, maintenance_item, spare_part_name, quantity, price)
+        SELECT device_number,
+               maintenance_cycle,
+               maintenance_item,
+               spare_part_name,
+               quantity,
+               price
+        FROM spare_parts_management.device_spare_parts_cost
+        WHERE device_number = #{deviceNumber}
+          AND maintenance_cycle &lt;= #{maintenanceCycle}::maintenance_cycle
+    </insert>
+</mapper>

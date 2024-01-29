@@ -20,42 +20,50 @@ public interface LoginService {
      * 登录
      *
      * @param user 用户信息
+     *
      * @return R<String> 登录结果
+     *
      * @since 1.0
      */
-    Response login(UserDTO user);
+    Response<String> login(UserDTO user);
 
     /**
      * 验证登录
      *
      * @return R 验证登录结果
+     *
      * @since 1.0
      */
-    Response isLogin();
+    Response<Void> isLogin();
 
     /**
      * 登出
      *
      * @return R 登出结果
+     *
      * @since 1.0
      */
-    Response logout();
+    Response<Void> logout();
 
     /**
      * 注册
      *
      * @param user 用户信息
+     *
      * @return R 注册结果
+     *
      * @since 1.0
      */
-    Response register(UserDTO user);
+    Response<Void> register(UserDTO user);
 
     /**
      * 重置密码
      *
      * @param username 用户名
+     *
      * @return R 重置密码结果
+     *
      * @since 1.0
      */
-    Response resetPassword(String username);
+    Response<Void> resetPassword(String username);
 }

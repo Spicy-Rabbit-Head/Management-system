@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.zzk.moduleenum.Belong;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -45,6 +46,12 @@ public class UserData extends Model<UserData> {
     // 密码
     @ApiModelProperty(value = "密码", name = "password")
     private String password;
+    // 名字
+    @ApiModelProperty(value = "名字", name = "name")
+    private String name;
+    // 归属
+    @ApiModelProperty(value = "归属", name = "belong")
+    private Belong belong;
     // 邮箱
     @ApiModelProperty(value = "邮箱", name = "email")
     private String email;

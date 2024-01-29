@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.zzk.entity.po.userManagement.UserData;
+import com.zzk.moduleenum.Belong;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class UserDataDetailsDeserializer extends JsonDeserializer<UserDetails> {
         // 解析Json
         JsonNode jsonNode = jsonParser.getCodec().readTree(jsonParser);
         // 构建用户信息
-        UserData user = new UserData(jsonNode.get("id").asInt(), jsonNode.get("username").asText(), jsonNode.get("password").asText(), jsonNode.get("email").asText(), jsonNode.get("uuid").asText());
+        UserData user = new UserData(jsonNode.get("id").asInt(), jsonNode.get("username").asText(), jsonNode.get("password").asText(), jsonNode.get("name").asText(), Belong.valueOf(jsonNode.get("belong").asText()), jsonNode.get("email").asText(), jsonNode.get("uuid").asText());
         // 获取权限信息
         JsonNode authorities = jsonNode.get("authorities");
         // 构建权限集合

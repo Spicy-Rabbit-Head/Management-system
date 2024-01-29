@@ -4,6 +4,7 @@ import com.zzk.entity.bo.maintenanceScheduleRelated.MachineSchedulingBO;
 import com.zzk.entity.dto.maintenanceScheduleRelated.SchedulingSelectDTO;
 import com.zzk.entity.po.maintenanceManagement.ModuleScheduling;
 import com.zzk.entity.po.maintenanceManagement.NonRoutineMattersScheduling;
+import com.zzk.entity.po.maintenanceManagement.SchedulingData;
 import com.zzk.entity.response.Response;
 import com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingDataVO;
 import com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingInterfaceVO;
@@ -37,9 +38,7 @@ public class ScheduleController {
      *
      * @param offset   偏移量 从第几条数据开始
      * @param pageSize 页面大小 每页显示多少条数据
-     *
      * @return R 读取排程界面数据结果
-     *
      * @since 1.0
      */
     @GetMapping("/getScheduleInterface")
@@ -53,9 +52,7 @@ public class ScheduleController {
      * @param workshop 车间
      * @param offset   偏移量 从第几条数据开始
      * @param pageSize 页面大小 每页显示多少条数据
-     *
      * @return R 读取排程数据结果
-     *
      * @since 1.0
      */
     @GetMapping("/getSchedule")
@@ -64,12 +61,19 @@ public class ScheduleController {
     }
 
     /**
+     * 读取已排程数据
+     */
+    @GetMapping("/readScheduledData")
+    public Response<SchedulingData[]> readScheduledData() {
+        return Response.success(200, "读取已排程数据成功", schedulingService.getScheduledData());
+    }
+
+
+    /**
      * 更新排程
      *
      * @param schedulingSelectDTO 排程数据
-     *
      * @return Response 修改结果
-     *
      * @since 1.0
      */
     @PostMapping("/updateSchedule")
@@ -116,6 +120,17 @@ public class ScheduleController {
     @GetMapping("/getNonRoutineSchedule")
     public Response<NonRoutineMattersScheduling[]> getNonRoutineSchedule() {
         return Response.success(200, "读取排程数据成功", schedulingService.getNonRoutineMattersScheduling());
+    }
+
+    /**
+     * 修改非例行事项排程数据
+     */
+    @PostMapping("/updateNonRoutineSchedule")
+    public Response<String> updateNonRoutineSchedule(@RequestBody NonRoutineMattersScheduling nonRoutineMattersScheduling) {
+        if (schedulingService.updateNonRoutineMattersScheduling(nonRoutineMattersScheduling)) {
+            return Response.success(200, "修改排程数据成功", "修改排程数据成功");
+        }
+        return Response.failed(500, "修改排程数据失败", "修改排程数据失败");
     }
 
     /**

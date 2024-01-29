@@ -3,6 +3,7 @@ package com.zzk.service.maintenanceRelated;
 import com.zzk.entity.bo.maintenanceScheduleRelated.MachineSchedulingBO;
 import com.zzk.entity.po.maintenanceManagement.ModuleScheduling;
 import com.zzk.entity.po.maintenanceManagement.NonRoutineMattersScheduling;
+import com.zzk.entity.po.maintenanceManagement.SchedulingData;
 import com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingDataVO;
 import com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingInterfaceVO;
 
@@ -26,9 +27,7 @@ public interface SchedulingService {
      * @param workshop     车间 从哪个车间获取排程
      * @param offsetNumber 偏移量 从第几条数据开始
      * @param pageSize     页面大小 每页显示多少条数据
-     *
      * @return Response 排程界面数据结果
-     *
      * @since 1.0
      */
     SchedulingInterfaceVO getScheduleInterface(String workshop, Integer offsetNumber, Integer pageSize);
@@ -39,20 +38,21 @@ public interface SchedulingService {
      * @param workshop 车间
      * @param offset   偏移量 从第几条数据开始
      * @param pageSize 页面大小 每页显示多少条数据
-     *
      * @return R 按车间获取排程结果
-     *
      * @since 1.0
      */
     SchedulingDataVO[] getScheduleByWorkshop(String workshop, Integer offset, Integer pageSize);
 
     /**
+     * 读取已排程数据
+     */
+    SchedulingData[] getScheduledData();
+
+    /**
      * 修改排程数据
      *
      * @param schedulingSelect 排程选择数据
-     *
      * @return Boolean 修改排程成功与否
-     *
      * @since 1.0
      */
     Boolean updateSchedule(MachineSchedulingBO schedulingSelect);
@@ -82,6 +82,11 @@ public interface SchedulingService {
      * @param id 非例行事项排程数据id
      */
     Boolean deleteNonRoutineMattersScheduling(Integer id);
+
+    /**
+     * 更新非例行事项排程数据
+     */
+    Boolean updateNonRoutineMattersScheduling(NonRoutineMattersScheduling nonRoutineMattersScheduling);
 
     /**
      * 查询保养成员

@@ -1,6 +1,5 @@
 package com.zzk.security;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zzk.dao.permissionRelated.PermissionDao;
 import com.zzk.dao.userRelated.UserDataDao;
 import com.zzk.entity.permissions.UserDataDetails;
@@ -62,7 +61,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         // 查询用户信息
-        UserData user = userDataDao.selectOne(new QueryWrapper<UserData>().eq("username", username));
+        UserData user = userDataDao.selectOne(username);
         // 如果用户不存在，抛出用户名不存在异常
         if (Objects.isNull(user)) {
             throw new UsernameNotFoundException("用户不存在");

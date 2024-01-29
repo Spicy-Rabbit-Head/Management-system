@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzk.dao.sparePartsRelated.DeviceSparePartsCostDao">
+
+    <select id="selectDeviceSparePartsCostByDeviceNumber"
+            resultType="com.zzk.entity.po.sparePartsManagement.DeviceSparePartsCost">
+        SELECT *
+        FROM
+            spare_parts_management.device_spare_parts_cost
+        WHERE
+            device_number = #{deviceNumber} AND
+            maintenance_cycle &lt;= #{maintenanceCycle}::MAINTENANCE_CYCLE
+    </select>
+</mapper>

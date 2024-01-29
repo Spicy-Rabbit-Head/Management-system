@@ -1,6 +1,5 @@
 package com.zzk.service.userRelated.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zzk.dao.userRelated.UserDataDao;
 import com.zzk.entity.po.userManagement.UserData;
 import com.zzk.service.userRelated.UserService;
@@ -32,19 +31,23 @@ public class UserServiceImpl implements UserService {
      * 判断用户是否存在
      *
      * @param username 用户名
+     *
      * @return Boolean 用户是否存在
+     *
      * @since 1.0
      */
     @Override
     public Boolean whetherTheUserExists(String username) {
-        return userDao.selectCount(new QueryWrapper<UserData>().eq("username", username)) > 0;
+        return userDao.selectCount(username) > 0;
     }
 
     /**
      * 用户添加
      *
      * @param user 用户信息
+     *
      * @return Boolean 用户是否添加成功
+     *
      * @since 1.0
      */
     @Override

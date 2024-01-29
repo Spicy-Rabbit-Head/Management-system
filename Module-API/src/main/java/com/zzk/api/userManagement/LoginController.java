@@ -31,10 +31,11 @@ public class LoginController {
      * 登录接口
      *
      * @return R 登录结果
+     *
      * @since 1.0
      */
     @PostMapping("/login")
-    public Response login(@RequestBody UserDTO user) {
+    public Response<String> login(@RequestBody UserDTO user) {
         return loginService.login(user);
     }
 
@@ -42,10 +43,11 @@ public class LoginController {
      * 验证登录
      *
      * @return R 验证登录结果
+     *
      * @since 1.0
      */
     @GetMapping("/isLogin")
-    public Response isLogin() {
+    public Response<Void> isLogin() {
         return loginService.isLogin();
     }
 
@@ -53,10 +55,11 @@ public class LoginController {
      * 登出接口
      *
      * @return R 登出结果
+     *
      * @since 1.0
      */
     @GetMapping("/logout")
-    public Response logout() {
+    public Response<Void> logout() {
         return loginService.logout();
     }
 
@@ -64,10 +67,11 @@ public class LoginController {
      * 注册接口
      *
      * @return R 注册结果
+     *
      * @since 1.0
      */
     @PostMapping("/register")
-    public Response register(@RequestBody UserDTO user) {
+    public Response<Void> register(@RequestBody UserDTO user) {
         return loginService.register(user);
     }
 }

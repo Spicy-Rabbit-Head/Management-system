@@ -10,7 +10,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -41,7 +40,7 @@ public class SchedulingData extends Model<SchedulingData> {
     private LocalDate planTime;
     // 排定时间
     @ApiModelProperty(value = "排定时间", name = "scheduling_time")
-    private Date schedulingTime;
+    private String schedulingTime;
     // 负责人
     @ApiModelProperty(value = "负责人", name = "person_in_charge")
     private String personInCharge;

@@ -4,6 +4,7 @@ import com.zzk.entity.dto.UserDTO;
 import com.zzk.entity.permissions.UserDataDetails;
 import com.zzk.entity.po.userManagement.UserData;
 import com.zzk.entity.response.Response;
+import com.zzk.moduleenum.Belong;
 import com.zzk.service.userRelated.LoginService;
 import com.zzk.service.userRelated.UserService;
 import com.zzk.utils.JwtUtils;
@@ -88,8 +89,7 @@ public class LoginServiceImpl implements LoginService {
         // 获取当前用户信息
         Authentication authenticationToken = SecurityContextHolder.getContext().getAuthentication();
         principal = authenticationToken.getPrincipal();
-        if (principal.equals("anonymousUser"))
-            return Response.failed(2, "未登录");
+        if (principal.equals("anonymousUser")) return Response.failed(2, "未登录");
         return Response.success(1, "已登录");
     }
 
@@ -121,14 +121,15 @@ public class LoginServiceImpl implements LoginService {
      */
     @Override
     public Response<Void> register(UserDTO user) {
+        System.out.println(Belong.MAINTENANCE);
         // 查询用户是否存在
         if (userService.whetherTheUserExists(user.getUsername())) {
             return Response.failed(2, "注册失败,用户已存在");
         } else {
             // 用户不存在，注册用户
-            if (!userService.userAddition(new UserData(null, user.getUsername(), passwordEncoder.encode(user.getPassword()), null, null)))
+            if (!userService.userAddition(new UserData(null, user.getUsername(), passwordEncoder.encode(user.getPassword()), "111", Belong.MAINTENANCE, null, null)))
                 return Response.failed(2, "注册失败,注册异常");
-            return Response.failed(1, "注册成功");
+            return Response.success(1, "注册成功");
         }
     }
 

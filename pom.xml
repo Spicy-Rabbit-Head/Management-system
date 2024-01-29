@@ -26,6 +26,8 @@
         <lombok.version>1.18.24</lombok.version>
         <!-- Mybatis-Plus版本 -->
         <mp.version>3.5.3.1</mp.version>
+        <!-- &lt;!&ndash; Mybatis-Plus-Annotation版本 &ndash;&gt; -->
+        <!-- <mpa.version>3.5.3.1</mpa.version> -->
         <!-- Validation版本 -->
         <validation.version>2.7.8</validation.version>
         <!-- Knife4j版本 -->
@@ -254,6 +256,12 @@
                 <artifactId>Module-Security</artifactId>
                 <version>${module.version}</version>
             </dependency>
+            <!-- &lt;!&ndash; mybatis-plus-annotation &ndash;&gt; -->
+            <!-- <dependency> -->
+            <!--     <groupId>com.baomidou</groupId> -->
+            <!--     <artifactId>mybatis-plus-annotation</artifactId> -->
+            <!--     <version>${mpa.version}</version> -->
+            <!-- </dependency> -->
         </dependencies>
     </dependencyManagement>
     <build>

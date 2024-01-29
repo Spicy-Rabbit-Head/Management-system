@@ -22,9 +22,7 @@ public interface SparePartsDataDao {
      * 根据备品编号查询备品数据
      *
      * @param sparePartsNumber 备品编号
-     *
      * @return 备品数据
-     *
      * @since 1.0
      */
     List<SparePartsData> selectSparePartsDataBySparePartsNumber(String sparePartsNumber);

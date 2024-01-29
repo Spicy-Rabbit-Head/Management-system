@@ -3,6 +3,7 @@ package com.zzk.entity.permissions;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.zzk.entity.po.userManagement.OperationPermissions;
 import com.zzk.entity.po.userManagement.UserData;
+import com.zzk.moduleenum.Belong;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.Assert;
 
@@ -94,6 +95,16 @@ public class UserDataDetails implements UserDetails {
     // 获取ID
     public Integer getId() {
         return this.user.getId();
+    }
+
+    // 获取所属
+    public Belong getBelong() {
+        return this.user.getBelong();
+    }
+
+    // 获取名字
+    public String getName() {
+        return this.user.getName();
     }
 
     // 获取邮箱

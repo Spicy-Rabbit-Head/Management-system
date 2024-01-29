@@ -36,17 +36,22 @@ public class PermissionsServiceImpl implements PermissionsService {
      */
     @Override
     public Response<List<MenuGroupVO>> getMenuList() {
-        // 获取当前用户信息
-        Authentication authenticationToken = SecurityContextHolder.getContext().getAuthentication();
-        UserDataDetails principal = (UserDataDetails) authenticationToken.getPrincipal();
-        // 查询 Redis 中的用户菜单
-        List<MenuPermission> menuList = redisSerializationUtils.getStringList(principal.getUsername() + USER_MENU, MenuPermission.class);
-        // 如果 Redis 中没有用户菜单，则从数据库中查询
-        if (menuList == null) {
-            menuList = permissionDao.selectMenuPermissionsByUserId(principal.getId());
-            // 将用户菜单存入 Redis
-            redisSerializationUtils.setString(principal.getUsername() + USER_MENU, menuList);
+        try {
+            // 获取当前用户信息
+            Authentication authenticationToken = SecurityContextHolder.getContext().getAuthentication();
+            UserDataDetails principal = (UserDataDetails) authenticationToken.getPrincipal();
+            // 查询 Redis 中的用户菜单
+            List<MenuPermission> menuList = redisSerializationUtils.getStringList(principal.getUsername() + USER_MENU, MenuPermission.class);
+            // 如果 Redis 中没有用户菜单，则从数据库中查询
+            if (menuList == null) {
+                menuList = permissionDao.selectMenuPermissionsByUserId(principal.getId());
+                // 将用户菜单存入 Redis
+                redisSerializationUtils.setString(principal.getUsername() + USER_MENU, menuList);
+            }
+            return Response.success(233, "ok", PermissionStructureUtils.convertToMenuGroups(menuList));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.failed(500, "获取用户菜单失败", null);
         }
-        return Response.success(233, "ok", PermissionStructureUtils.convertToMenuGroups(menuList));
     }
 }

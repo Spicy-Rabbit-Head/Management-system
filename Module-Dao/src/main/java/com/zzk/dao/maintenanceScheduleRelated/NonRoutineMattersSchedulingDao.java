@@ -4,6 +4,7 @@ import com.zzk.entity.po.maintenanceManagement.NonRoutineMattersScheduling;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,7 +17,7 @@ public interface NonRoutineMattersSchedulingDao {
      *
      * @return NonRoutineMattersScheduling[] 非例行事项排程数据
      */
-    @Select("SELECT * FROM maintenance_management.non_routine_matters_scheduling")
+    @Select("SELECT * FROM maintenance_management.non_routine_matters_scheduling ORDER BY id")
     NonRoutineMattersScheduling[] getNonRoutineMattersScheduling();
 
     /**
@@ -34,4 +35,12 @@ public interface NonRoutineMattersSchedulingDao {
      */
     @Delete("DELETE FROM maintenance_management.non_routine_matters_scheduling WHERE id=#{id}")
     Integer deleteNonRoutineMattersScheduling(Integer id);
+
+    /**
+     * 更新非例行事项排程数据
+     *
+     * @param nonRoutineMattersScheduling 非例行事项排程数据
+     */
+    @Update("UPDATE maintenance_management.non_routine_matters_scheduling SET matters_name = #{mattersName},matters_description = #{mattersDescription},member = #{member},matters_time = #{mattersTime} WHERE id=#{id}")
+    Integer updateNonRoutineMattersScheduling(NonRoutineMattersScheduling nonRoutineMattersScheduling);
 }

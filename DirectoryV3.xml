@@ -189,4 +189,5 @@
     <tree path="/Module-Service/src/main/java/com/zzk/service/formRelated" title="表单相关"/>
     <tree path="/Module-Dao/src/main/java/com/zzk/dao/formRelated" title="表单相关"/>
     <tree path="/Module-API/src/main/java/com/zzk/api/formManagement" title="表单管理"/>
+    <tree path="/Module-API/src/main/java/com/zzk/api/sparePartsManagement" title="备品管理"/>
 </trees>
