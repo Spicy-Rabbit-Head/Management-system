@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzk.dao.sparePartsRelated.CostStatisticsDao">
+
+    <insert id="insertCostRecordBatch">
+        insert into spare_parts_management.cost_statistics
+        (device_number, maintenance_cycle, maintenance_item, spare_part_name, quantity, price, actual_quantity, remark)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.deviceNumber}, #{item.maintenanceCycle}::MAINTENANCE_CYCLE,
+            #{item.maintenanceItem},#{item.sparePartName},
+            #{item.quantity}, #{item.price},
+            #{item.actualQuantity}, #{item.remark})
+        </foreach>
+    </insert>
+</mapper>
