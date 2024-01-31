@@ -23,7 +23,6 @@
 <img width='60' height='60' title='css3' style='margin-left:15px;' src='skill/css3.png' />   <img width='60' height='60' title='javaScript' style='margin-left:15px;' src='skill/js.png' /> 
 <img width='60' height='60' title='typeScript' style='margin-left:15px;' src='skill/ts.png' />
 <img width='60' height='60' title='vite' style='margin-left:15px;' src='skill/vite.png' />   <img width='60' height='60' title='vue3' style='margin-left:15px;' src='skill/vue.png' />   <img width='50' height='60' title='pinia' style='margin-left:15px;' src='skill/pinia.png' /> <img width='60' height='60' title='postCss' style='margin-left:15px;' src='skill/postCss.png' /> 
-<img width='60' height='60' title='tailwind' style='margin-left:15px;' src='skill/tailwind.png' />     
 </div>    
 ------
 
