@@ -46,5 +46,29 @@
     <insert id="insertOrUpdateBatch">
 
     </insert>
+    <insert id="archiveScheduling">
+        INSERT
+        INTO
+            maintenance_management.scheduling_archiving
+            (workshop,
+             equipment_number,
+             equipment_model_number,
+             equipment_name,
+             maintenance_cycle,
+             plan_time,
+             scheduling_time,
+             person_in_charge,
+             member)
+        VALUES
+            (#{workshop},
+             #{equipmentNumber},
+             #{equipmentModelNumber},
+             #{equipmentName},
+             #{maintenanceCycle}::MAINTENANCE_CYCLE,
+             #{planTime},
+             #{schedulingTime},
+             #{personInCharge},
+             #{member})
+    </insert>
 
 </mapper>

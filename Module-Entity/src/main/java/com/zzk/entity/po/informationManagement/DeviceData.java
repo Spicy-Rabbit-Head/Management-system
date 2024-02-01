@@ -10,7 +10,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * 设备数据(com.zzk.entity.po.informationManagement.DeviceData)实体类<br>
@@ -75,5 +75,5 @@ public class DeviceData extends Model<DeviceData> {
     private String deviceInspectionBenchmark;
     // 变更日期
     @ApiModelProperty(value = "变更日期", name = "change_date")
-    private Date changeDate;
+    private Timestamp changeDate;
 }

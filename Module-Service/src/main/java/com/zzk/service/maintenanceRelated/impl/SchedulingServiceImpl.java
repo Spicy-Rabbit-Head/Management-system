@@ -109,6 +109,16 @@ public class SchedulingServiceImpl implements SchedulingService {
     }
 
     /**
+     * 结单
+     *
+     * @param equipmentNumber 设备编号
+     */
+    @Override
+    public Boolean complete(String equipmentNumber) {
+        return null;
+    }
+
+    /**
      * 获取非例行事项排程数据
      *
      * @return NonRoutineMattersScheduling[] 非例行事项排程数据

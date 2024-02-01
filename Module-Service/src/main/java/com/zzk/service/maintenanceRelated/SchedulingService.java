@@ -65,6 +65,13 @@ public interface SchedulingService {
     ModuleScheduling[] getModuleScheduling();
 
     /**
+     * 结单
+     *
+     * @param equipmentNumber 设备编号
+     */
+    Boolean complete(String equipmentNumber);
+
+    /**
      * 获取非例行事项排程数据
      *
      * @return NonRoutineMattersScheduling[] 非例行事项排程数据

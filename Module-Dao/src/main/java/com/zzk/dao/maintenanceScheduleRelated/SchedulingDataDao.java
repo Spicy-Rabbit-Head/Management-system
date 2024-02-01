@@ -3,6 +3,7 @@ package com.zzk.dao.maintenanceScheduleRelated;
 import com.zzk.entity.po.maintenanceManagement.ScheduleUpdateData;
 import com.zzk.entity.po.maintenanceManagement.SchedulingData;
 import com.zzk.entity.vo.maintenanceScheduleRelated.SchedulingDataVO;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -37,7 +38,7 @@ public interface SchedulingDataDao {
     /**
      * 获取已排程数据
      */
-    @Select("SELECT * FROM maintenance_management.scheduling_data WHERE scheduling_status = true ORDER BY workshop")
+    @Select("SELECT * FROM maintenance_management.scheduling_data WHERE scheduling_status = TRUE ORDER BY workshop")
     SchedulingData[] getScheduledData();
 
     /**
@@ -48,6 +49,33 @@ public interface SchedulingDataDao {
      * @since 1.0
      */
     Integer updateSchedulingStatusById(ScheduleUpdateData scheduleUpdateData);
+
+    /**
+     * 通过设备编号查询单条数据
+     *
+     * @param deviceNumber 设备编号
+     * @return 实例对象
+     * @since 1.0
+     */
+    @Select("SELECT * FROM maintenance_management.scheduling_data WHERE equipment_number = #{deviceNumber}")
+    SchedulingData queryByDeviceNumber(String deviceNumber);
+
+    /**
+     * 排程归档
+     *
+     * @param schedulingData 排程数据
+     * @return 影响行数
+     */
+    Integer archiveScheduling(SchedulingData schedulingData);
+
+    /**
+     * 按设备编号删除排程数据
+     *
+     * @param deviceNumber 设备编号
+     * @return 影响行数
+     */
+    @Delete("DELETE FROM maintenance_management.scheduling_data WHERE equipment_number = #{deviceNumber}")
+    Integer deleteByDeviceNumber(String deviceNumber);
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）

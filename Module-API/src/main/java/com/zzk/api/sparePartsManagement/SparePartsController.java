@@ -1,12 +1,15 @@
 package com.zzk.api.sparePartsManagement;
 
-import com.zzk.entity.dto.sparePartsRelated.ActualCostDTO;
 import com.zzk.entity.dto.sparePartsRelated.SparePartsInquiryDTO;
+import com.zzk.entity.po.sparePartsManagement.CostStatistics;
 import com.zzk.entity.po.sparePartsManagement.DeviceSparePartsCost;
 import com.zzk.entity.response.Response;
 import com.zzk.service.sparePartsRelated.SparePartsQueryService;
 import com.zzk.service.sparePartsRelated.SparePartsReviseService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -27,23 +30,9 @@ public class SparePartsController {
         return Response.success(1, "查询成功", sparePartsQueryService.getSparePartsData(sparePartsInquiryDTO));
     }
 
-    // 查询领取状态
-    @GetMapping("/getReceiveStatus")
-    public Response<Boolean> getReceiveStatus(String deviceNumber) {
-        return Response.success(1, "查询成功", sparePartsReviseService.isExistDevice(deviceNumber));
-    }
-
-    // 添加初始费用
-    @PostMapping("/addInitialCost")
-    public Response<Boolean> addInitialCost() {
-//        System.out.println(receiveSparePartsDTO);
-//        return Response.success(1, "添加成功", sparePartsReviseService.addInitialCost(receiveSparePartsDTO.getDeviceNumber(), receiveSparePartsDTO.getMaintenanceCycle()));
-        return Response.success(1, "添加成功", null);
-    }
-
-    // 添加实际费用
-    @PostMapping("/addActualCost")
-    public Response<Boolean> addActualCost(@RequestBody ActualCostDTO actualCost) {
-        return Response.success(1, "添加成功", sparePartsReviseService.addActualCost(actualCost));
+    // 填写费用
+    @PostMapping("/fillInFee")
+    public Response<Boolean> fillInFee(@RequestBody List<CostStatistics> costStatistics) {
+        return Response.success(1, "提交成功", sparePartsReviseService.feeWritingProcess(costStatistics));
     }
 }

@@ -31,12 +31,10 @@ public class MachineSchedulingBO {
     public MachineSchedulingBO(SchedulingSelectDTO schedulingSelectDTO) {
         scheduleUpdateData = new ScheduleUpdateData();
         if (!schedulingSelectDTO.getStatus()) {
-            System.out.println("排程选择传输对象状态为false");
             scheduleUpdateData.setMachineSelect(schedulingSelectDTO.getMachineSelect());
             scheduleUpdateData.setStatus(false);
             return;
         }
-        System.out.println("排程选择传输对象状态为true");
         // 设置排程选择
         scheduleUpdateData.setMachineSelect(schedulingSelectDTO.getMachineSelect());
         // 设置负责人
@@ -54,7 +52,6 @@ public class MachineSchedulingBO {
      * <p>
      *
      * @param schedulingSelectDTO 排程选择传输对象
-     *
      * @apiNote 该方法用于将排程选择传输对象转换为排程更新数据
      * @author zhao'zi'kui
      * @since 1.0

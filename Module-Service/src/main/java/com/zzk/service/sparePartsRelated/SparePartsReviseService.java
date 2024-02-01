@@ -1,6 +1,8 @@
 package com.zzk.service.sparePartsRelated;
 
-import com.zzk.entity.dto.sparePartsRelated.ActualCostDTO;
+import com.zzk.entity.po.sparePartsManagement.CostStatistics;
+
+import java.util.List;
 
 /**
  * 备品更新服务层接口<br>
@@ -15,24 +17,10 @@ import com.zzk.entity.dto.sparePartsRelated.ActualCostDTO;
  */
 public interface SparePartsReviseService {
     /**
-     * 是否存在该设备
-     *
-     * @param deviceNumber 设备编号
-     */
-    Boolean isExistDevice(String deviceNumber);
-
-    /**
-     * 添加初始费用
-     *
-     * @param deviceNumber     设备编号
-     * @param maintenanceCycle 保养周期
-     */
-    Boolean addInitialCost(String deviceNumber, String maintenanceCycle);
-
-    /**
      * 添加实际费用
      *
-     * @param deviceSparePartsCostList 实际使用量
+     * @param actualCost 实际使用量
+     * @return 是否添加成功
      */
-    Boolean addActualCost(ActualCostDTO actualCost);
+    Boolean feeWritingProcess(List<CostStatistics> actualCost);
 }

@@ -1,9 +1,10 @@
 package com.zzk.entity.vo.informationManagement;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * 设备数据视图对象<br>
@@ -49,7 +50,8 @@ public class DeviceDataVO {
     // 每日设备巡检基准
     private String deviceInspectionBenchmark;
     // 变更日期
-    private Date changeDate;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Timestamp changeDate;
     // 总数
     private Integer total;
 }

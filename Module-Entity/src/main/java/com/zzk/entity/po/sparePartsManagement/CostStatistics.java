@@ -7,11 +7,13 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.sql.Date;
+
 /**
- * 备品费用转移<br>
+ * 机台备品费用<br>
  * <p>
  * <p>
- * 1.0版本：备品费用转移构建<br>
+ * 1.0版本：备品费用构建<br>
  * <p>
  *
  * @author zhao'zi'kui
@@ -20,9 +22,9 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("spare_parts_management.cost_transfer")
-@ApiModel(description = "备品费用转移", value = "CostTransfer")
-public class CostTransfer extends Model<CostTransfer> {
+@TableName("spare_parts_management.cost_statistics")
+@ApiModel(description = "机台备品费用", value = "CostStatistics")
+public class CostStatistics extends Model<CostStatistics> {
     // 设备编号
     @ApiModelProperty(value = "设备编号", name = "device_number")
     private String deviceNumber;
@@ -34,7 +36,7 @@ public class CostTransfer extends Model<CostTransfer> {
     private String maintenanceItem;
     // 备品名称
     @ApiModelProperty(value = "备品名称", name = "spare_parts_name")
-    private String sparePartsName;
+    private String sparePartName;
     // 备品使用数量
     @ApiModelProperty(value = "备品使用数量", name = "quantity")
     private Integer quantity;
@@ -50,4 +52,10 @@ public class CostTransfer extends Model<CostTransfer> {
     // 实际总价
     @ApiModelProperty(value = "实际总价", name = "actual_total_price")
     private Float actualTotalPrice;
+    // 备注
+    @ApiModelProperty(value = "备注", name = "remark")
+    private String remark;
+    // 写入时间
+    @ApiModelProperty(value = "写入时间", name = "write_time")
+    private Date writeTime;
 }
